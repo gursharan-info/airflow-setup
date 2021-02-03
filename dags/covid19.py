@@ -123,6 +123,7 @@ dag = DAG("covid19", default_args=default_args, schedule_interval="@daily")
 read_covid_data_task = PythonOperator(task_id='read_covid_data',
                                        python_callable=read_covid_data,
                                        dag=dag,
-                                       provide_context = False
+                                    #    provide_context = False,
+                                       catchup=True
                                     )
 
