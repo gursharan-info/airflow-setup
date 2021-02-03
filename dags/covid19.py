@@ -102,7 +102,7 @@ def read_covid_data():
 default_args = {
     'owner': 'user',
     'depends_on_past': False,
-    'start_date': datetime(2021, 01, 02, 6, 0),
+    'start_date': datetime(2021, 1, 2, 6, 0),
     'provide_context': True
     # "owner": "airflow",
     # "depends_on_past": False,
