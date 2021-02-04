@@ -103,7 +103,7 @@ default_args = {
     # 'owner': 'user',
     'depends_on_past': False,
     'start_date': datetime(2021, 2, 2, 6, 0),
-    'provide_context': True
+    'provide_context': True,
     "owner": "airflow",
     # "depends_on_past": False,
     # "start_date": datetime(2020, 12, 18),
