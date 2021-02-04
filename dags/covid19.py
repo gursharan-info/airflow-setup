@@ -7,7 +7,7 @@ from airflow import DAG
 from airflow.operators import PythonOperator
 
 lgd_codes_file = 'https://raw.githubusercontent.com/gursharan-info/idp-scripts/master/sources/LGD_covid_20Oct19.csv'
-dir_path = '/usr/local/airflow/data/hfi'
+dir_path = '/usr/local/airflow/data/hfi/'
 
 def read_covid_data():
     now = datetime.now()
@@ -100,11 +100,11 @@ def read_covid_data():
     final_merged_data.to_csv(filename,index=False)
 
 default_args = {
-    'owner': 'user',
+    # 'owner': 'user',
     'depends_on_past': False,
     'start_date': datetime(2021, 2, 2, 6, 0),
     'provide_context': True
-    # "owner": "airflow",
+    "owner": "airflow",
     # "depends_on_past": False,
     # "start_date": datetime(2020, 12, 18),
     # "email": ["airflow@airflow.com"],

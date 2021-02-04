@@ -112,7 +112,7 @@ def read_fertilizer_data():
     final_df.to_csv(filename,index=False)
 
 default_args = {
-    'owner': 'user',
+    # 'owner': 'user',
     'depends_on_past': False,
     'start_date': datetime(2021, 2, 2, 6, 0),
     'provide_context': True
