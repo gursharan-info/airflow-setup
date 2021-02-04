@@ -25,4 +25,3 @@ sftp-config.json
 # Python
 __pycache__
 data/*
-dags/data/*
