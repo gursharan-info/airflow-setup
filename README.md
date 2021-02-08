@@ -168,6 +168,11 @@ it explicitly:
 
 You can also use those variables to adapt your compose file to match an existing Redis instance managed elsewhere.
 
-# Wanna help?
 
-Fork, improve and PR.
+
+To delete all containers including its volumes use,
+
+docker rm -vf $(docker ps -a -q)
+To delete all the images,
+
+docker rmi -f $(docker images -a -q)

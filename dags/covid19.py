@@ -1,13 +1,16 @@
-import requests, json, csv
+import requests, json, csv, os
 import numpy as np
 import pandas as pd
 from datetime import datetime, timedelta
 
 from airflow import DAG
-from airflow.operators import PythonOperator
+# from airflow.operators import PythonOperator
+from airflow.operators.python_operator import PythonOperator
+from helpers import google_upload as gupload
 
 lgd_codes_file = 'https://raw.githubusercontent.com/gursharan-info/idp-scripts/master/sources/LGD_covid_20Oct19.csv'
-dir_path = '/usr/local/airflow/data/hfi/'
+dir_path = '/usr/local/airflow/data/hfi'
+gdrive_covid_folder = '1Ey0Lv4sftSlPXC_Obc7LyGiWfg89etXj'
 
 def read_covid_data():
     now = datetime.now()
@@ -96,14 +99,15 @@ def read_covid_data():
          ]]
     final_merged_data = final_merged_data.fillna("") 
     
-    filename = dir_path+'/covid19/covid_'+yday+'.csv'
+    filename = os.path.join(dir_path, 'covid19/covid_'+yday+'.csv')
     final_merged_data.to_csv(filename,index=False)
+    gupload.upload(filename, 'covid_'+yday+'.csv',gdrive_covid_folder)
 
 default_args = {
     # 'owner': 'user',
     'depends_on_past': False,
-    'start_date': datetime(2021, 2, 2, 6, 0),
-    'provide_context': True,
+    'start_date': datetime(2021, 2, 7, 6, 0),
+    # 'provide_context': True,
     "owner": "airflow",
     # "depends_on_past": False,
     # "start_date": datetime(2020, 12, 18),
@@ -123,7 +127,7 @@ dag = DAG("covid19", default_args=default_args, schedule_interval="@daily")
 read_covid_data_task = PythonOperator(task_id='read_covid_data',
                                        python_callable=read_covid_data,
                                        dag=dag,
-                                    #    provide_context = False,
+                                       provide_context = False,
                                     #    catchup=True
                                     )
 

@@ -3,12 +3,15 @@ import requests, json, io, re
 import pandas as pd
 import numpy as np
 from datetime import datetime, date, timedelta
-
 from airflow import DAG
-from airflow.operators import PythonOperator
+# from airflow.operators import PythonOperator
+from airflow.operators.python_operator import PythonOperator
+from helpers import google_upload as gupload
 
 lgd_codes_file = 'https://raw.githubusercontent.com/gursharan-info/idp-scripts/master/sources/LGD_v1_17Oct19.csv'
 dir_path = '/usr/local/airflow/data/hfi'
+gdrive_fertilizer_folder = '1EZeIWEq_Yshb-C-0E1HBXzBDh5luPsZf'
+
 
 def read_fertilizer_data():
     # Load the main page
@@ -110,11 +113,13 @@ def read_fertilizer_data():
 
     filename = dir_path+'/fertilizer_daily/'+currentDate.strftime("%d-%m-%Y")+'.csv'
     final_df.to_csv(filename,index=False)
+    gupload.upload(filename, currentDate.strftime("%d-%m-%Y")+'.csv',gdrive_fertilizer_folder)
+
 
 default_args = {
     # 'owner': 'user', 
     'depends_on_past': False,
-    'start_date': datetime(2021, 2, 2, 6, 0),
+    'start_date': datetime(2021, 2, 7, 6, 0),
     'provide_context': True,
     "owner": "airflow",
     # "depends_on_past": False,
