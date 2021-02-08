@@ -119,7 +119,7 @@ def read_fertilizer_data():
 default_args = {
     # 'owner': 'user', 
     'depends_on_past': False,
-    'start_date': datetime(2021, 2, 7, 6, 0),
+    'start_date': datetime(2021, 2, 1, 6, 0),
     'provide_context': True,
     "owner": "airflow",
     # "depends_on_past": False,
@@ -140,6 +140,7 @@ fertilizer_dag = DAG("fertilizer_data", default_args=default_args, schedule_inte
 read_fertilizer_data_task = PythonOperator(task_id='read_fertilizer_data',
                                        python_callable=read_fertilizer_data,
                                        dag=fertilizer_dag,
-                                       provide_context = False
+                                       provide_context = False,
+                                       catchup = True
                                     )
 

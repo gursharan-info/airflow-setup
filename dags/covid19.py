@@ -128,6 +128,6 @@ read_covid_data_task = PythonOperator(task_id='read_covid_data',
                                        python_callable=read_covid_data,
                                        dag=dag,
                                        provide_context = False,
-                                    #    catchup=True
+                                       catchup=True
                                     )
 
