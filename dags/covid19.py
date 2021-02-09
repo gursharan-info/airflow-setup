@@ -1,4 +1,4 @@
-import requests, json, csv, os
+import requests, json, csv, os, pendulum
 import numpy as np
 import pandas as pd
 from datetime import datetime, timedelta
@@ -12,8 +12,11 @@ lgd_codes_file = 'https://raw.githubusercontent.com/gursharan-info/idp-scripts/m
 dir_path = '/usr/local/airflow/data/hfi'
 gdrive_covid_folder = '1Ey0Lv4sftSlPXC_Obc7LyGiWfg89etXj'
 
-def read_covid_data():
-    now = datetime.now()
+def read_covid_data(**context):
+    print(context['execution_date'], type(context['execution_date']))
+    # The current date would be previous day from date of execution
+    now = datetime.fromtimestamp(context['execution_date'].timestamp())
+    print(now)
     district_wise_daily = pd.read_csv('https://api.covid19india.org/csv/latest/districts.csv')
     district_wise_daily['Date'] = pd.to_datetime(district_wise_daily['Date'], format='%Y-%m-%d').dt.strftime('%d-%m-%Y')
     
@@ -104,18 +107,22 @@ def read_covid_data():
     gupload.upload(filename, 'covid_'+yday+'.csv',gdrive_covid_folder)
 
 default_args = {
-    # 'owner': 'user',
+    'owner': 'airflow', 
     'depends_on_past': False,
-    'start_date': datetime(2021, 2, 1, 6, 0),
-    # 'provide_context': True,
-    "owner": "airflow",
+    # 'start_date': datetime(2021, 2, 1, 6, 0),
+    'start_date': pendulum.datetime(year=2021, month=2, day=1, hour=20, minute=00 ).astimezone('Asia/Kolkata'),
+    'provide_context': True,
+    # "owner": "airflow",
+    'email': ['gursharan_singh@isb.edu'],
+    'email_on_failure': True,
+    "catchup": True,
     # "depends_on_past": False,
     # "start_date": datetime(2020, 12, 18),
     # "email": ["airflow@airflow.com"],
     # "email_on_failure": False,
     # "email_on_retry": False,
-    # "retries": 1,
-    # "retry_delay": timedelta(minutes=5),
+    "retries": 1,
+    "retry_delay": timedelta(minutes=10),
     # 'queue': 'bash_queue',
     # 'pool': 'backfill',
     # 'priority_weight': 10,
@@ -127,7 +134,6 @@ dag = DAG("covid19", default_args=default_args, schedule_interval="@daily")
 read_covid_data_task = PythonOperator(task_id='read_covid_data',
                                        python_callable=read_covid_data,
                                        dag=dag,
-                                       provide_context = False,
-                                       catchup=True
+                                       provide_context = True,
                                     )
 
