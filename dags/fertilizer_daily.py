@@ -1,5 +1,5 @@
 from bs4 import BeautifulSoup
-import requests, json, io, re, pendulum
+import requests, json, io, re, pendulum, urllib3
 import pandas as pd
 import numpy as np
 from datetime import datetime, date, timedelta
@@ -12,6 +12,7 @@ lgd_codes_file = 'https://raw.githubusercontent.com/gursharan-info/idp-scripts/m
 dir_path = '/usr/local/airflow/data/hfi'
 gdrive_fertilizer_folder = '1EZeIWEq_Yshb-C-0E1HBXzBDh5luPsZf'
 
+urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 def read_fertilizer_data(**context):
     # Load the main page
@@ -78,7 +79,7 @@ def read_fertilizer_data(**context):
                 historical_data = pd.read_csv(dir_path+'/fertilizer_daily/data_historical.csv')
                 historical_data.rename(columns={'merge_name': 'state_district_lower'},inplace=True)
                 
-                stacked_df = pd.concat([historical_data, dist_merged]).reset_index(drop=True)
+                stacked_df = pd.concat([historical_data, dist_merged],sort=False).reset_index(drop=True)
                 stacked_df['Date'] = pd.to_datetime(stacked_df['Date'], format="%d-%m-%Y").dt.date
                 stacked_df.sort_values(by='Date', ascending=False)
 
@@ -137,7 +138,7 @@ default_args = {
     'owner': 'airflow', 
     'depends_on_past': False,
     # 'start_date': datetime(2021, 2, 1, 6, 0),
-    'start_date': pendulum.datetime(year=2021, month=2, day=1, hour=20, minute=00 ).astimezone('Asia/Kolkata'),
+    'start_date': pendulum.datetime(year=2021, month=2, day=1, hour=12, minute=00 ).astimezone('Asia/Kolkata'),
     'provide_context': True,
     # "owner": "airflow",
     'email': ['gursharan_singh@isb.edu'],
