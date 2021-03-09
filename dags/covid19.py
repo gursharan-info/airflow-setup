@@ -19,11 +19,12 @@ def read_covid_data(**context):
     print(now)
     district_wise_daily = pd.read_csv('https://api.covid19india.org/csv/latest/districts.csv')
     district_wise_daily['Date'] = pd.to_datetime(district_wise_daily['Date'], format='%Y-%m-%d').dt.strftime('%d-%m-%Y')
+    district_wise_daily['District'] = district_wise_daily['District'].str.replace('Unknown','', case=False)
     
     yday=str(datetime.strftime(now - timedelta(1), '%d-%m-%Y'))
     db_yday=str(datetime.strftime(now - timedelta(2), '%d-%m-%Y'))
-    yday_filtered = district_wise_daily[district_wise_daily['Date'].isin([yday])].iloc[:,0:6]
-    db_yday_filtered = district_wise_daily[district_wise_daily['Date'].isin([db_yday])].iloc[:,1:6]
+    yday_filtered = district_wise_daily[district_wise_daily['Date'].isin([yday])].iloc[:,0:6].reset_index(drop=True)
+    db_yday_filtered = district_wise_daily[district_wise_daily['Date'].isin([db_yday])].iloc[:,1:6].reset_index(drop=True)
 
     delta_df = pd.DataFrame(yday_filtered[['Date','State','District']])
     df1 = yday_filtered[['Confirmed','Recovered','Deceased']]
@@ -101,6 +102,7 @@ def read_covid_data(**context):
          'total_confirmed_india','total_recovered_india','total_deceased_india'
          ]]
     final_merged_data = final_merged_data.fillna("") 
+    final_merged_data['district_name'] = final_merged_data['district_name'].str.replace('Unknown','', case=False)
     
     filename = os.path.join(dir_path, 'covid19/covid_'+yday+'.csv')
     final_merged_data.to_csv(filename,index=False)
