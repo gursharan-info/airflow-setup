@@ -24,7 +24,7 @@ def read_fertilizer_data(**context):
         # print(context['execution_date'], type(context['execution_date']))
         
         # The current date would be previous day from date of execution
-        currentDate = datetime.fromtimestamp(context['execution_date'].timestamp())- timedelta(1)
+        currentDate = datetime.fromtimestamp(context['execution_date'].timestamp())- timedelta(2)
         print(currentDate)
         # currentDate = datetime.today()
          
