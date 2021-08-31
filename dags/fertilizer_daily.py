@@ -11,7 +11,7 @@ from helpers import google_upload as gupload
 lgd_codes_file = 'https://raw.githubusercontent.com/gursharan-info/idp-scripts/master/sources/LGD_v1_17Oct19.csv'
 dir_path = '/usr/local/airflow/data/hfi'
 gdrive_fertilizer_folder = '1EZeIWEq_Yshb-C-0E1HBXzBDh5luPsZf'
-
+day_lag = 6
 # urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 def read_fertilizer_data(**context):
@@ -24,7 +24,7 @@ def read_fertilizer_data(**context):
         # print(context['execution_date'], type(context['execution_date']))
         
         # The current date would be previous day from date of execution
-        currentDate = datetime.fromtimestamp(context['execution_date'].timestamp())- timedelta(2)
+        currentDate = datetime.fromtimestamp(context['execution_date'].timestamp())- timedelta(day_lag)
         print(currentDate)
         # currentDate = datetime.today()
          
@@ -131,24 +131,13 @@ def read_fertilizer_data(**context):
 default_args = {
     'owner': 'airflow', 
     'depends_on_past': False,
-    # 'start_date': datetime(2021, 2, 1, 6, 0),
     'start_date': pendulum.datetime(year=2021, month=2, day=1, hour=12, minute=00 ).astimezone('Asia/Kolkata'),
     'provide_context': True,
-    # "owner": "airflow",
     'email': ['gursharan_singh@isb.edu'],
     'email_on_failure': True,
     "catchup": True,
-    # "depends_on_past": False,
-    # "start_date": datetime(2020, 12, 18),
-    # "email": ["airflow@airflow.com"],
-    # "email_on_failure": False,
-    # "email_on_retry": False,
     "retries": 1,
     "retry_delay": timedelta(minutes=10),
-    # 'queue': 'bash_queue',
-    # 'pool': 'backfill',
-    # 'priority_weight': 10,
-    # 'end_date': datetime(2016, 1, 1),
 }
 
 fertilizer_dag = DAG("fertilizer_data", default_args=default_args, schedule_interval="@daily")
