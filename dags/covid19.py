@@ -131,11 +131,11 @@ default_args = {
     # 'end_date': datetime(2016, 1, 1),
 }
 
-dag = DAG("covid19CasesDailyScraping", default_args=default_args, schedule_interval="@daily")
+scrape_covid_daily_dag = DAG("covid19CasesDailyScraping", default_args=default_args, schedule_interval="@daily")
 
 scrape_covid_daily_task = PythonOperator(task_id='scrape_covid_daily',
-                                       python_callable=scrape_covid_daily,
-                                       dag=dag,
+                                       python_callable = scrape_covid_daily,
+                                       dag = scrape_covid_daily_dag,
                                        provide_context = True,
                                     )
 
