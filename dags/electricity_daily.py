@@ -1,5 +1,6 @@
+from posix import PRIO_PGRP
 from bs4 import BeautifulSoup
-import requests, pendulum, os
+import requests, pendulum, os, re
 import PyPDF2 as pypdf
 from tabula import read_pdf
 import pandas as pd
@@ -20,30 +21,43 @@ gdrive_electricity_folder = '139M_aquK9oXptaDTjvHlxe0NTzMdu8m7'
 gdrive_electricity_pdf_folder = '1n-619wmzIh6b2fnWdyeCzT1SmP5xO8ud'
 day_lag = 3
 
-main_url = "https://posoco.in/reports/daily-reports/daily-reports-2020-21/"
+# For 2020-21
+# main_url = "https://posoco.in/reports/daily-reports/daily-reports-2020-21/"
+# For 2021-22. For later year you may need the url 
+main_url = "https://posoco.in/reports/daily-reports/daily-reports-2021-22/"
 states = ['Punjab', 'Haryana', 'Rajasthan', 'Delhi', 'UP', 'Uttarakhand', 'HP', 'J&K(UT) & Ladakh(UT)','J&K(UT)','Ladakh(UT)','J&K','Ladakh', 'Chandigarh', 'Chhattisgarh', 'Gujarat', 'MP', 'Maharashtra', 'Goa', 'DD', 'DNH',"Essar steel", 'AMNSIL', 'Andhra Pradesh', 'Telangana', 'Karnataka', 'Kerala', 'Tamil Nadu', 'Puducherry','Pondy','Bihar','DVC', 'Jharkhand', 'Odisha', 'West Bengal', 'Sikkim', 'Arunachal Pradesh', 'Assam', 'Manipur', 'Meghalaya', 'Mizoram', 'Nagaland', 'Tripura']
 elec_columns = ['state','max_demand_met','shortage','energy_met_mu','drawal_schedule_mu','od_ud_mu','max_od_mw','energy_storage']
 
-def read_electricity_data(**context):
+def scrape_electricity_data(**context):
     today = datetime.fromtimestamp(context['execution_date'].timestamp())
-    scrape_dateString = datetime.strftime(today - timedelta(day_lag), "%d-%m-%y")
+    # scrape_dateString = datetime.strftime(today - timedelta(day_lag), "%d-%m-%y")
 
     session = requests.Session()
     response = session.get(main_url)
     tree = html.fromstring(response.content)
-    anchor_tags = [a.values()[0] for a in tree.xpath('//*[@id="wpdmmydls-cce6da02590d197e2b9dc1635b59849e"]/tbody/tr/td/a')]
-
-    latest_url = [a for a in anchor_tags if scrape_dateString in a]
-
-    if len(latest_url) > 0:
-        url = latest_url[0]
+    # For 2020-21
+    # anchor_tags = [a.values()[0] for a in tree.xpath('//*[@id="wpdmmydls-cce6da02590d197e2b9dc1635b59849e"]/tbody/tr/td/a')]
+    # For 2021-22. For later year you may need to find and change the xpath
+    anchor_tags = [a.values()[0] for a in tree.xpath('//*[@id="wpdmmydls-462b5773dd1f1c85ab4365e6a09bde68"]/tbody/tr/td/a')]
+    update_list = anchor_tags[:7]
+    # latest_url = [a for a in anchor_tags if scrape_dateString in a]
+    print('list', update_list)
+    for url in update_list:
+    # if len(latest_url) > 0:
+    #     url = latest_url[0]
+        print(url)
         while True:
             try:
         #         date = (datetime.datetime.strptime(date,"%d.%m.%y") - datetime.timedelta(days=1)).strftime("%d/%m/%Y")
-                file_date = scrape_dateString
+                # file_date = scrape_dateString
             #     print(file_date)
                 table_not_found = 0
                 response = requests.get(url)
+                d = response.headers['content-disposition'] 
+                fname = re.findall("filename=(.+)", d)[0]
+                date = datetime.strptime(url.split("/")[-2].split("_")[0], "%d-%m-%y")
+                scrape_dateString = date.strftime("%d-%m-%Y")
+                file_date = scrape_dateString
                 file_loc = os.path.join(pdf_path, 'file'+file_date+'.pdf')
                 with open (file_loc,'wb') as f:
                     f.write(response.content)
@@ -125,17 +139,15 @@ def read_electricity_data(**context):
                 #stlgd
 
                 posoco = posoco.merge(stlgd, on='state', how='left')
-
-                posoco_file_loc = os.path.join(folder, file_date+'.csv')
+                posoco_file_loc = os.path.join(data_path, file_date+'.csv')
                 posoco.to_csv(posoco_file_loc,index=False)
                 gupload.upload(posoco_file_loc, file_date+'.csv',gdrive_electricity_folder)
-                gupload.upload(file_loc, 'file'+file_date+'.pdf',gdrive_electricity_pdf_folder)
 
                 break
             except AssertionError as error:
                 # Output expected AssertionErrors.
                 Logging.log_exception(error)
-                print("Error has been thrown. " + str(error))
+                print("AssertionError has been thrown. " + str(error))
                 print("cannot process: "+url+" for date: "+scrape_dateString+".  Table format is different.")
                 break
             except (ValueError, TypeError):
@@ -145,8 +157,8 @@ def read_electricity_data(**context):
                 print("Exception has been thrown. " + str(exception))
                 print("cannot process: "+url+" for date: "+scrape_dateString+".  Table format is different.")
                 break
-    else:
-        print('No Data available for the date yet. Try Again tommorow.')
+    # else:
+    #     print('No Data available for the date yet. Try Again tommorow.')
 
     session.close()
 
@@ -154,7 +166,7 @@ def read_electricity_data(**context):
 default_args = {
     'owner': 'airflow', 
     'depends_on_past': False,
-    'start_date': pendulum.datetime(year=2021, month=8, day=1, hour=20, minute=00 ).astimezone('Asia/Kolkata'),
+    'start_date': pendulum.datetime(year=2021, month=8, day=20, hour=20, minute=00 ).astimezone('Asia/Kolkata'),
     'provide_context': True,
     'email': ['gursharan_singh@isb.edu'],
     'email_on_failure': True,
@@ -163,10 +175,10 @@ default_args = {
     "retry_delay": timedelta(minutes=10),
 }
 
-electricityDaily_dag = DAG("electricityDaily", default_args=default_args, schedule_interval="@daily")
+scrape_electricity_data_dag = DAG("electricityDailyScraping", default_args=default_args, schedule_interval="@weekly")
 
-read_electricity_data_task = PythonOperator(task_id='read_electricity_data',
-                                       python_callable=read_electricity_data,
-                                       dag = electricityDaily_dag,
+scrape_electricity_data_task = PythonOperator(task_id = 'scrape_electricity_data',
+                                       python_callable = scrape_electricity_data,
+                                       dag = scrape_electricity_data_dag,
                                        provide_context = True,
                                     )

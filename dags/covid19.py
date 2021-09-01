@@ -12,7 +12,7 @@ lgd_codes_file = 'https://raw.githubusercontent.com/gursharan-info/idp-scripts/m
 dir_path = '/usr/local/airflow/data/hfi'
 gdrive_covid_folder = '1Ey0Lv4sftSlPXC_Obc7LyGiWfg89etXj'
 
-def read_covid_data(**context):
+def scrape_covid_daily(**context):
     print(context['execution_date'], type(context['execution_date']))
     # The current date would be previous day from date of execution
     now = datetime.fromtimestamp(context['execution_date'].timestamp())
@@ -112,7 +112,7 @@ default_args = {
     'owner': 'airflow', 
     'depends_on_past': False,
     # 'start_date': datetime(2021, 2, 1, 6, 0),
-    'start_date': pendulum.datetime(year=2021, month=2, day=1, hour=20, minute=00 ).astimezone('Asia/Kolkata'),
+    'start_date': pendulum.datetime(year=2021, month=7, day=31, hour=20, minute=00 ).astimezone('Asia/Kolkata'),
     'provide_context': True,
     # "owner": "airflow",
     'email': ['gursharan_singh@isb.edu'],
@@ -131,10 +131,10 @@ default_args = {
     # 'end_date': datetime(2016, 1, 1),
 }
 
-dag = DAG("covid19", default_args=default_args, schedule_interval="@daily")
+dag = DAG("covid19CasesDailyScraping", default_args=default_args, schedule_interval="@daily")
 
-read_covid_data_task = PythonOperator(task_id='read_covid_data',
-                                       python_callable=read_covid_data,
+scrape_covid_daily_task = PythonOperator(task_id='scrape_covid_daily',
+                                       python_callable=scrape_covid_daily,
                                        dag=dag,
                                        provide_context = True,
                                     )

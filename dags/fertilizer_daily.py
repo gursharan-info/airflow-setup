@@ -131,7 +131,7 @@ def read_fertilizer_data(**context):
 default_args = {
     'owner': 'airflow', 
     'depends_on_past': False,
-    'start_date': pendulum.datetime(year=2021, month=2, day=1, hour=12, minute=00 ).astimezone('Asia/Kolkata'),
+    'start_date': pendulum.datetime(year=2021, month=8, day=20, hour=12, minute=00 ).astimezone('Asia/Kolkata'),
     'provide_context': True,
     'email': ['gursharan_singh@isb.edu'],
     'email_on_failure': True,
@@ -140,7 +140,7 @@ default_args = {
     "retry_delay": timedelta(minutes=10),
 }
 
-fertilizer_dag = DAG("fertilizer_data", default_args=default_args, schedule_interval="@daily")
+fertilizer_dag = DAG("fertilizerDailyScraping", default_args=default_args, schedule_interval="@daily")
 
 read_fertilizer_data_task = PythonOperator(task_id='read_fertilizer_data',
                                        python_callable=read_fertilizer_data,
