@@ -10,7 +10,7 @@ from helpers import google_upload as gupload
 
 lgd_codes_file = 'https://raw.githubusercontent.com/gursharan-info/idp-scripts/master/sources/LGD_covid_vacc_28Jul21.csv'
 dir_path = '/usr/local/airflow/data/hfi'
-gdrive_covid_vacc_daily_folder = '1bbCD743koSOlZ4adfOmjicxuuKhzm5IG'
+gdrive_covid_vacc_monthly_folder = '1bbCD743koSOlZ4adfOmjicxuuKhzm5IG'
 day_lag = 1
 
 def scrape_covid_vacc_monthly(**context):
@@ -91,7 +91,7 @@ def scrape_covid_vacc_monthly(**context):
   
     filename = os.path.join(dir_path, 'covid19_vacc_monthly/covid_vacc_'+start_day_of_prev_month.strftime("%m-%Y")+'.csv')
     mapped_df.to_csv(filename,index=False)
-    gupload.upload(filename, 'covid_vacc_'+start_day_of_prev_month.strftime("%m%Y")+'.csv',gdrive_covid_vacc_daily_folder)
+    gupload.upload(filename, 'covid_vacc_'+start_day_of_prev_month.strftime("%m%Y")+'.csv',gdrive_covid_vacc_monthly_folder)
 
 
 default_args = {
