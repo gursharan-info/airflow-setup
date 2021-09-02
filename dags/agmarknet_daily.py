@@ -11,6 +11,7 @@ from helpers import google_upload as gupload
 data_folder = os.path.join(os.getcwd(), 'data')
 data_path = os.path.join(os.path.join(data_folder, 'hfi'), 'agmarknet_daily')
 html_path = os.path.join(data_path, 'html')
+raw_data_path = os.path.join(data_path, 'raw_data')
 
 agmarknet_url = "https://agmarknet.gov.in/PriceAndArrivals/CommodityWiseDailyReport.aspx"
 server_error='server error please try again later'
@@ -241,7 +242,7 @@ def scrape_agmarknet_daily(**context):
     
     # Storing the data into Pandas
     df = pd.DataFrame(data = data, columns = list_header)
-    filename = os.path.join(data_path, date_str+'.csv')
+    filename = os.path.join(raw_data_path, date_str+'.csv')
     df.to_csv(filename, index=False)
     gupload.upload(filename, date_str+'.csv',gdrive_agmarknet_raw_folder)
 

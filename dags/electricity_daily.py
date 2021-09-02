@@ -16,7 +16,7 @@ from helpers import google_upload as gupload
 
 data_folder = os.path.join(os.path.join(os.getcwd(), 'data'), 'hfi')
 data_path = os.path.join(data_folder, 'electricity_daily')
-pdf_path = os.path.join(data_path, 'pdf')
+pdf_path = os.path.join(data_path, 'raw_data')
 gdrive_electricity_folder = '139M_aquK9oXptaDTjvHlxe0NTzMdu8m7'
 gdrive_electricity_pdf_folder = '1n-619wmzIh6b2fnWdyeCzT1SmP5xO8ud'
 day_lag = 3
