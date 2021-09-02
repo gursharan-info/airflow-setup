@@ -90,7 +90,7 @@ def read_mobility_data_monthly(**context):
 default_args = {
     'owner': 'airflow', 
     'depends_on_past': False,
-    'start_date': pendulum.datetime(year=2021, month=8, day=6, hour=00, minute=00 ).astimezone('Asia/Kolkata'),
+    'start_date': pendulum.datetime(year=2020, month=3, day=6, hour=00, minute=00 ).astimezone('Asia/Kolkata'),
     'provide_context': True,
     'email': ['gursharan_singh@isb.edu'],
     'email_on_failure': True,
