@@ -12,7 +12,7 @@ lgd_codes_file = 'https://raw.githubusercontent.com/gursharan-info/idp-scripts/m
 dir_path = '/usr/local/airflow/data/hfi'
 gdrive_fertilizer_folder = '1EZeIWEq_Yshb-C-0E1HBXzBDh5luPsZf'
 day_lag = 6
-# urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
+urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 def read_fertilizer_data(**context):
     # Load the main page
