@@ -75,8 +75,6 @@ def read_mobility_data_daily(**context):
             filtered_df = finaldf[finaldf['date'] == curr_date].copy()
             filtered_df['date'] = filtered_df['date'].dt.strftime("%d-%m-%Y")
 
-            
-
             filename = os.path.join(data_path, 'google_mobility_'+curr_date+'.csv')
             filtered_df.to_csv(filename,index=False)
             gupload.upload(filename, 'google_mobility_'+curr_date+'.csv',gdrive_mobility_daily_folder)
@@ -92,7 +90,7 @@ default_args = {
     'owner': 'airflow', 
     'depends_on_past': False,
     # 'start_date': pendulum.datetime(year=2021, month=2, day=1, hour=12, minute=00 ).astimezone('Asia/Kolkata'),
-    'start_date': pendulum.datetime(year=2021, month=8, day=26, hour=12, minute=00 ).astimezone('Asia/Kolkata'),
+    'start_date': pendulum.datetime(year=2021, month=8, day=5, hour=12, minute=00 ).astimezone('Asia/Kolkata'),
     'provide_context': True,
     'email': ['gursharan_singh@isb.edu'],
     'email_on_failure': True,
