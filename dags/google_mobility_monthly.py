@@ -76,9 +76,9 @@ def read_mobility_data_monthly(**context):
             filtered_df = finaldf[finaldf['date'] == prev_month].copy()
             filtered_df['date'] = filtered_df['date'].dt.strftime("01-%m-%Y")
 
-            filename = os.path.join(data_path, 'google_mobility_'+prev_month+'.csv')
+            filename = os.path.join(data_path, 'google_mobility_'+prev_mnth_date.strftime('%m%Y')+'.csv')
             filtered_df.to_csv(filename,index=False)
-            gupload.upload(filename, 'google_mobility_'+prev_month+'.csv',gdrive_mobility_monthly_folder)
+            gupload.upload(filename, 'google_mobility_'+prev_mnth_date.strftime('%m%Y')+'.csv',gdrive_mobility_monthly_folder)
 
     # except requests.exceptions.RequestException as e:
     #     print(e)

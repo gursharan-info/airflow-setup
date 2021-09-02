@@ -18,7 +18,8 @@ def read_mobility_data_daily(**context):
     try:
         print(context['execution_date'], type(context['execution_date']))
         # The current date would be previous day from date of execution
-        curr_date = pd.to_datetime( datetime.fromtimestamp(context['execution_date'].timestamp())- timedelta(day_lag) ).strftime("%Y-%m-%d")
+        curr_date = pd.to_datetime( datetime.fromtimestamp(context['execution_date'].timestamp())- timedelta(day_lag) )
+        curr_date_str = curr_date.strftime("%Y-%m-%d")
 
         raw_df = pd.read_csv('https://www.gstatic.com/covid19/mobility/Global_Mobility_Report.csv')
         india_df = raw_df[raw_df['country_region_code'] == 'IN'].copy()
@@ -27,10 +28,10 @@ def read_mobility_data_daily(**context):
         india_df = india_df.rename({'sub_region_2':'district_name_data', 'sub_region_1':'state_name_data'},axis=1)
         india_df['date'] = pd.to_datetime(india_df['date'], format="%Y-%m-%d")
 
-        test_df = india_df[india_df['date'] == curr_date].copy()
+        test_df = india_df[india_df['date'] == curr_date_str].copy()
 
         if test_df.empty: # Check that is empty, which means data for date is not available
-            raise Exception(f"No data available for {curr_date}")
+            raise Exception(f"No data available for {curr_date_str}")
         else:
             daily_df = india_df.groupby(['date','state_name_data','district_name_data'])['retail_and_recreation_percent_change_from_baseline',
                                         'grocery_and_pharmacy_percent_change_from_baseline','parks_percent_change_from_baseline',
@@ -72,12 +73,12 @@ def read_mobility_data_daily(**context):
                                 'parks_india', 'transit_stations_india', 'workplaces_india','residential_places_india']]
             finaldf = finaldf.sort_values(by=['date','state_name','district_name']).reset_index(drop=True)
 
-            filtered_df = finaldf[finaldf['date'] == curr_date].copy()
+            filtered_df = finaldf[finaldf['date'] == curr_date_str].copy()
             filtered_df['date'] = filtered_df['date'].dt.strftime("%d-%m-%Y")
 
-            filename = os.path.join(data_path, 'google_mobility_'+curr_date+'.csv')
+            filename = os.path.join(data_path, 'google_mobility_'+curr_date.strftime("%d-%m-%Y")+'.csv')
             filtered_df.to_csv(filename,index=False)
-            gupload.upload(filename, 'google_mobility_'+curr_date+'.csv',gdrive_mobility_daily_folder)
+            gupload.upload(filename, 'google_mobility_'+curr_date.strftime("%d-%m-%Y")+'.csv',gdrive_mobility_daily_folder)
 
     # except requests.exceptions.RequestException as e:
     #     print(e)
@@ -90,7 +91,7 @@ default_args = {
     'owner': 'airflow', 
     'depends_on_past': False,
     # 'start_date': pendulum.datetime(year=2021, month=2, day=1, hour=12, minute=00 ).astimezone('Asia/Kolkata'),
-    'start_date': pendulum.datetime(year=2021, month=8, day=5, hour=12, minute=00 ).astimezone('Asia/Kolkata'),
+    'start_date': pendulum.datetime(year=2021, month=8, day=7, hour=12, minute=00 ).astimezone('Asia/Kolkata'),
     'provide_context': True,
     'email': ['gursharan_singh@isb.edu'],
     'email_on_failure': True,
