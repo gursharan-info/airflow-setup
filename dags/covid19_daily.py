@@ -10,19 +10,22 @@ from helpers import google_upload as gupload
 
 lgd_codes_file = 'https://raw.githubusercontent.com/gursharan-info/idp-scripts/master/sources/LGD_covid_20Oct19.csv'
 dir_path = '/usr/local/airflow/data/hfi'
-gdrive_covid_folder = '1Ey0Lv4sftSlPXC_Obc7LyGiWfg89etXj'
+gdrive_covid_daily_folder = '1Ey0Lv4sftSlPXC_Obc7LyGiWfg89etXj'
+day_lag = 2
 
 def scrape_covid_daily(**context):
     print(context['execution_date'], type(context['execution_date']))
     # The current date would be previous day from date of execution
-    now = datetime.fromtimestamp(context['execution_date'].timestamp())
-    print(now)
+    # now = datetime.fromtimestamp(context['execution_date'].timestamp())
+    curr_date = datetime.fromtimestamp(context['execution_date'].timestamp()) - timedelta(day_lag)
+    print(curr_date)
+
     district_wise_daily = pd.read_csv('https://api.covid19india.org/csv/latest/districts.csv')
     district_wise_daily['Date'] = pd.to_datetime(district_wise_daily['Date'], format='%Y-%m-%d').dt.strftime('%d-%m-%Y')
     district_wise_daily['District'] = district_wise_daily['District'].str.replace('Unknown','', case=False)
     
-    yday=str(datetime.strftime(now - timedelta(1), '%d-%m-%Y'))
-    db_yday=str(datetime.strftime(now - timedelta(2), '%d-%m-%Y'))
+    yday=str(datetime.strftime(curr_date - timedelta(1), '%d-%m-%Y'))
+    db_yday=str(datetime.strftime(curr_date - timedelta(2), '%d-%m-%Y'))
     yday_filtered = district_wise_daily[district_wise_daily['Date'].isin([yday])].iloc[:,0:6].reset_index(drop=True)
     db_yday_filtered = district_wise_daily[district_wise_daily['Date'].isin([db_yday])].iloc[:,1:6].reset_index(drop=True)
 
@@ -48,7 +51,7 @@ def scrape_covid_daily(**context):
     india_df =pd.read_csv('https://api.covid19india.org/csv/latest/case_time_series.csv')[['Date_YMD','Daily Confirmed','Daily Recovered','Daily Deceased']]
     india_df.rename(columns={'Date_YMD': 'Date', 'Daily Confirmed': 'confirmed_india', 'Daily Recovered': 'recovered_india', 'Daily Deceased': 'deceased_india'}, inplace=True)
     india_df['Date'] = pd.to_datetime(india_df['Date'], format='%Y-%m-%d')
-    india_df = india_df[ india_df['Date'] <= (now - timedelta(1)) ]
+    india_df = india_df[ india_df['Date'] <= (curr_date - timedelta(1)) ]
     india_df['Date'] = india_df['Date'].dt.strftime('%d-%m-%Y')
 
     district_group_df = pd.merge(delta_df, 
@@ -106,7 +109,7 @@ def scrape_covid_daily(**context):
     
     filename = os.path.join(dir_path, 'covid19_daily/covid_'+yday+'.csv')
     final_merged_data.to_csv(filename,index=False)
-    gupload.upload(filename, 'covid_'+yday+'.csv',gdrive_covid_folder)
+    gupload.upload(filename, 'covid_'+yday+'.csv',gdrive_covid_daily_folder)
 
 default_args = {
     'owner': 'airflow', 

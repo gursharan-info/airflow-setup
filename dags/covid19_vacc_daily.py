@@ -11,7 +11,7 @@ from helpers import google_upload as gupload
 lgd_codes_file = 'https://raw.githubusercontent.com/gursharan-info/idp-scripts/master/sources/LGD_covid_vacc_28Jul21.csv'
 dir_path = '/usr/local/airflow/data/hfi'
 gdrive_covid_vacc_folder = '1mi_xwBAlQy-qdNbcbv1PdFD1YAH0feu3'
-day_lag = 1
+day_lag = 2
 
 def scrape_covid_vacc_daily(**context):
     print(context['execution_date'], type(context['execution_date']))
