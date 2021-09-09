@@ -8,10 +8,10 @@ from airflow import DAG
 from airflow.operators.python_operator import PythonOperator
 from helpers import google_upload as gupload
 
-data_folder = os.path.join(os.getcwd(), 'data')
-data_path = os.path.join(os.path.join(data_folder, 'hfi'), 'agmarknet_daily')
-html_path = os.path.join(data_path, 'html')
-raw_data_path = os.path.join(data_path, 'raw_data')
+dir_path = os.path.join(os.path.join(os.path.join(os.getcwd(), 'data'), 'hfi'), 'agmarknet')
+daily_data_path = os.path.join(dir_path, 'daily')
+html_path = os.path.join(dir_path, 'html')
+raw_data_path = os.path.join(dir_path, 'raw_data')
 
 agmarknet_url = "https://agmarknet.gov.in/PriceAndArrivals/CommodityWiseDailyReport.aspx"
 server_error='server error please try again later'

@@ -7,8 +7,8 @@ from airflow.operators.python_operator import PythonOperator
 from helpers import google_upload as gupload
 
 lgd_codes_file = 'https://raw.githubusercontent.com/gursharan-info/idp-scripts/master/sources/LGD_google_mobility_02-09-2021.csv'
-dir_path = '/usr/local/airflow/data/hfi/'
-data_path = os.path.join(dir_path, 'google_mobility_monthly')
+dir_path = '/usr/local/airflow/data/hfi/google_mobility'
+data_path = os.path.join(dir_path, 'monthly')
 gdrive_mobility_monthly_folder = '1ABKP8kgY_0qrEEqTmBp-BhBDKJtJeNoW'
 
 

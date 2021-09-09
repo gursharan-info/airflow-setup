@@ -7,8 +7,8 @@ from airflow.operators.python_operator import PythonOperator
 from helpers import google_upload as gupload
 
 lgd_codes_file = 'https://raw.githubusercontent.com/gursharan-info/idp-scripts/master/sources/LGD_google_mobility_02-09-2021.csv'
-dir_path = '/usr/local/airflow/data/hfi/'
-data_path = os.path.join(dir_path, 'google_mobility_daily')
+dir_path = '/usr/local/airflow/data/hfi/google_mobility'
+daily_data_path = os.path.join(dir_path, 'daily')
 gdrive_mobility_daily_folder = '18xxuAdiCaSTTBYNrRxd2IL6FCVxdV3Qm'
 day_lag = 6
 
@@ -76,7 +76,7 @@ def read_mobility_data_daily(**context):
             filtered_df = finaldf[finaldf['date'] == curr_date_str].copy()
             filtered_df['date'] = filtered_df['date'].dt.strftime("%d-%m-%Y")
 
-            filename = os.path.join(data_path, 'google_mobility_'+curr_date.strftime("%d-%m-%Y")+'.csv')
+            filename = os.path.join(daily_data_path, 'google_mobility_'+curr_date.strftime("%d-%m-%Y")+'.csv')
             filtered_df.to_csv(filename,index=False)
             gupload.upload(filename, 'google_mobility_'+curr_date.strftime("%d-%m-%Y")+'.csv',gdrive_mobility_daily_folder)
 

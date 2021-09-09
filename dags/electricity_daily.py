@@ -14,9 +14,9 @@ from airflow.operators.python_operator import PythonOperator
 from helpers import google_upload as gupload
 
 
-data_folder = os.path.join(os.path.join(os.getcwd(), 'data'), 'hfi')
-data_path = os.path.join(data_folder, 'electricity_daily')
-pdf_path = os.path.join(data_path, 'raw_data')
+dir_path = os.path.join(os.path.join(os.path.join(os.getcwd(), 'data'), 'hfi'), 'electricity')
+pdf_path = os.path.join(dir_path, 'raw_data')
+daily_data_path = os.path.join(dir_path, 'daily')
 gdrive_electricity_folder = '139M_aquK9oXptaDTjvHlxe0NTzMdu8m7'
 gdrive_electricity_pdf_folder = '1n-619wmzIh6b2fnWdyeCzT1SmP5xO8ud'
 day_lag = 3
@@ -139,7 +139,7 @@ def scrape_electricity_data(**context):
                 #stlgd
 
                 posoco = posoco.merge(stlgd, on='state', how='left')
-                posoco_file_loc = os.path.join(data_path, file_date+'.csv')
+                posoco_file_loc = os.path.join(daily_data_path, file_date+'.csv')
                 posoco.to_csv(posoco_file_loc,index=False)
                 gupload.upload(posoco_file_loc, file_date+'.csv',gdrive_electricity_folder)
 

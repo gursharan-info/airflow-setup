@@ -8,7 +8,7 @@ from airflow.operators.python_operator import PythonOperator
 from helpers import google_upload as gupload
 
 
-dir_path = r'/usr/local/airflow/data/hfi/digital_payments'
+dir_path = os.path.join(os.path.join(os.path.join(os.getcwd(), 'data'), 'hfi'), 'digital_payments')
 data_path = os.path.join(dir_path, 'daily')
 raw_path = os.path.join(dir_path, 'raw_data')
 gdrive_digpayments_daily_folder = '1U9byEcsnPMKH5BNb8rvQM1QTUaAR3wFQ'

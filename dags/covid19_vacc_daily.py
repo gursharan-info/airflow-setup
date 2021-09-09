@@ -9,7 +9,8 @@ from airflow.operators.python_operator import PythonOperator
 from helpers import google_upload as gupload
 
 lgd_codes_file = 'https://raw.githubusercontent.com/gursharan-info/idp-scripts/master/sources/LGD_covid_vacc_28Jul21.csv'
-dir_path = '/usr/local/airflow/data/hfi'
+dir_path = '/usr/local/airflow/data/hfi/covid19_vacc'
+daily_data_path = os.path.join(dir_path, 'daily')
 gdrive_covid_vacc_folder = '1mi_xwBAlQy-qdNbcbv1PdFD1YAH0feu3'
 day_lag = 2
 
@@ -92,7 +93,7 @@ def scrape_covid_vacc_daily(**context):
     # print(mapped_df)
     mapped_df['date'] = mapped_df['date'].dt.strftime("%d-%m-%Y")
 
-    filename = os.path.join(dir_path, 'covid19_vacc_daily/covid_'+curr_date.strftime("%d-%m-%Y")+'.csv')
+    filename = os.path.join(daily_data_path, 'covid_'+curr_date.strftime("%d-%m-%Y")+'.csv')
     mapped_df.to_csv(filename,index=False)
     gupload.upload(filename, 'covid_'+curr_date.strftime("%d-%m-%Y")+'.csv',gdrive_covid_vacc_folder)
 

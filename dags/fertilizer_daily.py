@@ -1,5 +1,5 @@
 from bs4 import BeautifulSoup
-import requests, json, io, re, pendulum, urllib3
+import requests, json, io, re, pendulum, urllib3, os
 import pandas as pd
 import numpy as np
 from datetime import datetime, date, timedelta
@@ -8,8 +8,9 @@ from airflow import DAG
 from airflow.operators.python_operator import PythonOperator
 from helpers import google_upload as gupload
 
-lgd_codes_file = 'https://raw.githubusercontent.com/gursharan-info/idp-scripts/master/sources/LGD_v1_17Oct19.csv'
-dir_path = '/usr/local/airflow/data/hfi'
+# lgd_codes_file = 'https://raw.githubusercontent.com/gursharan-info/idp-scripts/master/sources/LGD_v1_17Oct19.csv'
+dir_path = '/usr/local/airflow/data/hfi/fertilizer_sales'
+data_path = os.path.join(dir_path, 'daily')
 gdrive_fertilizer_folder = '1EZeIWEq_Yshb-C-0E1HBXzBDh5luPsZf'
 day_lag = 6
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
@@ -31,7 +32,7 @@ def read_fertilizer_data(**context):
         # Get list of states from the response
         states = [option['value'] for option in main_soup.find("select",{"id":"parameterStateName"}).findAll("option")[1:] ]
 
-        state_codes_df = pd.read_csv(lgd_codes_file)
+        state_codes_df = pd.read_csv(os.path.join(dir_path, 'LGD_v1_17Oct19_fertilizer.csv'))
         state_codes_df.rename(columns={'D_NAME': 'District_lgd', 'D_CODE': 'District_code', 'S_NAME': 'State_lgd', 'S_CODE': 'State_code'}, inplace=True)
         state_codes_df[['District_lgd','State_lgd']] = state_codes_df[['District_lgd','State_lgd']].apply(lambda x: x.str.strip().str.upper())
         state_codes_df['state_district_lower'] = state_codes_df['State_lgd'].str.lower() + "_" + state_codes_df['District_lgd'].str.lower()
@@ -75,7 +76,7 @@ def read_fertilizer_data(**context):
                                 'No_Of_Sale_Transaction': 'Number_of_sale_Transactions_daily_district'},
                                 inplace=True)
 
-        historical_data = pd.read_csv(dir_path+'/fertilizer_daily/data_historical.csv')
+        historical_data = pd.read_csv(os.path.join(dir_path,'fertilizer_daily/data_historical.csv'))
         historical_data.rename(columns={'merge_name': 'state_district_lower'},inplace=True)
         
         stacked_df = pd.concat([historical_data, dist_merged],sort=False).reset_index(drop=True)
@@ -119,7 +120,7 @@ def read_fertilizer_data(**context):
         final_df['Date'] = final_df['Date'].dt.strftime("%d-%m-%Y")
 
 
-        filename = dir_path+'/fertilizer_daily/'+currentDate.strftime("%d-%m-%Y")+'.csv'
+        filename = os.path.join(data_path, currentDate.strftime("%d-%m-%Y")+'.csv')
         final_df.to_csv(filename,index=False)
         gupload.upload(filename, currentDate.strftime("%d-%m-%Y")+'.csv',gdrive_fertilizer_folder)
     

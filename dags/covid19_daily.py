@@ -8,8 +8,9 @@ from airflow import DAG
 from airflow.operators.python_operator import PythonOperator
 from helpers import google_upload as gupload
 
-lgd_codes_file = 'https://raw.githubusercontent.com/gursharan-info/idp-scripts/master/sources/LGD_covid_20Oct19.csv'
-dir_path = '/usr/local/airflow/data/hfi'
+# lgd_codes_file = 'https://raw.githubusercontent.com/gursharan-info/idp-scripts/master/sources/LGD_covid_20Oct19.csv'
+dir_path = '/usr/local/airflow/data/hfi/covid19'
+daily_data_path = os.path.join(dir_path, 'daily')
 gdrive_covid_daily_folder = '1Ey0Lv4sftSlPXC_Obc7LyGiWfg89etXj'
 day_lag = 2
 
@@ -42,7 +43,7 @@ def scrape_covid_daily(**context):
     state_group_df.rename(columns={'State': 'state_name', 'Confirmed': 'confirmed_state', 'Recovered': 'recovered_state', 'Deceased': 'deceased_state'}, inplace=True)
     state_group_df['state_name_lower'] = state_group_df['state_name'].str.lower()
 
-    state_codes_df = pd.read_csv(lgd_codes_file)
+    state_codes_df = pd.read_csv(os.path.join(dir_path, 'daily'))
     state_codes_df[['district_name','state_name']] = state_codes_df[['district_name','state_name']].apply(lambda x: x.str.strip())
     state_codes_df['state_name_lower'] = state_codes_df['state_name'].str.lower()
     state_codes_df['district_lower'] = state_codes_df['district_name'].str.lower()
@@ -107,7 +108,7 @@ def scrape_covid_daily(**context):
     final_merged_data = final_merged_data.fillna("") 
     final_merged_data['district_name'] = final_merged_data['district_name'].str.replace('Unknown','', case=False)
     
-    filename = os.path.join(dir_path, 'covid19_daily/covid_'+yday+'.csv')
+    filename = os.path.join(daily_data_path, 'covid_'+yday+'.csv')
     final_merged_data.to_csv(filename,index=False)
     gupload.upload(filename, 'covid_'+yday+'.csv',gdrive_covid_daily_folder)
 
