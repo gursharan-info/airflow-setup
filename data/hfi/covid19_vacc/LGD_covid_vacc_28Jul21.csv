@@ -1,0 +1,730 @@
+state_code,state_name,district_name,district_code,state_name_covid,district_name_covid,Not Equal
+35,Andaman and Nicobar Islands,Nicobars,603,Andaman and Nicobar Islands,Nicobars,FALSE
+35,Andaman and Nicobar Islands,North and Middle Andaman,632,Andaman and Nicobar Islands,North and Middle Andaman,FALSE
+35,Andaman and Nicobar Islands,South Andamans,602,Andaman and Nicobar Islands,South Andaman,TRUE
+28,Andhra Pradesh,Anantapur,502,Andhra Pradesh,Anantapur,FALSE
+28,Andhra Pradesh,Chittoor,503,Andhra Pradesh,Chittoor,FALSE
+28,Andhra Pradesh,East Godavari,505,Andhra Pradesh,East Godavari,FALSE
+28,Andhra Pradesh,Guntur,506,Andhra Pradesh,Guntur,FALSE
+28,Andhra Pradesh,Krishna,510,Andhra Pradesh,Krishna,FALSE
+28,Andhra Pradesh,Kurnool,511,Andhra Pradesh,Kurnool,FALSE
+28,Andhra Pradesh,Prakasam,517,Andhra Pradesh,Prakasam,FALSE
+28,Andhra Pradesh,S.P.S. Nellore,515,Andhra Pradesh,S.P.S. Nellore,FALSE
+28,Andhra Pradesh,Srikakulam,519,Andhra Pradesh,Srikakulam,FALSE
+28,Andhra Pradesh,Visakhapatnam,520,Andhra Pradesh,Visakhapatnam,FALSE
+28,Andhra Pradesh,Vizianagaram,521,Andhra Pradesh,Vizianagaram,FALSE
+28,Andhra Pradesh,West Godavari,523,Andhra Pradesh,West Godavari,FALSE
+28,Andhra Pradesh,Y.S.R. Kadapa,504,Andhra Pradesh,Y.S.R. Kadapa,FALSE
+12,Arunachal Pradesh,Anjaw,628,Arunachal Pradesh,Anjaw,FALSE
+12,Arunachal Pradesh,Changlang,229,Arunachal Pradesh,Changlang,FALSE
+12,Arunachal Pradesh,Dibang Valley,230,Arunachal Pradesh,Upper Dibang Valley,TRUE
+12,Arunachal Pradesh,East Kameng,231,Arunachal Pradesh,East Kameng,FALSE
+12,Arunachal Pradesh,East Siang,232,Arunachal Pradesh,East Siang,FALSE
+12,Arunachal Pradesh,Kamle,718,Arunachal Pradesh,Kamle,FALSE
+12,Arunachal Pradesh,Kra Daadi,677,Arunachal Pradesh,Kra Daadi,FALSE
+12,Arunachal Pradesh,Kurung Kumey,233,Arunachal Pradesh,Kurung Kumey,FALSE
+12,Arunachal Pradesh,Leparada,724,Arunachal Pradesh,Lepa Rada,TRUE
+12,Arunachal Pradesh,Lohit,234,Arunachal Pradesh,Lohit,FALSE
+12,Arunachal Pradesh,Longding,666,Arunachal Pradesh,Longding,FALSE
+12,Arunachal Pradesh,Lower Dibang Valley,235,Arunachal Pradesh,Lower Dibang Valley,FALSE
+12,Arunachal Pradesh,Lower Siang,719,Arunachal Pradesh,Lower Siang,FALSE
+12,Arunachal Pradesh,Lower Subansiri,236,Arunachal Pradesh,Lower Subansiri,FALSE
+12,Arunachal Pradesh,Namsai,678,Arunachal Pradesh,Namsai,FALSE
+12,Arunachal Pradesh,Pakke Kessang,723,Arunachal Pradesh,Pakke Kessang,FALSE
+12,Arunachal Pradesh,Papum Pare,237,Arunachal Pradesh,Papum Pare,FALSE
+12,Arunachal Pradesh,Shi Yomi,725,Arunachal Pradesh,Shi Yomi,FALSE
+12,Arunachal Pradesh,Siang,679,Arunachal Pradesh,Siang,FALSE
+12,Arunachal Pradesh,Tawang,238,Arunachal Pradesh,Tawang,FALSE
+12,Arunachal Pradesh,Tirap,239,Arunachal Pradesh,Tirap,FALSE
+12,Arunachal Pradesh,Upper Siang,240,Arunachal Pradesh,Upper Siang,FALSE
+12,Arunachal Pradesh,Upper Subansiri,241,Arunachal Pradesh,Upper Subansiri,FALSE
+12,Arunachal Pradesh,West Kameng,242,Arunachal Pradesh,West Kameng,FALSE
+12,Arunachal Pradesh,West Siang,243,Arunachal Pradesh,West Siang,FALSE
+18,Assam,Baksa,616,Assam,Baksa,FALSE
+18,Assam,Barpeta,280,Assam,Barpeta,FALSE
+18,Assam,Biswanath,705,Assam,Biswanath,FALSE
+18,Assam,Bongaigaon,281,Assam,Bongaigaon,FALSE
+18,Assam,Cachar,282,Assam,Cachar,FALSE
+18,Assam,Charaideo,708,Assam,Charaideo,FALSE
+18,Assam,Chirang,612,Assam,Chirang,FALSE
+18,Assam,Darrang,283,Assam,Darrang,FALSE
+18,Assam,Dhemaji,284,Assam,Dhemaji,FALSE
+18,Assam,Dhubri,285,Assam,Dhubri,FALSE
+18,Assam,Dibrugarh,286,Assam,Dibrugarh,FALSE
+18,Assam,Dima Hasao,299,Assam,Dima Hasao,FALSE
+18,Assam,Goalpara,287,Assam,Goalpara,FALSE
+18,Assam,Golaghat,288,Assam,Golaghat,FALSE
+18,Assam,Hailakandi,289,Assam,Hailakandi,FALSE
+18,Assam,Hojai,709,Assam,Hojai,FALSE
+18,Assam,Jorhat,290,Assam,Jorhat,FALSE
+18,Assam,Kamrup,291,Assam,Kamrup,FALSE
+18,Assam,Kamrup Metro,618,Assam,Kamrup Metropolitan,TRUE
+18,Assam,Karbi Anglong,292,Assam,Karbi Anglong,FALSE
+18,Assam,Karimganj,293,Assam,Karimganj,FALSE
+18,Assam,Kokrajhar,294,Assam,Kokrajhar,FALSE
+18,Assam,Lakhimpur,295,Assam,Lakhimpur,FALSE
+18,Assam,Majuli,706,Assam,Majuli,FALSE
+18,Assam,Marigaon,296,Assam,Morigaon,TRUE
+18,Assam,Nagaon,297,Assam,Nagaon,FALSE
+18,Assam,Nalbari,298,Assam,Nalbari,FALSE
+18,Assam,Sivasagar,300,Assam,Sivasagar,FALSE
+18,Assam,Sonitpur,301,Assam,Sonitpur,FALSE
+18,Assam,South Salmara Mancachar,707,Assam,South Salmara Mankachar,TRUE
+18,Assam,Tinsukia,302,Assam,Tinsukia,FALSE
+18,Assam,Udalguri,617,Assam,Udalguri,FALSE
+18,Assam,West Karbi Anglong,710,Assam,West Karbi Anglong,FALSE
+10,Bihar,Araria,188,Bihar,Araria,FALSE
+10,Bihar,Arwal,611,Bihar,Arwal,FALSE
+10,Bihar,Aurangabad,189,Bihar,Aurangabad,FALSE
+10,Bihar,Banka,190,Bihar,Banka,FALSE
+10,Bihar,Begusarai,191,Bihar,Begusarai,FALSE
+10,Bihar,Bhagalpur,192,Bihar,Bhagalpur,FALSE
+10,Bihar,Bhojpur,193,Bihar,Bhojpur,FALSE
+10,Bihar,Buxar,194,Bihar,Buxar,FALSE
+10,Bihar,Darbhanga,195,Bihar,Darbhanga,FALSE
+10,Bihar,Gaya,196,Bihar,Gaya,FALSE
+10,Bihar,Gopalganj,197,Bihar,Gopalganj,FALSE
+10,Bihar,Jamui,198,Bihar,Jamui,FALSE
+10,Bihar,Jehanabad,199,Bihar,Jehanabad,FALSE
+10,Bihar,Kaimur (Bhabua),200,Bihar,Kaimur,TRUE
+10,Bihar,Katihar,201,Bihar,Katihar,FALSE
+10,Bihar,Khagaria,202,Bihar,Khagaria,FALSE
+10,Bihar,Kishanganj,203,Bihar,Kishanganj,FALSE
+10,Bihar,Lakhisarai,204,Bihar,Lakhisarai,FALSE
+10,Bihar,Madhepura,205,Bihar,Madhepura,FALSE
+10,Bihar,Madhubani,206,Bihar,Madhubani,FALSE
+10,Bihar,Munger,207,Bihar,Munger,FALSE
+10,Bihar,Muzaffarpur,208,Bihar,Muzaffarpur,FALSE
+10,Bihar,Nalanda,209,Bihar,Nalanda,FALSE
+10,Bihar,Nawada,210,Bihar,Nawada,FALSE
+10,Bihar,Pashchim Champaran,211,Bihar,West Champaran,TRUE
+10,Bihar,Patna,212,Bihar,Patna,FALSE
+10,Bihar,Purbi Champaran,213,Bihar,East Champaran,TRUE
+10,Bihar,Purnia,214,Bihar,Purnia,FALSE
+10,Bihar,Rohtas,215,Bihar,Rohtas,FALSE
+10,Bihar,Saharsa,216,Bihar,Saharsa,FALSE
+10,Bihar,Samastipur,217,Bihar,Samastipur,FALSE
+10,Bihar,Saran,218,Bihar,Saran,FALSE
+10,Bihar,Sheikhpura,219,Bihar,Sheikhpura,FALSE
+10,Bihar,Sheohar,220,Bihar,Sheohar,FALSE
+10,Bihar,Sitamarhi,221,Bihar,Sitamarhi,FALSE
+10,Bihar,Siwan,222,Bihar,Siwan,FALSE
+10,Bihar,Supaul,223,Bihar,Supaul,FALSE
+10,Bihar,Vaishali,224,Bihar,Vaishali,FALSE
+4,Chandigarh,Chandigarh,44,Chandigarh,Chandigarh,FALSE
+22,Chhattisgarh,Balod,646,Chhattisgarh,Balod,FALSE
+22,Chhattisgarh,Balod Bazar,644,Chhattisgarh,Baloda Bazar,TRUE
+22,Chhattisgarh,Balrampur,649,Chhattisgarh,Balrampur,FALSE
+22,Chhattisgarh,Bastar,374,Chhattisgarh,Bastar,FALSE
+22,Chhattisgarh,Bemetara,650,Chhattisgarh,Bametara,TRUE
+22,Chhattisgarh,Bijapur,636,Chhattisgarh,Bijapur,FALSE
+22,Chhattisgarh,Bilaspur,375,Chhattisgarh,Bilaspur,FALSE
+22,Chhattisgarh,Dantewada,376,Chhattisgarh,Dakshin Bastar Dantewada,TRUE
+22,Chhattisgarh,Dhamtari,377,Chhattisgarh,Dhamtari,FALSE
+22,Chhattisgarh,Durg,378,Chhattisgarh,Durg,FALSE
+22,Chhattisgarh,Gariyaband,645,Chhattisgarh,Gariaband,TRUE
+22,Chhattisgarh,Janjgir-champa,379,Chhattisgarh,Janjgir Champa,TRUE
+22,Chhattisgarh,Jashpur,380,Chhattisgarh,Jashpur,FALSE
+22,Chhattisgarh,Kabirdham,382,Chhattisgarh,Kabeerdham,TRUE
+22,Chhattisgarh,Kanker,381,Chhattisgarh,Uttar Bastar Kanker,TRUE
+22,Chhattisgarh,Kondagaon,643,Chhattisgarh,Kondagaon,FALSE
+22,Chhattisgarh,Korba,383,Chhattisgarh,Korba,FALSE
+22,Chhattisgarh,Korea,384,Chhattisgarh,Koriya,TRUE
+22,Chhattisgarh,Mahasamund,385,Chhattisgarh,Mahasamund,FALSE
+22,Chhattisgarh,Mungeli,647,Chhattisgarh,Mungeli,FALSE
+22,Chhattisgarh,Narayanpur,637,Chhattisgarh,Narayanpur,FALSE
+22,Chhattisgarh,Raigarh,386,Chhattisgarh,Raigarh,FALSE
+22,Chhattisgarh,Raipur,387,Chhattisgarh,Raipur,FALSE
+22,Chhattisgarh,Rajnandgaon,388,Chhattisgarh,Rajnandgaon,FALSE
+22,Chhattisgarh,Sukma,642,Chhattisgarh,Sukma,FALSE
+22,Chhattisgarh,Surajpur,648,Chhattisgarh,Surajpur,FALSE
+22,Chhattisgarh,Surguja,389,Chhattisgarh,Surguja,FALSE
+26,Dadra And Nagar Haveli,Dadra and Nagar Haveli,465,Dadra and Nagar Haveli and Daman and Diu,Dadra and Nagar Haveli,FALSE
+25,Daman And Diu,Daman,463,Dadra and Nagar Haveli and Daman and Diu,Daman,FALSE
+25,Daman And Diu,Diu,464,Dadra and Nagar Haveli and Daman and Diu,Diu,FALSE
+7,Delhi,Central,77,Delhi,Central Delhi,TRUE
+7,Delhi,East,78,Delhi,East Delhi,TRUE
+7,Delhi,New Delhi,79,Delhi,New Delhi,FALSE
+7,Delhi,North,80,Delhi,North Delhi,TRUE
+7,Delhi,North East,81,Delhi,North East Delhi,TRUE
+7,Delhi,North West,82,Delhi,North West Delhi,TRUE
+7,Delhi,Shahdara,671,Delhi,Shahdara,FALSE
+7,Delhi,South,83,Delhi,South Delhi,TRUE
+7,Delhi,South East,670,Delhi,South East Delhi,TRUE
+7,Delhi,South West,84,Delhi,South West Delhi,TRUE
+7,Delhi,West,85,Delhi,West Delhi,TRUE
+30,Goa,North Goa,551,Goa,North Goa,FALSE
+30,Goa,South Goa,552,Goa,South Goa,FALSE
+24,Gujarat,Ahmadabad,438,Gujarat,Ahmedabad,TRUE
+24,Gujarat,Amreli,439,Gujarat,Amreli,FALSE
+24,Gujarat,Anand,440,Gujarat,Anand,FALSE
+24,Gujarat,Arvalli,672,Gujarat,Aravalli,TRUE
+24,Gujarat,Banas Kantha,441,Gujarat,Banaskantha,TRUE
+24,Gujarat,Bharuch,442,Gujarat,Bharuch,FALSE
+24,Gujarat,Bhavnagar,443,Gujarat,Bhavnagar,FALSE
+24,Gujarat,Botad,676,Gujarat,Botad,FALSE
+24,Gujarat,Chhotaudepur,668,Gujarat,Chhota Udaipur,TRUE
+24,Gujarat,Dang,444,Gujarat,Dang,FALSE
+24,Gujarat,Devbhumi Dwarka,674,Gujarat,Devbhumi Dwarka,FALSE
+24,Gujarat,Dohad,445,Gujarat,Dahod,TRUE
+24,Gujarat,Gandhinagar,446,Gujarat,Gandhinagar,FALSE
+24,Gujarat,Gir Somnath,675,Gujarat,Gir Somnath,FALSE
+24,Gujarat,Jamnagar,447,Gujarat,Jamnagar,FALSE
+24,Gujarat,Junagadh,448,Gujarat,Junagadh,FALSE
+24,Gujarat,Kachchh,449,Gujarat,Kutch,TRUE
+24,Gujarat,Kheda,450,Gujarat,Kheda,FALSE
+24,Gujarat,Mahesana,451,Gujarat,Mehsana,TRUE
+24,Gujarat,Mahisagar,669,Gujarat,Mahisagar,FALSE
+24,Gujarat,Morbi,673,Gujarat,Morbi,FALSE
+24,Gujarat,Narmada,452,Gujarat,Narmada,FALSE
+24,Gujarat,Navsari,453,Gujarat,Navsari,FALSE
+24,Gujarat,Panch Mahals,454,Gujarat,Panchmahal,TRUE
+24,Gujarat,Patan,455,Gujarat,Patan,FALSE
+24,Gujarat,Porbandar,456,Gujarat,Porbandar,FALSE
+24,Gujarat,Rajkot,457,Gujarat,Rajkot,FALSE
+24,Gujarat,Sabar Kantha,458,Gujarat,Sabarkantha,TRUE
+24,Gujarat,Surat,459,Gujarat,Surat,FALSE
+24,Gujarat,Surendranagar,460,Gujarat,Surendranagar,FALSE
+24,Gujarat,Tapi,641,Gujarat,Tapi,FALSE
+24,Gujarat,Vadodara,461,Gujarat,Vadodara,FALSE
+24,Gujarat,Valsad,462,Gujarat,Valsad,FALSE
+6,Haryana,Ambala,58,Haryana,Ambala,FALSE
+6,Haryana,Bhiwani,59,Haryana,Bhiwani,FALSE
+6,Haryana,Charki Dadri,701,Haryana,Charkhi Dadri,TRUE
+6,Haryana,Faridabad,60,Haryana,Faridabad,FALSE
+6,Haryana,Fatehabad,61,Haryana,Fatehabad,FALSE
+6,Haryana,Gurugram,62,Haryana,Gurugram,FALSE
+6,Haryana,Hisar,63,Haryana,Hisar,FALSE
+6,Haryana,Jhajjar,64,Haryana,Jhajjar,FALSE
+6,Haryana,Jind,65,Haryana,Jind,FALSE
+6,Haryana,Kaithal,66,Haryana,Kaithal,FALSE
+6,Haryana,Karnal,67,Haryana,Karnal,FALSE
+6,Haryana,Kurukshetra,68,Haryana,Kurukshetra,FALSE
+6,Haryana,Mahendragarh,69,Haryana,Mahendragarh,FALSE
+6,Haryana,Nuh,604,Haryana,Nuh,FALSE
+6,Haryana,Palwal,619,Haryana,Palwal,FALSE
+6,Haryana,Panchkula,70,Haryana,Panchkula,FALSE
+6,Haryana,Panipat,71,Haryana,Panipat,FALSE
+6,Haryana,Rewari,72,Haryana,Rewari,FALSE
+6,Haryana,Rohtak,73,Haryana,Rohtak,FALSE
+6,Haryana,Sirsa,74,Haryana,Sirsa,FALSE
+6,Haryana,Sonipat,75,Haryana,Sonipat,FALSE
+6,Haryana,Yamunanagar,76,Haryana,Yamunanagar,FALSE
+2,Himachal Pradesh,Bilaspur,15,Himachal Pradesh,Bilaspur,FALSE
+2,Himachal Pradesh,Chamba,16,Himachal Pradesh,Chamba,FALSE
+2,Himachal Pradesh,Hamirpur,17,Himachal Pradesh,Hamirpur,FALSE
+2,Himachal Pradesh,Kangra,18,Himachal Pradesh,Kangra,FALSE
+2,Himachal Pradesh,Kinnaur,19,Himachal Pradesh,Kinnaur,FALSE
+2,Himachal Pradesh,Kullu,20,Himachal Pradesh,Kullu,FALSE
+2,Himachal Pradesh,Lahul and Spiti,21,Himachal Pradesh,Lahaul and Spiti,TRUE
+2,Himachal Pradesh,Mandi,22,Himachal Pradesh,Mandi,FALSE
+2,Himachal Pradesh,Shimla,23,Himachal Pradesh,Shimla,FALSE
+2,Himachal Pradesh,Sirmaur,24,Himachal Pradesh,Sirmaur,FALSE
+2,Himachal Pradesh,Solan,25,Himachal Pradesh,Solan,FALSE
+2,Himachal Pradesh,Una,26,Himachal Pradesh,Una,FALSE
+1,Jammu And Kashmir,Anantnag,1,Jammu and Kashmir,Anantnag,FALSE
+1,Jammu And Kashmir,Badgam,2,Jammu and Kashmir,Budgam,TRUE
+1,Jammu And Kashmir,Bandipore,623,Jammu and Kashmir,Bandipora,TRUE
+1,Jammu And Kashmir,Baramula,3,Jammu and Kashmir,Baramulla,TRUE
+1,Jammu And Kashmir,Doda,4,Jammu and Kashmir,Doda,FALSE
+1,Jammu And Kashmir,Ganderbal,626,Jammu and Kashmir,Ganderbal,FALSE
+1,Jammu And Kashmir,Jammu,5,Jammu and Kashmir,Jammu,FALSE
+1,Jammu And Kashmir,Kathua,7,Jammu and Kashmir,Kathua,FALSE
+1,Jammu And Kashmir,Kishtwar,620,Jammu and Kashmir,Kishtwar,FALSE
+1,Jammu And Kashmir,Kulgam,622,Jammu and Kashmir,Kulgam,FALSE
+1,Jammu And Kashmir,Kupwara,8,Jammu and Kashmir,Kupwara,FALSE
+1,Jammu And Kashmir,Poonch,10,Jammu and Kashmir,Punch,TRUE
+1,Jammu And Kashmir,Pulwama,11,Jammu and Kashmir,Pulwama,FALSE
+1,Jammu And Kashmir,Rajauri,12,Jammu and Kashmir,Rajouri,TRUE
+1,Jammu And Kashmir,Ramban,621,Jammu and Kashmir,Ramban,FALSE
+1,Jammu And Kashmir,Resai,627,Jammu and Kashmir,Reasi,TRUE
+1,Jammu And Kashmir,Samba,624,Jammu and Kashmir,Samba,FALSE
+1,Jammu And Kashmir,Shopian,625,Jammu and Kashmir,Shopiyan,TRUE
+1,Jammu And Kashmir,Srinagar,13,Jammu and Kashmir,Srinagar,FALSE
+1,Jammu And Kashmir,Udhampur,14,Jammu and Kashmir,Udhampur,FALSE
+20,Jharkhand,Bokaro,322,Jharkhand,Bokaro,FALSE
+20,Jharkhand,Chatra,323,Jharkhand,Chatra,FALSE
+20,Jharkhand,Deoghar,324,Jharkhand,Deoghar,FALSE
+20,Jharkhand,Dhanbad,325,Jharkhand,Dhanbad,FALSE
+20,Jharkhand,Dumka,326,Jharkhand,Dumka,FALSE
+20,Jharkhand,East Singhbhum,327,Jharkhand,East Singhbhum,FALSE
+20,Jharkhand,Garhwa,328,Jharkhand,Garhwa,FALSE
+20,Jharkhand,Giridih,329,Jharkhand,Giridih,FALSE
+20,Jharkhand,Godda,330,Jharkhand,Godda,FALSE
+20,Jharkhand,Gumla,331,Jharkhand,Gumla,FALSE
+20,Jharkhand,Hazaribagh,332,Jharkhand,Hazaribagh,FALSE
+20,Jharkhand,Jamtara,333,Jharkhand,Jamtara,FALSE
+20,Jharkhand,Khunti,606,Jharkhand,Khunti,FALSE
+20,Jharkhand,Koderma,334,Jharkhand,Koderma,FALSE
+20,Jharkhand,Latehar,335,Jharkhand,Latehar,FALSE
+20,Jharkhand,Lohardaga,336,Jharkhand,Lohardaga,FALSE
+20,Jharkhand,Pakur,337,Jharkhand,Pakur,FALSE
+20,Jharkhand,Palamu,338,Jharkhand,Palamu,FALSE
+20,Jharkhand,Ramgarh,607,Jharkhand,Ramgarh,FALSE
+20,Jharkhand,Ranchi,339,Jharkhand,Ranchi,FALSE
+20,Jharkhand,Sahebganj,340,Jharkhand,Sahibganj,TRUE
+20,Jharkhand,Saraikela Kharsawan,341,Jharkhand,Saraikela-Kharsawan,TRUE
+20,Jharkhand,Simdega,342,Jharkhand,Simdega,FALSE
+20,Jharkhand,West Singhbhum,343,Jharkhand,West Singhbhum,FALSE
+29,Karnataka,Bagalkote,524,Karnataka,Bagalkote,FALSE
+29,Karnataka,Ballari,528,Karnataka,Ballari,FALSE
+29,Karnataka,Belagavi,527,Karnataka,Belagavi,FALSE
+29,Karnataka,Bengaluru Rural,526,Karnataka,Bengaluru Rural,FALSE
+29,Karnataka,Bengaluru Urban,525,Karnataka,Bengaluru Urban,FALSE
+29,Karnataka,Bidar,529,Karnataka,Bidar,FALSE
+29,Karnataka,Chamarajanagara,531,Karnataka,Chamarajanagara,FALSE
+29,Karnataka,Chikkaballapura,630,Karnataka,Chikkaballapura,FALSE
+29,Karnataka,Chikkamagaluru,532,Karnataka,Chikkamagaluru,FALSE
+29,Karnataka,Chitradurga,533,Karnataka,Chitradurga,FALSE
+29,Karnataka,Dakshina Kannada,534,Karnataka,Dakshina Kannada,FALSE
+29,Karnataka,Davangere,535,Karnataka,Davanagere,TRUE
+29,Karnataka,Dharwad,536,Karnataka,Dharwad,FALSE
+29,Karnataka,Gadag,537,Karnataka,Gadag,FALSE
+29,Karnataka,Hassan,539,Karnataka,Hassan,FALSE
+29,Karnataka,Haveri,540,Karnataka,Haveri,FALSE
+29,Karnataka,Kalaburagi,538,Karnataka,Kalaburagi,FALSE
+29,Karnataka,Kodagu,541,Karnataka,Kodagu,FALSE
+29,Karnataka,Kolar,542,Karnataka,Kolar,FALSE
+29,Karnataka,Koppal,543,Karnataka,Koppal,FALSE
+29,Karnataka,Mandya,544,Karnataka,Mandya,FALSE
+29,Karnataka,Mysuru,545,Karnataka,Mysuru,FALSE
+29,Karnataka,Raichur,546,Karnataka,Raichur,FALSE
+29,Karnataka,Ramanagara,631,Karnataka,Ramanagara,FALSE
+29,Karnataka,Shivamogga,547,Karnataka,Shivamogga,FALSE
+29,Karnataka,Tumakuru,548,Karnataka,Tumakuru,FALSE
+29,Karnataka,Udupi,549,Karnataka,Udupi,FALSE
+29,Karnataka,Uttara Kannada,550,Karnataka,Uttara Kannada,FALSE
+29,Karnataka,Vijayapura,530,Karnataka,Vijayapura,FALSE
+29,Karnataka,Yadgir,635,Karnataka,Yadgir,FALSE
+32,Kerala,Alappuzha,554,Kerala,Alappuzha,FALSE
+32,Kerala,Ernakulam,555,Kerala,Ernakulam,FALSE
+32,Kerala,Idukki,556,Kerala,Idukki,FALSE
+32,Kerala,Kannur,557,Kerala,Kannur,FALSE
+32,Kerala,Kasaragod,558,Kerala,Kasaragod,FALSE
+32,Kerala,Kohzikode,561,Kerala,Kozhikode,TRUE
+32,Kerala,Kollam,559,Kerala,Kollam,FALSE
+32,Kerala,Kottayam,560,Kerala,Kottayam,FALSE
+32,Kerala,Malappuram,562,Kerala,Malappuram,FALSE
+32,Kerala,Palakkad,563,Kerala,Palakkad,FALSE
+32,Kerala,Pathanamthitta,564,Kerala,Pathanamthitta,FALSE
+32,Kerala,Thiruvananthapuram,565,Kerala,Thiruvananthapuram,FALSE
+32,Kerala,Thrissur,566,Kerala,Thrissur,FALSE
+32,Kerala,Wayanad,567,Kerala,Wayanad,FALSE
+37,Ladakh,Kargil,6,Ladakh,Kargil,FALSE
+37,Ladakh,Leh Ladakh,9,Ladakh,Leh,TRUE
+31,Lakshadweep,Lakshadweep District,553,Lakshadweep,Lakshadweep,TRUE
+23,Madhya Pradesh,Agar Malwa,667,Madhya Pradesh,Agar Malwa,FALSE
+23,Madhya Pradesh,Alirajpur,639,Madhya Pradesh,Alirajpur,FALSE
+23,Madhya Pradesh,Anuppur,390,Madhya Pradesh,Anuppur,FALSE
+23,Madhya Pradesh,Ashoknagar,391,Madhya Pradesh,Ashoknagar,FALSE
+23,Madhya Pradesh,Balaghat,392,Madhya Pradesh,Balaghat,FALSE
+23,Madhya Pradesh,Barwani,393,Madhya Pradesh,Barwani,FALSE
+23,Madhya Pradesh,Betul,394,Madhya Pradesh,Betul,FALSE
+23,Madhya Pradesh,Bhind,395,Madhya Pradesh,Bhind,FALSE
+23,Madhya Pradesh,Bhopal,396,Madhya Pradesh,Bhopal,FALSE
+23,Madhya Pradesh,Burhanpur,397,Madhya Pradesh,Burhanpur,FALSE
+23,Madhya Pradesh,Chhatarpur,398,Madhya Pradesh,Chhatarpur,FALSE
+23,Madhya Pradesh,Chhindwara,399,Madhya Pradesh,Chhindwara,FALSE
+23,Madhya Pradesh,Damoh,400,Madhya Pradesh,Damoh,FALSE
+23,Madhya Pradesh,Datia,401,Madhya Pradesh,Datia,FALSE
+23,Madhya Pradesh,Dewas,402,Madhya Pradesh,Dewas,FALSE
+23,Madhya Pradesh,Dhar,403,Madhya Pradesh,Dhar,FALSE
+23,Madhya Pradesh,Dindori,404,Madhya Pradesh,Dindori,FALSE
+23,Madhya Pradesh,Guna,406,Madhya Pradesh,Guna,FALSE
+23,Madhya Pradesh,Gwalior,407,Madhya Pradesh,Gwalior,FALSE
+23,Madhya Pradesh,Harda,408,Madhya Pradesh,Harda,FALSE
+23,Madhya Pradesh,Hoshangabad,409,Madhya Pradesh,Hoshangabad,FALSE
+23,Madhya Pradesh,Indore,410,Madhya Pradesh,Indore,FALSE
+23,Madhya Pradesh,Jabalpur,411,Madhya Pradesh,Jabalpur,FALSE
+23,Madhya Pradesh,Jhabua,412,Madhya Pradesh,Jhabua,FALSE
+23,Madhya Pradesh,Katni,413,Madhya Pradesh,Katni,FALSE
+23,Madhya Pradesh,Khargone,414,Madhya Pradesh,Khargone,FALSE
+23,Madhya Pradesh,Mandla,415,Madhya Pradesh,Mandla,FALSE
+23,Madhya Pradesh,Mandsaur,416,Madhya Pradesh,Mandsaur,FALSE
+23,Madhya Pradesh,Morena,417,Madhya Pradesh,Morena,FALSE
+23,Madhya Pradesh,Narsimhapur,418,Madhya Pradesh,Narsinghpur,TRUE
+23,Madhya Pradesh,Neemuch,419,Madhya Pradesh,Neemuch,FALSE
+23,Madhya Pradesh,Panna,420,Madhya Pradesh,Panna,FALSE
+23,Madhya Pradesh,Raisen,421,Madhya Pradesh,Raisen,FALSE
+23,Madhya Pradesh,Rajgarh,422,Madhya Pradesh,Rajgarh,FALSE
+23,Madhya Pradesh,Ratlam,423,Madhya Pradesh,Ratlam,FALSE
+23,Madhya Pradesh,Rewa,424,Madhya Pradesh,Rewa,FALSE
+23,Madhya Pradesh,Sagar,425,Madhya Pradesh,Sagar,FALSE
+23,Madhya Pradesh,Satna,426,Madhya Pradesh,Satna,FALSE
+23,Madhya Pradesh,Sehore,427,Madhya Pradesh,Sehore,FALSE
+23,Madhya Pradesh,Seoni,428,Madhya Pradesh,Seoni,FALSE
+23,Madhya Pradesh,Shahdol,429,Madhya Pradesh,Shahdol,FALSE
+23,Madhya Pradesh,Shajapur,430,Madhya Pradesh,Shajapur,FALSE
+23,Madhya Pradesh,Sheopur,431,Madhya Pradesh,Sheopur,FALSE
+23,Madhya Pradesh,Shivpuri,432,Madhya Pradesh,Shivpuri,FALSE
+23,Madhya Pradesh,Sidhi,433,Madhya Pradesh,Sidhi,FALSE
+23,Madhya Pradesh,Singrauli,638,Madhya Pradesh,Singrauli,FALSE
+23,Madhya Pradesh,Tikamgarh,434,Madhya Pradesh,Tikamgarh,FALSE
+23,Madhya Pradesh,Ujjain,435,Madhya Pradesh,Ujjain,FALSE
+23,Madhya Pradesh,Umaria,436,Madhya Pradesh,Umaria,FALSE
+23,Madhya Pradesh,Vidisha,437,Madhya Pradesh,Vidisha,FALSE
+27,Maharashtra,Ahmadnagar,466,Maharashtra,Ahmednagar,TRUE
+27,Maharashtra,Akola,467,Maharashtra,Akola,FALSE
+27,Maharashtra,Amravati,468,Maharashtra,Amravati,FALSE
+27,Maharashtra,Aurangabad,469,Maharashtra,Aurangabad,FALSE
+27,Maharashtra,Beed,470,Maharashtra,Beed,FALSE
+27,Maharashtra,Bhandara,471,Maharashtra,Bhandara,FALSE
+27,Maharashtra,Buldana,472,Maharashtra,Buldhana,TRUE
+27,Maharashtra,Chandrapur,473,Maharashtra,Chandrapur,FALSE
+27,Maharashtra,Dhule,474,Maharashtra,Dhule,FALSE
+27,Maharashtra,Gadchiroli,475,Maharashtra,Gadchiroli,FALSE
+27,Maharashtra,Gondia,476,Maharashtra,Gondia,FALSE
+27,Maharashtra,Hingoli,477,Maharashtra,Hingoli,FALSE
+27,Maharashtra,Jalgaon,478,Maharashtra,Jalgaon,FALSE
+27,Maharashtra,Jalna,479,Maharashtra,Jalna,FALSE
+27,Maharashtra,Kolhapur,480,Maharashtra,Kolhapur,FALSE
+27,Maharashtra,Latur,481,Maharashtra,Latur,FALSE
+27,Maharashtra,Mumbai,482,Maharashtra,Mumbai,FALSE
+27,Maharashtra,Nagpur,484,Maharashtra,Nagpur,FALSE
+27,Maharashtra,Nanded,485,Maharashtra,Nanded,FALSE
+27,Maharashtra,Nandurbar,486,Maharashtra,Nandurbar,FALSE
+27,Maharashtra,Nashik,487,Maharashtra,Nashik,FALSE
+27,Maharashtra,Osmanabad,488,Maharashtra,Osmanabad,FALSE
+27,Maharashtra,Palghar,665,Maharashtra,Palghar,FALSE
+27,Maharashtra,Parbhani,489,Maharashtra,Parbhani,FALSE
+27,Maharashtra,Pune,490,Maharashtra,Pune,FALSE
+27,Maharashtra,Raigarh,491,Maharashtra,Raigad,TRUE
+27,Maharashtra,Ratnagiri,492,Maharashtra,Ratnagiri,FALSE
+27,Maharashtra,Sangli,493,Maharashtra,Sangli,FALSE
+27,Maharashtra,Satara,494,Maharashtra,Satara,FALSE
+27,Maharashtra,Sindhudurg,495,Maharashtra,Sindhudurg,FALSE
+27,Maharashtra,Solapur,496,Maharashtra,Solapur,FALSE
+27,Maharashtra,Thane,497,Maharashtra,Thane,FALSE
+27,Maharashtra,Wardha,498,Maharashtra,Wardha,FALSE
+27,Maharashtra,Washim,499,Maharashtra,Washim,FALSE
+27,Maharashtra,Yavatmal,500,Maharashtra,Yavatmal,FALSE
+14,Manipur,Bishnupur,252,Manipur,Bishnupur,FALSE
+14,Manipur,Chandel,253,Manipur,Chandel,FALSE
+14,Manipur,Churachandpur,254,Manipur,Churachandpur,FALSE
+14,Manipur,Imphal East,255,Manipur,Imphal East,FALSE
+14,Manipur,Imphal West,256,Manipur,Imphal West,FALSE
+14,Manipur,Jiribum,713,Manipur,Jiribam,TRUE
+14,Manipur,Kakching,711,Manipur,Kakching,FALSE
+14,Manipur,Kamjong,717,Manipur,Kamjong,FALSE
+14,Manipur,Kangpokpi,712,Manipur,Kangpokpi,FALSE
+14,Manipur,Noney,714,Manipur,Noney,FALSE
+14,Manipur,Pherzawal,715,Manipur,Pherzawl,TRUE
+14,Manipur,Senapati,257,Manipur,Senapati,FALSE
+14,Manipur,Tamenglong,258,Manipur,Tamenglong,FALSE
+14,Manipur,Tengnoupal,716,Manipur,Tengnoupal,FALSE
+14,Manipur,Thoubal,259,Manipur,Thoubal,FALSE
+14,Manipur,Ukhrul,260,Manipur,Ukhrul,FALSE
+17,Meghalaya,East Garo Hills,273,Meghalaya,East Garo Hills,FALSE
+17,Meghalaya,East Jaintia Hills,657,Meghalaya,East Jaintia Hills,FALSE
+17,Meghalaya,East Khasi Hills,274,Meghalaya,East Khasi Hills,FALSE
+17,Meghalaya,North Garo Hills,656,Meghalaya,North Garo Hills,FALSE
+17,Meghalaya,Ri Bhoi,276,Meghalaya,Ribhoi,TRUE
+17,Meghalaya,South Garo Hills,277,Meghalaya,South Garo Hills,FALSE
+17,Meghalaya,South West Garo Hills,663,Meghalaya,South West Garo Hills,FALSE
+17,Meghalaya,South West Khasi Hills,658,Meghalaya,South West Khasi Hills,FALSE
+17,Meghalaya,West Garo Hills,278,Meghalaya,West Garo Hills,FALSE
+17,Meghalaya,West Jaintia Hills,275,Meghalaya,West Jaintia Hills,FALSE
+17,Meghalaya,West Khasi Hills,279,Meghalaya,West Khasi Hills,FALSE
+15,Mizoram,Aizawal,261,Mizoram,Aizawl,TRUE
+15,Mizoram,Champhai,262,Mizoram,Champhai,FALSE
+15,Mizoram,Kolasib,263,Mizoram,Kolasib,FALSE
+15,Mizoram,Lawngtlai,264,Mizoram,Lawngtlai,FALSE
+15,Mizoram,Lunglei,265,Mizoram,Lunglei,FALSE
+15,Mizoram,Mamit,266,Mizoram,Mamit,FALSE
+15,Mizoram,Saiha,267,Mizoram,Saiha,FALSE
+15,Mizoram,Serchhip,268,Mizoram,Serchhip,FALSE
+13,Nagaland,Dimapur,244,Nagaland,Dimapur,FALSE
+13,Nagaland,Kiphire,614,Nagaland,Kiphire,FALSE
+13,Nagaland,Kohima,245,Nagaland,Kohima,FALSE
+13,Nagaland,Longleng,615,Nagaland,Longleng,FALSE
+13,Nagaland,Mokokchung,246,Nagaland,Mokokchung,FALSE
+13,Nagaland,Mon,247,Nagaland,Mon,FALSE
+13,Nagaland,Peren,613,Nagaland,Peren,FALSE
+13,Nagaland,Phek,248,Nagaland,Phek,FALSE
+13,Nagaland,Tuensang,249,Nagaland,Tuensang,FALSE
+13,Nagaland,Wokha,250,Nagaland,Wokha,FALSE
+13,Nagaland,Zunheboto,251,Nagaland,Zunheboto,FALSE
+21,Odisha,Anugul,344,Odisha,Angul,TRUE
+21,Odisha,Balangir,345,Odisha,Balangir,FALSE
+21,Odisha,Baleshwar,346,Odisha,Balasore,TRUE
+21,Odisha,Bargarh,347,Odisha,Bargarh,FALSE
+21,Odisha,Bhadrak,348,Odisha,Bhadrak,FALSE
+21,Odisha,Boudh,349,Odisha,Boudh,FALSE
+21,Odisha,Cuttack,350,Odisha,Cuttack,FALSE
+21,Odisha,Deogarh,351,Odisha,Deogarh,FALSE
+21,Odisha,Dhenkanal,352,Odisha,Dhenkanal,FALSE
+21,Odisha,Gajapati,353,Odisha,Gajapati,FALSE
+21,Odisha,Ganjam,354,Odisha,Ganjam,FALSE
+21,Odisha,Jagatsinghpur,355,Odisha,Jagatsinghpur,FALSE
+21,Odisha,Jajapur,356,Odisha,Jajpur,TRUE
+21,Odisha,Jharsuguda,357,Odisha,Jharsuguda,FALSE
+21,Odisha,Kalahandi,358,Odisha,Kalahandi,FALSE
+21,Odisha,Kandhamal,359,Odisha,Kandhamal,FALSE
+21,Odisha,Kendrapara,360,Odisha,Kendrapara,FALSE
+21,Odisha,Kendujhar,361,Odisha,Kendujhar,FALSE
+21,Odisha,Khordha,362,Odisha,Khordha,FALSE
+21,Odisha,Koraput,363,Odisha,Koraput,FALSE
+21,Odisha,Malkangiri,364,Odisha,Malkangiri,FALSE
+21,Odisha,Mayurbhanj,365,Odisha,Mayurbhanj,FALSE
+21,Odisha,Nabarangpur,366,Odisha,Nabarangapur,TRUE
+21,Odisha,Nayagarh,367,Odisha,Nayagarh,FALSE
+21,Odisha,Nuapada,368,Odisha,Nuapada,FALSE
+21,Odisha,Puri,369,Odisha,Puri,FALSE
+21,Odisha,Rayagada,370,Odisha,Rayagada,FALSE
+21,Odisha,Sambalpur,371,Odisha,Sambalpur,FALSE
+21,Odisha,Sonepur,372,Odisha,Subarnapur,TRUE
+21,Odisha,Sundargarh,373,Odisha,Sundargarh,FALSE
+34,Puducherry,Karaikal,598,Puducherry,Karaikal,FALSE
+34,Puducherry,Mahe,599,Puducherry,Mahe,FALSE
+34,Puducherry,Pondicherry,600,Puducherry,Puducherry,TRUE
+34,Puducherry,Yanam,601,Puducherry,Yanam,FALSE
+3,Punjab,Amritsar,27,Punjab,Amritsar,FALSE
+3,Punjab,Barnala,605,Punjab,Barnala,FALSE
+3,Punjab,Bathinda,28,Punjab,Bathinda,FALSE
+3,Punjab,Faridkot,29,Punjab,Faridkot,FALSE
+3,Punjab,Fatehgarh Sahib,30,Punjab,Fatehgarh Sahib,FALSE
+3,Punjab,Fazilka,651,Punjab,Fazilka,FALSE
+3,Punjab,Firozpur,31,Punjab,Ferozepur,TRUE
+3,Punjab,Gurdaspur,32,Punjab,Gurdaspur,FALSE
+3,Punjab,Hoshiarpur,33,Punjab,Hoshiarpur,FALSE
+3,Punjab,Jalandhar,34,Punjab,Jalandhar,FALSE
+3,Punjab,Kapurthala,35,Punjab,Kapurthala,FALSE
+3,Punjab,Ludhiana,36,Punjab,Ludhiana,FALSE
+3,Punjab,Mansa,37,Punjab,Mansa,FALSE
+3,Punjab,Moga,38,Punjab,Moga,FALSE
+3,Punjab,Pathankot,662,Punjab,Pathankot,FALSE
+3,Punjab,Patiala,41,Punjab,Patiala,FALSE
+3,Punjab,Rupnagar,42,Punjab,Rupnagar,FALSE
+3,Punjab,S.A.S Nagar,608,Punjab,S.A.S. Nagar,TRUE
+3,Punjab,Sangrur,43,Punjab,Sangrur,FALSE
+3,Punjab,Shahid Bhagat Singh Nagar,40,Punjab,Shahid Bhagat Singh Nagar,FALSE
+3,Punjab,Sri Muktsar Sahib,39,Punjab,Sri Muktsar Sahib,FALSE
+3,Punjab,Tarn Taran,609,Punjab,Tarn Taran,FALSE
+8,Rajasthan,Ajmer,86,Rajasthan,Ajmer,FALSE
+8,Rajasthan,Alwar,87,Rajasthan,Alwar,FALSE
+8,Rajasthan,Banswara,88,Rajasthan,Banswara,FALSE
+8,Rajasthan,Baran,89,Rajasthan,Baran,FALSE
+8,Rajasthan,Barmer,90,Rajasthan,Barmer,FALSE
+8,Rajasthan,Bharatpur,91,Rajasthan,Bharatpur,FALSE
+8,Rajasthan,Bhilwara,92,Rajasthan,Bhilwara,FALSE
+8,Rajasthan,Bikaner,93,Rajasthan,Bikaner,FALSE
+8,Rajasthan,Bundi,94,Rajasthan,Bundi,FALSE
+8,Rajasthan,Chittorgarh,95,Rajasthan,Chittorgarh,FALSE
+8,Rajasthan,Churu,96,Rajasthan,Churu,FALSE
+8,Rajasthan,Dausa,97,Rajasthan,Dausa,FALSE
+8,Rajasthan,Dholpur,98,Rajasthan,Dholpur,FALSE
+8,Rajasthan,Dungarpur,99,Rajasthan,Dungarpur,FALSE
+8,Rajasthan,Ganganagar,100,Rajasthan,Ganganagar,FALSE
+8,Rajasthan,Hanumangarh,101,Rajasthan,Hanumangarh,FALSE
+8,Rajasthan,Jaipur,102,Rajasthan,Jaipur,FALSE
+8,Rajasthan,Jaisalmer,103,Rajasthan,Jaisalmer,FALSE
+8,Rajasthan,Jalore,104,Rajasthan,Jalore,FALSE
+8,Rajasthan,Jhalawar,105,Rajasthan,Jhalawar,FALSE
+8,Rajasthan,Jhunjhunu,106,Rajasthan,Jhunjhunu,FALSE
+8,Rajasthan,Jodhpur,107,Rajasthan,Jodhpur,FALSE
+8,Rajasthan,Karauli,108,Rajasthan,Karauli,FALSE
+8,Rajasthan,Kota,109,Rajasthan,Kota,FALSE
+8,Rajasthan,Nagaur,110,Rajasthan,Nagaur,FALSE
+8,Rajasthan,Pali,111,Rajasthan,Pali,FALSE
+8,Rajasthan,Pratapgarh,629,Rajasthan,Pratapgarh,FALSE
+8,Rajasthan,Rajsamand,112,Rajasthan,Rajsamand,FALSE
+8,Rajasthan,Sawai Madhopur,113,Rajasthan,Sawai Madhopur,FALSE
+8,Rajasthan,Sikar,114,Rajasthan,Sikar,FALSE
+8,Rajasthan,Sirohi,115,Rajasthan,Sirohi,FALSE
+8,Rajasthan,Tonk,116,Rajasthan,Tonk,FALSE
+8,Rajasthan,Udaipur,117,Rajasthan,Udaipur,FALSE
+11,Sikkim,East District,225,Sikkim,East Sikkim,TRUE
+11,Sikkim,North District,226,Sikkim,North Sikkim,TRUE
+11,Sikkim,South District,227,Sikkim,South Sikkim,TRUE
+11,Sikkim,West District,228,Sikkim,West Sikkim,TRUE
+33,Tamil Nadu,Ariyalur,610,Tamil Nadu,Ariyalur,FALSE
+33,Tamil Nadu,Chennai,568,Tamil Nadu,Chennai,FALSE
+33,Tamil Nadu,Coimbatore,569,Tamil Nadu,Coimbatore,FALSE
+33,Tamil Nadu,Cuddalore,570,Tamil Nadu,Cuddalore,FALSE
+33,Tamil Nadu,Dharmapuri,571,Tamil Nadu,Dharmapuri,FALSE
+33,Tamil Nadu,Dindigul,572,Tamil Nadu,Dindigul,FALSE
+33,Tamil Nadu,Erode,573,Tamil Nadu,Erode,FALSE
+33,Tamil Nadu,Kanchipuram,574,Tamil Nadu,Kancheepuram,TRUE
+33,Tamil Nadu,Kanniyakumari,575,Tamil Nadu,Kanyakumari,TRUE
+33,Tamil Nadu,Karur,576,Tamil Nadu,Karur,FALSE
+33,Tamil Nadu,Krishnagiri,577,Tamil Nadu,Krishnagiri,FALSE
+33,Tamil Nadu,Madurai,578,Tamil Nadu,Madurai,FALSE
+33,Tamil Nadu,Nagapattinam,579,Tamil Nadu,Nagapattinam,FALSE
+33,Tamil Nadu,Namakkal,580,Tamil Nadu,Namakkal,FALSE
+33,Tamil Nadu,Perambalur,581,Tamil Nadu,Perambalur,FALSE
+33,Tamil Nadu,Pudukkottai,582,Tamil Nadu,Pudukkottai,FALSE
+33,Tamil Nadu,Ramanathapuram,583,Tamil Nadu,Ramanathapuram,FALSE
+33,Tamil Nadu,Salem,584,Tamil Nadu,Salem,FALSE
+33,Tamil Nadu,Sivaganga,585,Tamil Nadu,Sivaganga,FALSE
+33,Tamil Nadu,Thanjavur,586,Tamil Nadu,Thanjavur,FALSE
+33,Tamil Nadu,The Nilgiris,587,Tamil Nadu,Nilgiris,TRUE
+33,Tamil Nadu,Theni,588,Tamil Nadu,Theni,FALSE
+33,Tamil Nadu,Thiruvallur,589,Tamil Nadu,Thiruvallur,FALSE
+33,Tamil Nadu,Thiruvarur,590,Tamil Nadu,Thiruvarur,FALSE
+33,Tamil Nadu,Tiruchirappalli,591,Tamil Nadu,Tiruchirappalli,FALSE
+33,Tamil Nadu,Tirunelveli,592,Tamil Nadu,Tirunelveli,FALSE
+33,Tamil Nadu,Tiruppur,634,Tamil Nadu,Tiruppur,FALSE
+33,Tamil Nadu,Tiruvannamalai,593,Tamil Nadu,Tiruvannamalai,FALSE
+33,Tamil Nadu,Tuticorin,594,Tamil Nadu,Thoothukkudi,TRUE
+33,Tamil Nadu,Vellore,595,Tamil Nadu,Vellore,FALSE
+33,Tamil Nadu,Villupuram,596,Tamil Nadu,Viluppuram,TRUE
+33,Tamil Nadu,Virudhunagar,597,Tamil Nadu,Virudhunagar,FALSE
+36,Telangana,Adilabad,501,Telangana,Adilabad,FALSE
+36,Telangana,Bhadradri Kothagudem,690,Telangana,Bhadradri Kothagudem,FALSE
+36,Telangana,Hyderabad,507,Telangana,Hyderabad,FALSE
+36,Telangana,Jagtial,681,Telangana,Jagtial,FALSE
+36,Telangana,Jangoan,689,Telangana,Jangaon,TRUE
+36,Telangana,Jayashankar Bhupalpally,687,Telangana,Jayashankar Bhupalapally,TRUE
+36,Telangana,Jogulamba Gadwal,695,Telangana,Jogulamba Gadwal,FALSE
+36,Telangana,Kamareddy,685,Telangana,Kamareddy,FALSE
+36,Telangana,Karimnagar,508,Telangana,Karimnagar,FALSE
+36,Telangana,Khammam,509,Telangana,Khammam,FALSE
+36,Telangana,Kumurambheem Asifabad,699,Telangana,Komaram Bheem,TRUE
+36,Telangana,Mahabubabad,688,Telangana,Mahabubabad,FALSE
+36,Telangana,Mahabubnagar,512,Telangana,Mahabubnagar,FALSE
+36,Telangana,Mancherial,684,Telangana,Mancherial,FALSE
+36,Telangana,Medak,513,Telangana,Medak,FALSE
+36,Telangana,Medchal Malkajgiri,700,Telangana,Medchal Malkajgiri,FALSE
+36,Telangana,Mulugu,720,Telangana,Mulugu,FALSE
+36,Telangana,Nagarkurnool,694,Telangana,Nagarkurnool,FALSE
+36,Telangana,Nalgonda,514,Telangana,Nalgonda,FALSE
+36,Telangana,Narayanpet,721,Telangana,Narayanpet,FALSE
+36,Telangana,Nirmal,680,Telangana,Nirmal,FALSE
+36,Telangana,Nizamabad,516,Telangana,Nizamabad,FALSE
+36,Telangana,Peddapalli,682,Telangana,Peddapalli,FALSE
+36,Telangana,Rajanna Sircilla,683,Telangana,Rajanna Sircilla,FALSE
+36,Telangana,Rangareddy,518,Telangana,Ranga Reddy,TRUE
+36,Telangana,Sangareddy,691,Telangana,Sangareddy,FALSE
+36,Telangana,Siddipet,692,Telangana,Siddipet,FALSE
+36,Telangana,Suryapet,696,Telangana,Suryapet,FALSE
+36,Telangana,Vikarabad,698,Telangana,Vikarabad,FALSE
+36,Telangana,Wanaparthy,693,Telangana,Wanaparthy,FALSE
+36,Telangana,Warangal_Rural,522,Telangana,Warangal Rural,TRUE
+36,Telangana,Warangal_Urban,686,Telangana,Warangal Urban,TRUE
+36,Telangana,Yadadri Bhuvanagiri,697,Telangana,Yadadri Bhuvanagiri,FALSE
+16,Tripura,Dhalai,269,Tripura,Dhalai,FALSE
+16,Tripura,Gomati,654,Tripura,Gomati,FALSE
+16,Tripura,Khowai,652,Tripura,Khowai,FALSE
+16,Tripura,North Tripura,270,Tripura,North Tripura,FALSE
+16,Tripura,Sepahijala,653,Tripura,Sipahijala,TRUE
+16,Tripura,South Tripura,271,Tripura,South Tripura,FALSE
+16,Tripura,Unakoti,655,Tripura,Unokoti,TRUE
+16,Tripura,West Tripura,272,Tripura,West Tripura,FALSE
+9,Uttar Pradesh,Agra,118,Uttar Pradesh,Agra,FALSE
+9,Uttar Pradesh,Aligarh,119,Uttar Pradesh,Aligarh,FALSE
+9,Uttar Pradesh,Ambedkar Nagar,121,Uttar Pradesh,Ambedkar Nagar,FALSE
+9,Uttar Pradesh,Amethi,640,Uttar Pradesh,Amethi,FALSE
+9,Uttar Pradesh,Amroha,154,Uttar Pradesh,Amroha,FALSE
+9,Uttar Pradesh,Auraiya,122,Uttar Pradesh,Auraiya,FALSE
+9,Uttar Pradesh,Ayodhya,140,Uttar Pradesh,Ayodhya,FALSE
+9,Uttar Pradesh,Azamgarh,123,Uttar Pradesh,Azamgarh,FALSE
+9,Uttar Pradesh,Baghpat,124,Uttar Pradesh,Baghpat,FALSE
+9,Uttar Pradesh,Bahraich,125,Uttar Pradesh,Bahraich,FALSE
+9,Uttar Pradesh,Ballia,126,Uttar Pradesh,Ballia,FALSE
+9,Uttar Pradesh,Balrampur,127,Uttar Pradesh,Balrampur,FALSE
+9,Uttar Pradesh,Banda,128,Uttar Pradesh,Banda,FALSE
+9,Uttar Pradesh,Barabanki,129,Uttar Pradesh,Barabanki,FALSE
+9,Uttar Pradesh,Bareilly,130,Uttar Pradesh,Bareilly,FALSE
+9,Uttar Pradesh,Basti,131,Uttar Pradesh,Basti,FALSE
+9,Uttar Pradesh,Bhadohi,179,Uttar Pradesh,Bhadohi,FALSE
+9,Uttar Pradesh,Bijnor,132,Uttar Pradesh,Bijnor,FALSE
+9,Uttar Pradesh,Budaun,133,Uttar Pradesh,Budaun,FALSE
+9,Uttar Pradesh,Bulandshahr,134,Uttar Pradesh,Bulandshahr,FALSE
+9,Uttar Pradesh,Chandauli,135,Uttar Pradesh,Chandauli,FALSE
+9,Uttar Pradesh,Chitrakoot,136,Uttar Pradesh,Chitrakoot,FALSE
+9,Uttar Pradesh,Deoria,137,Uttar Pradesh,Deoria,FALSE
+9,Uttar Pradesh,Etah,138,Uttar Pradesh,Etah,FALSE
+9,Uttar Pradesh,Etawah,139,Uttar Pradesh,Etawah,FALSE
+9,Uttar Pradesh,Farrukhabad,141,Uttar Pradesh,Farrukhabad,FALSE
+9,Uttar Pradesh,Fatehpur,142,Uttar Pradesh,Fatehpur,FALSE
+9,Uttar Pradesh,Firozabad,143,Uttar Pradesh,Firozabad,FALSE
+9,Uttar Pradesh,Gautam Buddha Nagar,144,Uttar Pradesh,Gautam Buddha Nagar,FALSE
+9,Uttar Pradesh,Ghaziabad,145,Uttar Pradesh,Ghaziabad,FALSE
+9,Uttar Pradesh,Ghazipur,146,Uttar Pradesh,Ghazipur,FALSE
+9,Uttar Pradesh,Gonda,147,Uttar Pradesh,Gonda,FALSE
+9,Uttar Pradesh,Gorakhpur,148,Uttar Pradesh,Gorakhpur,FALSE
+9,Uttar Pradesh,Hamirpur,149,Uttar Pradesh,Hamirpur,FALSE
+9,Uttar Pradesh,Hapur,661,Uttar Pradesh,Hapur,FALSE
+9,Uttar Pradesh,Hardoi,150,Uttar Pradesh,Hardoi,FALSE
+9,Uttar Pradesh,Hathras,163,Uttar Pradesh,Hathras,FALSE
+9,Uttar Pradesh,Jalaun,151,Uttar Pradesh,Jalaun,FALSE
+9,Uttar Pradesh,Jaunpur,152,Uttar Pradesh,Jaunpur,FALSE
+9,Uttar Pradesh,Jhansi,153,Uttar Pradesh,Jhansi,FALSE
+9,Uttar Pradesh,Kannauj,155,Uttar Pradesh,Kannauj,FALSE
+9,Uttar Pradesh,Kanpur Dehat,156,Uttar Pradesh,Kanpur Dehat,FALSE
+9,Uttar Pradesh,Kanpur Nagar,157,Uttar Pradesh,Kanpur Nagar,FALSE
+9,Uttar Pradesh,Kasganj,633,Uttar Pradesh,Kasganj,FALSE
+9,Uttar Pradesh,Kaushambi,158,Uttar Pradesh,Kaushambi,FALSE
+9,Uttar Pradesh,Kheri,159,Uttar Pradesh,Lakhimpur Kheri,TRUE
+9,Uttar Pradesh,Kushinagar,160,Uttar Pradesh,Kushinagar,FALSE
+9,Uttar Pradesh,Lalitpur,161,Uttar Pradesh,Lalitpur,FALSE
+9,Uttar Pradesh,Lucknow,162,Uttar Pradesh,Lucknow,FALSE
+9,Uttar Pradesh,Maharajganj,164,Uttar Pradesh,Maharajganj,FALSE
+9,Uttar Pradesh,Mahoba,165,Uttar Pradesh,Mahoba,FALSE
+9,Uttar Pradesh,Mainpuri,166,Uttar Pradesh,Mainpuri,FALSE
+9,Uttar Pradesh,Mathura,167,Uttar Pradesh,Mathura,FALSE
+9,Uttar Pradesh,Mau,168,Uttar Pradesh,Mau,FALSE
+9,Uttar Pradesh,Meerut,169,Uttar Pradesh,Meerut,FALSE
+9,Uttar Pradesh,Mirzapur,170,Uttar Pradesh,Mirzapur,FALSE
+9,Uttar Pradesh,Moradabad,171,Uttar Pradesh,Moradabad,FALSE
+9,Uttar Pradesh,Muzaffarnagar,172,Uttar Pradesh,Muzaffarnagar,FALSE
+9,Uttar Pradesh,Pilibhit,173,Uttar Pradesh,Pilibhit,FALSE
+9,Uttar Pradesh,Pratapgarh,174,Uttar Pradesh,Pratapgarh,FALSE
+9,Uttar Pradesh,Prayagraj,120,Uttar Pradesh,Prayagraj,FALSE
+9,Uttar Pradesh,Rae Bareli,175,Uttar Pradesh,Rae Bareli,FALSE
+9,Uttar Pradesh,Rampur,176,Uttar Pradesh,Rampur,FALSE
+9,Uttar Pradesh,Saharanpur,177,Uttar Pradesh,Saharanpur,FALSE
+9,Uttar Pradesh,Sambhal,659,Uttar Pradesh,Sambhal,FALSE
+9,Uttar Pradesh,Sant Kabeer Nagar,178,Uttar Pradesh,Sant Kabir Nagar,TRUE
+9,Uttar Pradesh,Shahjahanpur,180,Uttar Pradesh,Shahjahanpur,FALSE
+9,Uttar Pradesh,Shamli,660,Uttar Pradesh,Shamli,FALSE
+9,Uttar Pradesh,Shravasti,181,Uttar Pradesh,Shrawasti,TRUE
+9,Uttar Pradesh,Siddharth Nagar,182,Uttar Pradesh,Siddharthnagar,TRUE
+9,Uttar Pradesh,Sitapur,183,Uttar Pradesh,Sitapur,FALSE
+9,Uttar Pradesh,Sonbhadra,184,Uttar Pradesh,Sonbhadra,FALSE
+9,Uttar Pradesh,Sultanpur,185,Uttar Pradesh,Sultanpur,FALSE
+9,Uttar Pradesh,Unnao,186,Uttar Pradesh,Unnao,FALSE
+9,Uttar Pradesh,Varanasi,187,Uttar Pradesh,Varanasi,FALSE
+5,Uttrakhand,Almora,45,Uttarakhand,Almora,FALSE
+5,Uttrakhand,Bageshwar,46,Uttarakhand,Bageshwar,FALSE
+5,Uttrakhand,Chamoli,47,Uttarakhand,Chamoli,FALSE
+5,Uttrakhand,Champawat,48,Uttarakhand,Champawat,FALSE
+5,Uttrakhand,Dehradun,49,Uttarakhand,Dehradun,FALSE
+5,Uttrakhand,Haridwar,50,Uttarakhand,Haridwar,FALSE
+5,Uttrakhand,Nainital,51,Uttarakhand,Nainital,FALSE
+5,Uttrakhand,Pauri Garhwal,52,Uttarakhand,Pauri Garhwal,FALSE
+5,Uttrakhand,Pithoragarh,53,Uttarakhand,Pithoragarh,FALSE
+5,Uttrakhand,Rudra Prayag,54,Uttarakhand,Rudraprayag,TRUE
+5,Uttrakhand,Tehri Garhwal,55,Uttarakhand,Tehri Garhwal,FALSE
+5,Uttrakhand,Udam Singh Nagar,56,Uttarakhand,Udham Singh Nagar,TRUE
+5,Uttrakhand,Uttar Kashi,57,Uttarakhand,Uttarkashi,TRUE
+19,West Bengal,24 Paraganas North,303,West Bengal,North 24 Parganas,TRUE
+19,West Bengal,24 Paraganas South,304,West Bengal,South 24 Parganas,TRUE
+19,West Bengal,Alipurduar,664,West Bengal,Alipurduar,FALSE
+19,West Bengal,Bankura,305,West Bengal,Bankura,FALSE
+19,West Bengal,Birbhum,307,West Bengal,Birbhum,FALSE
+19,West Bengal,Coochbehar,308,West Bengal,Cooch Behar,TRUE
+19,West Bengal,Darjiling,309,West Bengal,Darjeeling,TRUE
+19,West Bengal,Dinajpur Dakshin,310,West Bengal,Dakshin Dinajpur,TRUE
+19,West Bengal,Dinajpur Uttar,311,West Bengal,Uttar Dinajpur,TRUE
+19,West Bengal,Hooghly,312,West Bengal,Hooghly,FALSE
+19,West Bengal,Howrah,313,West Bengal,Howrah,FALSE
+19,West Bengal,Jalpaiguri,314,West Bengal,Jalpaiguri,FALSE
+19,West Bengal,Jhargram,703,West Bengal,Jhargram,FALSE
+19,West Bengal,Kalimpong,702,West Bengal,Kalimpong,FALSE
+19,West Bengal,Kolkata,315,West Bengal,Kolkata,FALSE
+19,West Bengal,Maldah,316,West Bengal,Malda,TRUE
+19,West Bengal,Medinipur East,317,West Bengal,Purba Medinipur,TRUE
+19,West Bengal,Medinipur West,318,West Bengal,Paschim Medinipur,TRUE
+19,West Bengal,Murshidabad,319,West Bengal,Murshidabad,FALSE
+19,West Bengal,Nadia,320,West Bengal,Nadia,FALSE
+19,West Bengal,Paschim Bardhaman,704,West Bengal,Paschim Bardhaman,FALSE
+19,West Bengal,Purba Bardhaman,306,West Bengal,Purba Bardhaman,FALSE
+19,West Bengal,Puruliya,321,West Bengal,Purulia,TRUE
+33,Tamil Nadu,Tirupathur,732,Tamil Nadu,Tirupathur,FALSE
+33,Tamil Nadu,Tenkasi,733,Tamil Nadu,Tenkasi,FALSE
+22,Chhattisgarh,Gaurella Pendra Marwahi,734,Chhattisgarh,Gaurela Pendra Marwahi,TRUE
+23,Madhya Pradesh,East Nimar,405,Madhya Pradesh,Khandwa,TRUE
+33,Tamil Nadu,Chengalpattu,730,Tamil Nadu,Chengalpattu,FALSE
+33,Tamil Nadu,Kallakurichi,729,Tamil Nadu,Kallakurichi,FALSE
+33,Tamil Nadu,Ranipet,731,Tamil Nadu,Ranipet,FALSE

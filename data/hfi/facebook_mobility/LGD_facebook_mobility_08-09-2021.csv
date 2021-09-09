@@ -1,0 +1,654 @@
+dist_lower,state_name,state_code,district_name,district_code
+north and middle andaman,Andaman and Nicobar Islands                   ,35,North and Middle Andaman,632
+south andaman,Andaman and Nicobar Islands                   ,35,South Andamans,602
+north goa,Goa                                               ,30,North Goa,551
+south goa,Goa                                               ,30,South Goa,552
+dahod,Gujarat                                           ,24,Dohad,445
+devbhumi dwarka,Gujarat                                           ,24,Devbhumi Dwarka,674
+gandhinagar,Gujarat                                           ,24,Gandhinagar,446
+gir somnath,Gujarat                                           ,24,Gir Somnath,675
+jamnagar,Gujarat                                           ,24,Jamnagar,447
+junagadh,Gujarat                                           ,24,Junagadh,448
+kachchh,Gujarat                                           ,24,Kachchh,449
+kheda,Gujarat                                           ,24,Kheda,450
+mahesana,Gujarat                                           ,24,Mahesana,451
+mahisagar,Gujarat                                           ,24,Mahisagar,669
+ahmadabad,Gujarat                                           ,24,Ahmadabad,438
+morbi,Gujarat                                           ,24,Morbi,673
+narmada,Gujarat                                           ,24,Narmada,452
+navsari,Gujarat                                           ,24,Navsari,453
+panch mahals,Gujarat                                           ,24,Panch Mahals,454
+patan,Gujarat                                           ,24,Patan,455
+porbandar,Gujarat                                           ,24,Porbandar,456
+rajkot,Gujarat                                           ,24,Rajkot,457
+sabar kantha,Gujarat                                           ,24,Sabar Kantha,458
+surat,Gujarat                                           ,24,Surat,459
+surendranagar,Gujarat                                           ,24,Surendranagar,460
+amreli,Gujarat                                           ,24,Amreli,439
+tapi,Gujarat                                           ,24,Tapi,641
+the dangs,Gujarat                                           ,24,Dang,444
+vadodara,Gujarat                                           ,24,Vadodara,461
+valsad,Gujarat                                           ,24,Valsad,462
+anand,Gujarat                                           ,24,Anand,440
+aravalli,Gujarat                                           ,24,Arvalli,672
+banas kantha,Gujarat                                           ,24,Banas Kantha,441
+bharuch,Gujarat                                           ,24,Bharuch,442
+bhavnagar,Gujarat                                           ,24,Bhavnagar,443
+botad,Gujarat                                           ,24,Botad,676
+chhota udaipur,Gujarat                                           ,24,Chhotaudepur,668
+karnal,Haryana                                           ,6,Karnal,67
+kurukshetra,Haryana                                           ,6,Kurukshetra,68
+mahendragarh,Haryana                                           ,6,Mahendragarh,69
+mewat,Haryana                                           ,6,Nuh,604
+palwal,Haryana                                           ,6,Palwal,619
+panchkula,Haryana                                           ,6,Panchkula,70
+panipat,Haryana                                           ,6,Panipat,71
+rewari,Haryana                                           ,6,Rewari,72
+rohtak,Haryana                                           ,6,Rohtak,73
+sirsa,Haryana                                           ,6,Sirsa,74
+ambala,Haryana                                           ,6,Ambala,58
+sonipat,Haryana                                           ,6,Sonipat,75
+yamunanagar,Haryana                                           ,6,Yamunanagar,76
+bhiwani,Haryana                                           ,6,Bhiwani,59
+faridabad,Haryana                                           ,6,Faridabad,60
+fatehabad,Haryana                                           ,6,Fatehabad,61
+gurgaon,Haryana                                           ,6,Gurugram,62
+hisar,Haryana                                           ,6,Hisar,63
+jhajjar,Haryana                                           ,6,Jhajjar,64
+jind,Haryana                                           ,6,Jind,65
+kaithal,Haryana                                           ,6,Kaithal,66
+sirmaur,Himachal Pradesh                                  ,2,Sirmaur,24
+solan,Himachal Pradesh                                  ,2,Solan,25
+una,Himachal Pradesh                                  ,2,Una,26
+bilaspur,Chhattisgarh                                      ,22,Bilaspur,375
+bilaspur,Himachal Pradesh                                  ,2,Bilaspur,15
+chamba,Himachal Pradesh                                  ,2,Chamba,16
+hamirpur,Himachal Pradesh                                  ,2,Hamirpur,17
+hamirpur,Uttar Pradesh                                     ,9,Hamirpur,149
+kangra,Himachal Pradesh                                  ,2,Kangra,18
+kinnaur,Himachal Pradesh                                  ,2,Kinnaur,19
+kullu,Himachal Pradesh                                  ,2,Kullu,20
+lahul & spiti,Himachal Pradesh                                  ,2,Lahul and Spiti,21
+mandi,Himachal Pradesh                                  ,2,Mandi,22
+shimla,Himachal Pradesh                                  ,2,Shimla,23
+kishtwar,Jammu and Kashmir,1,Kishtwar,620
+kulgam,Jammu and Kashmir,1,Kulgam,622
+kupwara,Jammu and Kashmir,1,Kupwara,8
+leh (ladakh),Ladakh,37,Leh Ladakh,9
+poonch,Jammu and Kashmir,1,Poonch,10
+pulwama,Jammu and Kashmir,1,Pulwama,11
+rajouri,Jammu and Kashmir,1,Rajouri,12
+ramban,Jammu and Kashmir,1,Ramban,621
+reasi,Jammu and Kashmir,1,Reasi,627
+samba,Jammu and Kashmir,1,Samba,624
+anantnag,Jammu and Kashmir,1,Anantnag,1
+shupiyan,Jammu and Kashmir,1,Shopian,625
+srinagar,Jammu and Kashmir,1,Srinagar,13
+udhampur,Jammu and Kashmir,1,Udhampur,14
+badgam,Jammu and Kashmir,1,Budgam,2
+bandipore,Jammu and Kashmir,1,Bandipora,623
+baramulla,Jammu and Kashmir,1,Baramulla,3
+doda,Jammu and Kashmir,1,Doda,4
+ganderbal,Jammu and Kashmir,1,Ganderbal,626
+jammu,Jammu and Kashmir,1,Jammu,5
+kargil,Ladakh,37,Kargil,6
+kathua,Jammu and Kashmir,1,Kathua,7
+hazaribagh,Jharkhand                                         ,20,Hazaribagh,332
+jamtara,Jharkhand                                         ,20,Jamtara,333
+khunti,Jharkhand                                         ,20,Khunti,606
+kodarma,Jharkhand                                         ,20,Koderma,334
+latehar,Jharkhand                                         ,20,Latehar,335
+lohardaga,Jharkhand                                         ,20,Lohardaga,336
+pakur,Jharkhand                                         ,20,Pakur,337
+palamu,Jharkhand                                         ,20,Palamu,338
+pashchimi singhbhum,Jharkhand                                         ,20,West Singhbhum,343
+purbi singhbhum,Jharkhand                                         ,20,East Singhbum,327
+bokaro,Jharkhand                                         ,20,Bokaro,322
+ramgarh,Jharkhand                                         ,20,Ramgarh,607
+ranchi,Jharkhand                                         ,20,Ranchi,339
+sahibganj,Jharkhand                                         ,20,Sahebganj,340
+saraikela-kharsawan,Jharkhand                                         ,20,Saraikela Kharsawan,341
+simdega,Jharkhand                                         ,20,Simdega,342
+chatra,Jharkhand                                         ,20,Chatra,323
+deoghar,Jharkhand                                         ,20,Deoghar,324
+dhanbad,Jharkhand                                         ,20,Dhanbad,325
+dumka,Jharkhand                                         ,20,Dumka,326
+garhwa,Jharkhand                                         ,20,Garhwa,328
+giridih,Jharkhand                                         ,20,Giridih,329
+godda,Jharkhand                                         ,20,Godda,330
+gumla,Jharkhand                                         ,20,Gumla,331
+chikmagalur,Karnataka                                         ,29,Chikkamagaluru,532
+chitradurga,Karnataka                                         ,29,Chitradurga,533
+dakshina kannada,Karnataka                                         ,29,Dakshina Kannada,534
+davanagere,Karnataka                                         ,29,Davangere,535
+dharwad,Karnataka                                         ,29,Dharwad,536
+gadag,Karnataka                                         ,29,Gadag,537
+gulbarga,Karnataka                                         ,29,Kalaburagi,538
+hassan,Karnataka                                         ,29,Hassan,539
+haveri,Karnataka                                         ,29,Haveri,540
+kodagu,Karnataka                                         ,29,Kodagu,541
+bagalkot,Karnataka                                         ,29,Bagalkote,524
+kolar,Karnataka                                         ,29,Kolar,542
+koppal,Karnataka                                         ,29,Koppal,543
+mandya,Karnataka                                         ,29,Mandya,544
+mysore,Karnataka                                         ,29,Mysuru,545
+raichur,Karnataka                                         ,29,Raichur,546
+ramanagara,Karnataka                                         ,29,Ramanagara,631
+shimoga,Karnataka                                         ,29,Shivamogga,547
+tumkur,Karnataka                                         ,29,Tumakuru,548
+udupi,Karnataka                                         ,29,Udupi,549
+uttara kannada,Karnataka                                         ,29,Uttara Kannada,550
+bangalore rural,Karnataka                                         ,29,Bengaluru Rural,526
+yadgir,Karnataka                                         ,29,Yadgir,635
+bangalore,Karnataka                                         ,29,Bengaluru Urban,525
+belgaum,Karnataka                                         ,29,Belagavi,527
+bellary,Karnataka                                         ,29,Ballari,528
+bidar,Karnataka                                         ,29,Bidar,529
+bijapur,Chhattisgarh                                      ,22,Bijapur,636
+chamrajnagar,Karnataka                                         ,29,Chamarajanagara,531
+chikballapura,Karnataka                                         ,29,Chikkaballapura,630
+palakkad,Kerala                                            ,32,Palakkad,563
+pathanamthitta,Kerala                                            ,32,Pathanamthitta,564
+thiruvananthapuram,Kerala                                            ,32,Thiruvananthapuram,565
+thrissur,Kerala                                            ,32,Thrissur,566
+wayanad,Kerala                                            ,32,Wayanad,567
+alappuzha,Kerala                                            ,32,Alappuzha,554
+ernakulam,Kerala                                            ,32,Ernakulam,555
+idukki,Kerala                                            ,32,Idukki,556
+kannur,Kerala                                            ,32,Kannur,557
+kasaragod,Kerala                                            ,32,Kasaragod,558
+kollam,Kerala                                            ,32,Kollam,559
+kottayam,Kerala                                            ,32,Kottayam,560
+kozhikode,Kerala                                            ,32,Kozhikode,561
+malappuram,Kerala                                            ,32,Malappuram,562
+lakshadweep,Lakshadweep                                       ,31,Lakshadweep District,553
+burhanpur,Madhya Pradesh                                    ,23,Burhanpur,397
+chhatarpur,Madhya Pradesh                                    ,23,Chhatarpur,398
+chhindwara,Madhya Pradesh                                    ,23,Chhindwara,399
+damoh,Madhya Pradesh                                    ,23,Damoh,400
+datia,Madhya Pradesh                                    ,23,Datia,401
+dewas,Madhya Pradesh                                    ,23,Dewas,402
+dhar,Madhya Pradesh                                    ,23,Dhar,403
+dindori,Madhya Pradesh                                    ,23,Dindori,404
+east nimar,Madhya Pradesh                                    ,23,East Nimar,405
+guna,Madhya Pradesh                                    ,23,Guna,406
+agar malwa,Madhya Pradesh                                    ,23,Agar Malwa,667
+gwalior,Madhya Pradesh                                    ,23,Gwalior,407
+harda,Madhya Pradesh                                    ,23,Harda,408
+hoshangabad,Madhya Pradesh                                    ,23,Hoshangabad,409
+indore,Madhya Pradesh                                    ,23,Indore,410
+jabalpur,Madhya Pradesh                                    ,23,Jabalpur,411
+jhabua,Madhya Pradesh                                    ,23,Jhabua,412
+katni,Madhya Pradesh                                    ,23,Katni,413
+mandla,Madhya Pradesh                                    ,23,Mandla,415
+mandsaur,Madhya Pradesh                                    ,23,Mandsaur,416
+morena,Madhya Pradesh                                    ,23,Morena,417
+alirajpur,Madhya Pradesh                                    ,23,Alirajpur,639
+narsimhapur,Madhya Pradesh                                    ,23,Narsinghpur,418
+neemuch,Madhya Pradesh                                    ,23,Neemuch,419
+panna,Madhya Pradesh                                    ,23,Panna,420
+raisen,Madhya Pradesh                                    ,23,Raisen,421
+rajgarh,Madhya Pradesh                                    ,23,Rajgarh,422
+ratlam,Madhya Pradesh                                    ,23,Ratlam,423
+rewa,Madhya Pradesh                                    ,23,Rewa,424
+sagar,Madhya Pradesh                                    ,23,Sagar,425
+satna,Madhya Pradesh                                    ,23,Satna,426
+sehore,Madhya Pradesh                                    ,23,Sehore,427
+anuppur,Madhya Pradesh                                    ,23,Anuppur,390
+seoni,Madhya Pradesh                                    ,23,Seoni,428
+shahdol,Madhya Pradesh                                    ,23,Shahdol,429
+shajapur,Madhya Pradesh                                    ,23,Shajapur,430
+sheopur,Madhya Pradesh                                    ,23,Sheopur,431
+shivpuri,Madhya Pradesh                                    ,23,Shivpuri,432
+sidhi,Madhya Pradesh                                    ,23,Sidhi,433
+singrauli,Madhya Pradesh                                    ,23,Singrauli,638
+tikamgarh,Madhya Pradesh                                    ,23,Tikamgarh,434
+ujjain,Madhya Pradesh                                    ,23,Ujjain,435
+umaria,Madhya Pradesh                                    ,23,Umaria,436
+ashoknagar,Madhya Pradesh                                    ,23,Ashoknagar,391
+vidisha,Madhya Pradesh                                    ,23,Vidisha,437
+west nimar,Madhya Pradesh                                    ,23,Khargone,414
+balaghat,Madhya Pradesh                                    ,23,Balaghat,392
+barwani,Madhya Pradesh                                    ,23,Barwani,393
+betul,Madhya Pradesh                                    ,23,Betul,394
+bhind,Madhya Pradesh                                    ,23,Bhind,395
+bhopal,Madhya Pradesh                                    ,23,Bhopal,396
+visakhapatnam,Andhra Pradesh                                    ,28,Visakhapatanam,520
+vizianagaram,Andhra Pradesh                                    ,28,Vizianagaram,521
+west godavari,Andhra Pradesh                                    ,28,West Godavari,523
+y.s.r.,Andhra Pradesh                                    ,28,Y.S.R.,504
+anantapur,Andhra Pradesh                                    ,28,Anantapur,502
+chittoor,Andhra Pradesh                                    ,28,Chittoor,503
+east godavari,Andhra Pradesh                                    ,28,East Godavari,505
+guntur,Andhra Pradesh                                    ,28,Guntur,506
+krishna,Andhra Pradesh                                    ,28,Krishna,510
+kurnool,Andhra Pradesh                                    ,28,Kurnool,511
+nellore,Andhra Pradesh                                    ,28,Spsr Nellore,515
+prakasam,Andhra Pradesh                                    ,28,Prakasam,517
+srikakulam,Andhra Pradesh                                    ,28,Srikakulam,519
+garhchiroli,Maharashtra                                       ,27,Gadchiroli,475
+gondiya,Maharashtra                                       ,27,Gondia,476
+hingoli,Maharashtra                                       ,27,Hingoli,477
+jalgaon,Maharashtra                                       ,27,Jalgaon,478
+jalna,Maharashtra                                       ,27,Jalna,479
+kolhapur,Maharashtra                                       ,27,Kolhapur,480
+latur,Maharashtra                                       ,27,Latur,481
+mumbai city,Maharashtra                                       ,27,Mumbai,482
+mumbai suburban,Maharashtra                                       ,27,Mumbai Suburban,483
+nagpur,Maharashtra                                       ,27,Nagpur,484
+ahmadnagar,Maharashtra                                       ,27,Ahmednagar,466
+nanded,Maharashtra                                       ,27,Nanded,485
+nandurbar,Maharashtra                                       ,27,Nandurbar,486
+nashik,Maharashtra                                       ,27,Nashik,487
+osmanabad,Maharashtra                                       ,27,Osmanabad,488
+palghar,Maharashtra                                       ,27,Palghar,665
+parbhani,Maharashtra                                       ,27,Parbhani,489
+pune,Maharashtra                                       ,27,Pune,490
+raigarh,Chhattisgarh                                      ,22,Raigarh,386
+ratnagiri,Maharashtra                                       ,27,Ratnagiri,492
+sangli,Maharashtra                                       ,27,Sangli,493
+akola,Maharashtra                                       ,27,Akola,467
+satara,Maharashtra                                       ,27,Satara,494
+sindhudurg,Maharashtra                                       ,27,Sindhudurg,495
+solapur,Maharashtra                                       ,27,Solapur,496
+thane,Maharashtra                                       ,27,Thane,497
+wardha,Maharashtra                                       ,27,Wardha,498
+washim,Maharashtra                                       ,27,Washim,499
+yavatmal,Maharashtra                                       ,27,Yavatmal,500
+amravati,Maharashtra                                       ,27,Amravati,468
+aurangabad,Bihar                                             ,10,Aurangabad,189
+aurangabad,Maharashtra                                       ,27,Aurangabad,469
+bhandara,Maharashtra                                       ,27,Bhandara,471
+bid,Maharashtra                                       ,27,Beed,470
+buldana,Maharashtra                                       ,27,Buldhana,472
+chandrapur,Maharashtra                                       ,27,Chandrapur,473
+dhule,Maharashtra                                       ,27,Dhule,474
+bishnupur,Manipur                                           ,14,Bishnupur,252
+chandel,Manipur                                           ,14,Chandel,253
+churachandpur,Manipur                                           ,14,Churachandpur,254
+imphal east,Manipur                                           ,14,Imphal East,255
+imphal west,Manipur                                           ,14,Imphal West,256
+senapati,Manipur                                           ,14,Senapati,257
+tamenglong,Manipur                                           ,14,Tamenglong,258
+thoubal,Manipur                                           ,14,Thoubal,259
+ukhrul,Manipur                                           ,14,Ukhrul,260
+west khasi hills,Meghalaya                                         ,17,West Khasi Hills,279
+east garo hills,Meghalaya                                         ,17,East Garo Hills,273
+east khasi hills,Meghalaya                                         ,17,East Khasi Hills,274
+jaintia hills,Meghalaya                                         ,17,West Jaintia Hills,275
+north garo hills,Meghalaya                                         ,17,North Garo Hills,656
+ri bhoi,Meghalaya                                         ,17,Ri Bhoi,276
+south west garo hills,Meghalaya                                         ,17,South West Garo Hills,663
+west garo hills,Meghalaya                                         ,17,West Garo Hills,278
+aizawl,Mizoram                                           ,15,Aizawl,261
+champhai,Mizoram                                           ,15,Champhai,262
+kolasib,Mizoram                                           ,15,Kolasib,263
+lawangtlai,Mizoram                                           ,15,Lawngtlai,264
+lunglei,Mizoram                                           ,15,Lunglei,265
+mamit,Mizoram                                           ,15,Mamit,266
+saiha,Mizoram                                           ,15,Saiha,267
+serchhip,Mizoram                                           ,15,Serchhip,268
+wokha,Nagaland                                          ,13,Wokha,250
+zunheboto,Nagaland                                          ,13,Zunheboto,251
+dimapur,Nagaland                                          ,13,Dimapur,244
+kohima,Nagaland                                          ,13,Kohima,245
+mokokchung,Nagaland                                          ,13,Mokokchung,246
+mon,Nagaland                                          ,13,Mon,247
+phek,Nagaland                                          ,13,Phek,248
+tuensang,Nagaland                                          ,13,Tuensang,249
+west,Delhi                                             ,7,West,85
+gajapati,Odisha,21,Gajapati,353
+ganjam,Odisha,21,Ganjam,354
+jagatsinghapur,Odisha,21,Jagatsinghapur,355
+jajapur,Odisha,21,Jajapur,356
+jharsuguda,Odisha,21,Jharsuguda,357
+kalahandi,Odisha,21,Kalahandi,358
+kandhamal,Odisha,21,Kandhamal,359
+kendrapara,Odisha,21,Kendrapara,360
+kendujhar,Odisha,21,Kendujhar,361
+khordha,Odisha,21,Khordha,362
+anugul,Odisha,21,Anugul,344
+koraput,Odisha,21,Koraput,363
+malkangiri,Odisha,21,Malkangiri,364
+mayurbhanj,Odisha,21,Mayurbhanj,365
+nabarangapur,Odisha,21,Nabarangpur,366
+nayagarh,Odisha,21,Nayagarh,367
+nuapada,Odisha,21,Nuapada,368
+puri,Odisha,21,Puri,369
+rayagada,Odisha,21,Rayagada,370
+sambalpur,Odisha,21,Sambalpur,371
+subarnapur,Odisha,21,Sonepur,372
+balangir,Odisha,21,Balangir,345
+sundargarh,Odisha,21,Sundargarh,373
+baleshwar,Odisha,21,Baleshwar,346
+bargarh,Odisha,21,Bargarh,347
+bauda,Odisha,21,Boudh,349
+bhadrak,Odisha,21,Bhadrak,348
+cuttack,Odisha,21,Cuttack,350
+debagarh,Odisha,21,Deogarh,351
+dhenkanal,Odisha,21,Dhenkanal,352
+karaikal,Puducherry,34,Karaikal,598
+mahe,Puducherry,34,Mahe,599
+puducherry,Puducherry,34,Pondicherry,600
+yanam,Puducherry,34,Yanam,601
+jalandhar,Punjab                                            ,3,Jalandhar,34
+kapurthala,Punjab                                            ,3,Kapurthala,35
+ludhiana,Punjab                                            ,3,Ludhiana,36
+mansa,Punjab                                            ,3,Mansa,37
+moga,Punjab                                            ,3,Moga,38
+muktsar,Punjab                                            ,3,Sri Muktsar Sahib,39
+pathankot,Punjab                                            ,3,Pathankot,662
+patiala,Punjab                                            ,3,Patiala,41
+rupnagar,Punjab                                            ,3,Rupnagar,42
+sahibzada ajit singh nagar,Punjab                                            ,3,S.A.S Nagar,608
+amritsar,Punjab                                            ,3,Amritsar,27
+sangrur,Punjab                                            ,3,Sangrur,43
+shahid bhagat singh nagar,Punjab                                            ,3,Shahid Bhagat Singh Nagar,40
+tarn taran,Punjab                                            ,3,Tarn Taran,609
+barnala,Punjab                                            ,3,Barnala,605
+bathinda,Punjab                                            ,3,Bathinda,28
+faridkot,Punjab                                            ,3,Faridkot,29
+fatehgarh sahib,Punjab                                            ,3,Fatehgarh Sahib,30
+fazilka,Punjab                                            ,3,Fazilka,651
+firozpur,Punjab                                            ,3,Firozepur,31
+gurdaspur,Punjab                                            ,3,Gurdaspur,32
+hoshiarpur,Punjab                                            ,3,Hoshiarpur,33
+chittaurgarh,Rajasthan                                         ,8,Chittorgarh,95
+churu,Rajasthan                                         ,8,Churu,96
+dausa,Rajasthan                                         ,8,Dausa,97
+dhaulpur,Rajasthan                                         ,8,Dholpur,98
+dungarpur,Rajasthan                                         ,8,Dungarpur,99
+ganganagar,Rajasthan                                         ,8,Ganganagar,100
+hanumangarh,Rajasthan                                         ,8,Hanumangarh,101
+jaipur,Rajasthan                                         ,8,Jaipur,102
+jaisalmer,Rajasthan                                         ,8,Jaisalmer,103
+jalor,Rajasthan                                         ,8,Jalore,104
+ajmer,Rajasthan                                         ,8,Ajmer,86
+jhalawar,Rajasthan                                         ,8,Jhalawar,105
+jhunjhunun,Rajasthan                                         ,8,Jhunjhunu,106
+jodhpur,Rajasthan                                         ,8,Jodhpur,107
+karauli,Rajasthan                                         ,8,Karauli,108
+kota,Rajasthan                                         ,8,Kota,109
+nagaur,Rajasthan                                         ,8,Nagaur,110
+pali,Rajasthan                                         ,8,Pali,111
+pratapgarh,Rajasthan                                         ,8,Pratapgarh,629
+pratapgarh,Uttar Pradesh                                     ,9,Pratapgarh,174
+rajsamand,Rajasthan                                         ,8,Rajsamand,112
+sawai madhopur,Rajasthan                                         ,8,Sawai Madhopur,113
+alwar,Rajasthan                                         ,8,Alwar,87
+sikar,Rajasthan                                         ,8,Sikar,114
+sirohi,Rajasthan                                         ,8,Sirohi,115
+tonk,Rajasthan                                         ,8,Tonk,116
+udaipur,Rajasthan                                         ,8,Udaipur,117
+banswara,Rajasthan                                         ,8,Banswara,88
+baran,Rajasthan                                         ,8,Baran,89
+barmer,Rajasthan                                         ,8,Barmer,90
+bharatpur,Rajasthan                                         ,8,Bharatpur,91
+bhilwara,Rajasthan                                         ,8,Bhilwara,92
+bikaner,Rajasthan                                         ,8,Bikaner,93
+bundi,Rajasthan                                         ,8,Bundi,94
+lower subansiri,Arunachal Pradesh                                 ,12,Lower Subansiri,236
+namsai,Arunachal Pradesh                                 ,12,Namsai,678
+papum pare,Arunachal Pradesh                                 ,12,Papum Pare,237
+tawang,Arunachal Pradesh                                 ,12,Tawang,238
+tirap,Arunachal Pradesh                                 ,12,Tirap,239
+upper subansiri,Arunachal Pradesh                                 ,12,Upper Subansiri,241
+west kameng,Arunachal Pradesh                                 ,12,West Kameng,242
+west siang,Arunachal Pradesh                                 ,12,West Siang,243
+changlang,Arunachal Pradesh                                 ,12,Changlang,229
+east kameng,Arunachal Pradesh                                 ,12,East Kameng,231
+east siang,Arunachal Pradesh                                 ,12,East Siang,232
+lohit,Arunachal Pradesh                                 ,12,Lohit,234
+lower dibang valley,Arunachal Pradesh                                 ,12,Lower Dibang Valley,235
+east sikkim,Sikkim                                            ,11,East District,225
+north sikkim,Sikkim                                            ,11,North District,226
+south sikkim,Sikkim                                            ,11,South District,227
+west sikkim,Sikkim                                            ,11,West District,228
+karur,Tamil Nadu                                        ,33,Karur,576
+krishnagiri,Tamil Nadu                                        ,33,Krishnagiri,577
+madurai,Tamil Nadu                                        ,33,Madurai,578
+nagappattinam,Tamil Nadu                                        ,33,Nagapattinam,579
+namakkal,Tamil Nadu                                        ,33,Namakkal,580
+perambalur,Tamil Nadu                                        ,33,Perambalur,581
+pudukkottai,Tamil Nadu                                        ,33,Pudukkottai,582
+ramanathapuram,Tamil Nadu                                        ,33,Ramanathapuram,583
+salem,Tamil Nadu                                        ,33,Salem,584
+sivaganga,Tamil Nadu                                        ,33,Sivaganga,585
+ariyalur,Tamil Nadu                                        ,33,Ariyalur,610
+thanjavur,Tamil Nadu                                        ,33,Thanjavur,586
+the nilgiris,Tamil Nadu                                        ,33,The Nilgiris,587
+theni,Tamil Nadu                                        ,33,Theni,588
+thiruvallur,Tamil Nadu                                        ,33,Thiruvallur,589
+thiruvarur,Tamil Nadu                                        ,33,Thiruvarur,590
+thoothukkudi,Tamil Nadu                                        ,33,Tuticorin,594
+tiruchirappalli,Tamil Nadu                                        ,33,Tiruchirappalli,591
+tirunelveli,Tamil Nadu                                        ,33,Tirunelveli,592
+tiruppur,Tamil Nadu                                        ,33,Tiruppur,634
+tiruvannamalai,Tamil Nadu                                        ,33,Tiruvannamalai,593
+chennai,Tamil Nadu                                        ,33,Chennai,568
+vellore,Tamil Nadu                                        ,33,Vellore,595
+viluppuram,Tamil Nadu                                        ,33,Villupuram,596
+virudunagar,Tamil Nadu                                        ,33,Virudhunagar,597
+coimbatore,Tamil Nadu                                        ,33,Coimbatore,569
+cuddalore,Tamil Nadu                                        ,33,Cuddalore,570
+dharmapuri,Tamil Nadu                                        ,33,Dharmapuri,571
+dindigul,Tamil Nadu                                        ,33,Dindigul,572
+erode,Tamil Nadu                                        ,33,Erode,573
+kancheepuram,Tamil Nadu                                        ,33,Kanchipuram,574
+kanniyakumari,Tamil Nadu                                        ,33,Kanniyakumari,575
+warangal,Telangana,36,Warangal Rural,522
+adilabad,Telangana,36,Adilabad,501
+hyderabad,Telangana,36,Hyderabad,507
+karimnagar,Telangana,36,Karimnagar,508
+khammam,Telangana,36,Khammam,509
+mahbubnagar,Telangana,36,Mahabubnagar,512
+medak,Telangana,36,Medak,513
+nalgonda,Telangana,36,Nalgonda,514
+nizamabad,Telangana,36,Nizamabad,516
+ranga reddy,Telangana,36,Ranga Reddy,518
+dhalai,Tripura                                           ,16,Dhalai,269
+gomati,Tripura                                           ,16,Gomati,654
+khowai,Tripura                                           ,16,Khowai,652
+north tripura,Tripura                                           ,16,North Tripura,270
+sipahijala,Tripura                                           ,16,Sepahijala,653
+south tripura,Tripura                                           ,16,South Tripura,271
+unokoti,Tripura                                           ,16,Unakoti,655
+west tripura,Tripura                                           ,16,West Tripura,272
+bahraich,Uttar Pradesh                                     ,9,Bahraich,125
+ballia,Uttar Pradesh                                     ,9,Ballia,126
+balrampur,Chhattisgarh                                      ,22,Balrampur,649
+balrampur,Uttar Pradesh                                     ,9,Balrampur,127
+banda,Uttar Pradesh                                     ,9,Banda,128
+barabanki,Uttar Pradesh                                     ,9,Barabanki,129
+bareilly,Uttar Pradesh                                     ,9,Bareilly,130
+basti,Uttar Pradesh                                     ,9,Basti,131
+bijnor,Uttar Pradesh                                     ,9,Bijnor,132
+budaun,Uttar Pradesh                                     ,9,Budaun,133
+bulandshahr,Uttar Pradesh                                     ,9,Bulandshahr,134
+agra,Uttar Pradesh                                     ,9,Agra,118
+chandauli,Uttar Pradesh                                     ,9,Chandauli,135
+chitrakoot,Uttar Pradesh                                     ,9,Chitrakoot,136
+deoria,Uttar Pradesh                                     ,9,Deoria,137
+etah,Uttar Pradesh                                     ,9,Etah,138
+etawah,Uttar Pradesh                                     ,9,Etawah,139
+faizabad,Uttar Pradesh                                     ,9,Ayodhya,140
+farrukhabad,Uttar Pradesh                                     ,9,Farrukhabad,141
+fatehpur,Uttar Pradesh                                     ,9,Fatehpur,142
+firozabad,Uttar Pradesh                                     ,9,Firozabad,143
+gautam buddha nagar,Uttar Pradesh                                     ,9,Gautam Buddha Nagar,144
+aligarh,Uttar Pradesh                                     ,9,Aligarh,119
+ghaziabad,Uttar Pradesh                                     ,9,Ghaziabad,145
+ghazipur,Uttar Pradesh                                     ,9,Ghazipur,146
+gonda,Uttar Pradesh                                     ,9,Gonda,147
+gorakhpur,Uttar Pradesh                                     ,9,Gorakhpur,148
+hapur,Uttar Pradesh                                     ,9,Hapur,661
+hardoi,Uttar Pradesh                                     ,9,Hardoi,150
+hathras,Uttar Pradesh                                     ,9,Hathras,163
+jalaun,Uttar Pradesh                                     ,9,Jalaun,151
+jaunpur,Uttar Pradesh                                     ,9,Jaunpur,152
+allahabad,Uttar Pradesh                                     ,9,Prayagraj,120
+jhansi,Uttar Pradesh                                     ,9,Jhansi,153
+kannauj,Uttar Pradesh                                     ,9,Kannauj,155
+kanpur dehat,Uttar Pradesh                                     ,9,Kanpur Dehat,156
+kanpur nagar,Uttar Pradesh                                     ,9,Kanpur Nagar,157
+kasganj,Uttar Pradesh                                     ,9,Kasganj,633
+kaushambi,Uttar Pradesh                                     ,9,Kaushambi,158
+kushinagar,Uttar Pradesh                                     ,9,Kushi Nagar,160
+lakhimpur kheri,Uttar Pradesh                                     ,9,Kheri,159
+lalitpur,Uttar Pradesh                                     ,9,Lalitpur,161
+lucknow,Uttar Pradesh                                     ,9,Lucknow,162
+ambedkar nagar,Uttar Pradesh                                     ,9,Ambedkar Nagar,121
+maharajganj,Uttar Pradesh                                     ,9,Maharajganj,164
+mahoba,Uttar Pradesh                                     ,9,Mahoba,165
+mainpuri,Uttar Pradesh                                     ,9,Mainpuri,166
+mathura,Uttar Pradesh                                     ,9,Mathura,167
+mau,Uttar Pradesh                                     ,9,Mau,168
+meerut,Uttar Pradesh                                     ,9,Meerut,169
+mirzapur,Uttar Pradesh                                     ,9,Mirzapur,170
+moradabad,Uttar Pradesh                                     ,9,Moradabad,171
+muzaffarnagar,Uttar Pradesh                                     ,9,Muzaffarnagar,172
+pilibhit,Uttar Pradesh                                     ,9,Pilibhit,173
+amethi,Uttar Pradesh                                     ,9,Amethi,640
+rae bareli,Uttar Pradesh                                     ,9,Rae Bareli,175
+rampur,Uttar Pradesh                                     ,9,Rampur,176
+saharanpur,Uttar Pradesh                                     ,9,Saharanpur,177
+sambhal,Uttar Pradesh                                     ,9,Sambhal,659
+sant kabir nagar,Uttar Pradesh                                     ,9,Sant Kabeer Nagar,178
+sant ravi das nagar,Uttar Pradesh                                     ,9,Bhadohi,179
+shahjahanpur,Uttar Pradesh                                     ,9,Shahjahanpur,180
+shamli,Uttar Pradesh                                     ,9,Shamli,660
+shravasti,Uttar Pradesh                                     ,9,Shravasti,181
+amroha,Uttar Pradesh                                     ,9,Amroha,154
+siddharth nagar,Uttar Pradesh                                     ,9,Siddharth Nagar,182
+sitapur,Uttar Pradesh                                     ,9,Sitapur,183
+sonbhadra,Uttar Pradesh                                     ,9,Sonbhadra,184
+sultanpur,Uttar Pradesh                                     ,9,Sultanpur,185
+unnao,Uttar Pradesh                                     ,9,Unnao,186
+varanasi,Uttar Pradesh                                     ,9,Varanasi,187
+auraiya,Uttar Pradesh                                     ,9,Auraiya,122
+azamgarh,Uttar Pradesh                                     ,9,Azamgarh,123
+baghpat,Uttar Pradesh                                     ,9,Baghpat,124
+rudraprayag,Uttarakhand,5,Rudra Prayag,54
+tehri garhwal,Uttarakhand,5,Tehri Garhwal,55
+udham singh nagar,Uttarakhand,5,Udam Singh Nagar,56
+uttarkashi,Uttarakhand,5,Uttar Kashi,57
+almora,Uttarakhand,5,Almora,45
+bageshwar,Uttarakhand,5,Bageshwar,46
+chamoli,Uttarakhand,5,Chamoli,47
+champawat,Uttarakhand,5,Champawat,48
+dehradun,Uttarakhand,5,Dehradun,49
+garhwal,Uttarakhand,5,Pauri Garhwal,52
+hardwar,Uttarakhand,5,Haridwar,50
+nainital,Uttarakhand,5,Nainital,51
+pithoragarh,Uttarakhand,5,Pithoragarh,53
+koch bihar,West Bengal                                       ,19,Coochbehar,308
+kolkata,West Bengal                                       ,19,Kolkata,315
+maldah,West Bengal                                       ,19,Maldah,316
+murshidabad,West Bengal                                       ,19,Murshidabad,319
+nadia,West Bengal                                       ,19,Nadia,320
+north 24 parganas,West Bengal                                       ,19,24 Paraganas North,303
+pashchim medinipur,West Bengal                                       ,19,Medinipur West,318
+purba medinipur,West Bengal                                       ,19,Medinipur East,317
+puruliya,West Bengal                                       ,19,Purulia,321
+south 24 parganas,West Bengal                                       ,19,24 Paraganas South,304
+alipurduar,West Bengal                                       ,19,Alipurduar,664
+uttar dinajpur,West Bengal                                       ,19,Dinajpur Uttar,311
+bankura,West Bengal                                       ,19,Bankura,305
+barddhaman,West Bengal                                       ,19,Purba Bardhaman,306
+birbhum,West Bengal                                       ,19,Birbhum,307
+dakshin dinajpur,West Bengal                                       ,19,Dinajpur Dakshin,310
+darjiling,West Bengal                                       ,19,Darjeeling,309
+haora,West Bengal                                       ,19,Howrah,313
+hugli,West Bengal                                       ,19,Hooghly,312
+jalpaiguri,West Bengal                                       ,19,Jalpaiguri,314
+dima hasao,Assam                                             ,18,Dima Hasao,299
+goalpara,Assam                                             ,18,Goalpara,287
+golaghat,Assam                                             ,18,Golaghat,288
+hailakandi,Assam                                             ,18,Hailakandi,289
+jorhat,Assam                                             ,18,Jorhat,290
+kamrup metropolitan,Assam                                             ,18,Kamrup Metro,618
+kamrup,Assam                                             ,18,Kamrup,291
+karbi anglong,Assam                                             ,18,Karbi Anglong,292
+karimganj,Assam                                             ,18,Karimganj,293
+kokrajhar,Assam                                             ,18,Kokrajhar,294
+baksa,Assam                                             ,18,Baksa,616
+lakhimpur,Assam                                             ,18,Lakhimpur,295
+morigaon,Assam                                             ,18,Marigaon,296
+nagaon,Assam                                             ,18,Nagaon,297
+nalbari,Assam                                             ,18,Nalbari,298
+sivasagar,Assam                                             ,18,Sivasagar,300
+sonitpur,Assam                                             ,18,Sonitpur,301
+tinsukia,Assam                                             ,18,Tinsukia,302
+udalguri,Assam                                             ,18,Udalguri,617
+barpeta,Assam                                             ,18,Barpeta,280
+bongaigaon,Assam                                             ,18,Bongaigaon,281
+cachar,Assam                                             ,18,Cachar,282
+chirang,Assam                                             ,18,Chirang,612
+darrang,Assam                                             ,18,Darrang,283
+dhemaji,Assam                                             ,18,Dhemaji,284
+dhubri,Assam                                             ,18,Dhubri,285
+dibrugarh,Assam                                             ,18,Dibrugarh,286
+gaya,Bihar                                             ,10,Gaya,196
+gopalganj,Bihar                                             ,10,Gopalganj,197
+jamui,Bihar                                             ,10,Jamui,198
+jehanabad,Bihar                                             ,10,Jehanabad,199
+kaimur,Bihar                                             ,10,Kaimur (Bhabua),200
+katihar,Bihar                                             ,10,Katihar,201
+khagaria,Bihar                                             ,10,Khagaria,202
+kishanganj,Bihar                                             ,10,Kishanganj,203
+lakhisarai,Bihar                                             ,10,Lakhisarai,204
+madhepura,Bihar                                             ,10,Madhepura,205
+araria,Bihar                                             ,10,Araria,188
+madhubani,Bihar                                             ,10,Madhubani,206
+munger,Bihar                                             ,10,Munger,207
+muzaffarpur,Bihar                                             ,10,Muzaffarpur,208
+nalanda,Bihar                                             ,10,Nalanda,209
+nawada,Bihar                                             ,10,Nawada,210
+pashchim champaran,Bihar                                             ,10,Pashchim Champaran,211
+patna,Bihar                                             ,10,Patna,212
+purba champaran,Bihar                                             ,10,Purbi Champaran,213
+purnia,Bihar                                             ,10,Purnia,214
+rohtas,Bihar                                             ,10,Rohtas,215
+arwal,Bihar                                             ,10,Arwal,611
+saharsa,Bihar                                             ,10,Saharsa,216
+samastipur,Bihar                                             ,10,Samastipur,217
+saran,Bihar                                             ,10,Saran,218
+sheikhpura,Bihar                                             ,10,Sheikhpura,219
+sheohar,Bihar                                             ,10,Sheohar,220
+sitamarhi,Bihar                                             ,10,Sitamarhi,221
+siwan,Bihar                                             ,10,Siwan,222
+supaul,Bihar                                             ,10,Supaul,223
+vaishali,Bihar                                             ,10,Vaishali,224
+banka,Bihar                                             ,10,Banka,190
+begusarai,Bihar                                             ,10,Begusarai,191
+bhagalpur,Bihar                                             ,10,Bhagalpur,192
+bhojpur,Bihar                                             ,10,Bhojpur,193
+buxar,Bihar                                             ,10,Buxar,194
+darbhanga,Bihar                                             ,10,Darbhanga,195
+chandigarh,Chandigarh,4,Chandigarh,44
+durg,Chhattisgarh                                      ,22,Durg,378
+gariaband,Chhattisgarh                                      ,22,Gariyaband,645
+janjgir-champa,Chhattisgarh                                      ,22,Janjgir-Champa,379
+jashpur,Chhattisgarh                                      ,22,Jashpur,380
+kabeerdham,Chhattisgarh                                      ,22,Kabirdham,382
+kondagaon,Chhattisgarh                                      ,22,Kondagaon,643
+korba,Chhattisgarh                                      ,22,Korba,383
+koriya,Chhattisgarh                                      ,22,Korea,384
+mahasamund,Chhattisgarh                                      ,22,Mahasamund,385
+mungeli,Chhattisgarh                                      ,22,Mungeli,647
+baloda bazar,Chhattisgarh                                      ,22,Baloda Bazar,644
+narayanpur,Chhattisgarh                                      ,22,Narayanpur,637
+raipur,Chhattisgarh                                      ,22,Raipur,387
+rajnandgaon,Chhattisgarh                                      ,22,Rajnandgaon,388
+sukma,Chhattisgarh                                      ,22,Sukma,642
+surajpur,Chhattisgarh                                      ,22,Surajpur,648
+surguja,Chhattisgarh                                      ,22,Surguja,389
+uttar bastar kanker,Chhattisgarh                                      ,22,Kanker,381
+balod,Chhattisgarh                                      ,22,Balod,646
+bastar,Chhattisgarh                                      ,22,Bastar,374
+bemetara,Chhattisgarh                                      ,22,Bemetara,650
+dantewada,Chhattisgarh                                      ,22,Dantewada,376
+dhamtari,Chhattisgarh                                      ,22,Dhamtari,377
+dadra and nagar haveli,The Dadra and Nagar Haveli and Daman and Diu,38,Dadra and Nagar Haveli,465
+daman,The Dadra and Nagar Haveli and Daman and Diu,38,Daman,463
+diu,The Dadra and Nagar Haveli and Daman and Diu,38,Diu,464

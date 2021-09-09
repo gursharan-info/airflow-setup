@@ -1,0 +1,43 @@
+S. No.,Sectors,Broad Sector for JSI,Equity
+1,Automobiles & Auto Components,Auto,"1,19,300"
+2,Total Financial Services,BFSI,"7,60,771"
+20,Insurance,BFSI,"69,271"
+4,Chemicals & Petrochemicals,Chemicals & Petrochemicals,"35,688"
+8,Consumer Durables,Consumer goods,"47,202"
+19,Household & Personal Products,Consumer goods,"1,23,200"
+31,"Textiles, Apparels & Accessories",Consumer goods,"27,510"
+16,Healthcare Equipment & Supplies,Healthcare & Pharma,67
+17,Healthcare Services,Healthcare & Pharma,"19,008"
+24,Pharmaceuticals & Biotechnology,Healthcare & Pharma,"1,21,982"
+32 a,Airlines,Infrastructre,"5,587"
+32 b,Logistics,Infrastructre,"1,167"
+32 c,Marine Port & Services,Infrastructre,"12,550"
+32 d,Roads & Highways,Infrastructre,997
+32 e,Shipping,Infrastructre,814
+32 f,Surface Transportation,Infrastructre,23
+32 g,Transport Related Services,Infrastructre,"6,269"
+32 h,Airport Services,Infrastructre,"2,599"
+33,Utilities3,Infrastructre,"67,171"
+22,Metals & Mining,Metals & Mining,"28,773"
+23,Oil & Gas,Oil & Gas,"2,98,482"
+7,Construction Materials,Realty & Construction,"45,569"
+26,Realty,Realty & Construction,"21,882"
+21,Media,Services,"16,491"
+28,Software & Services,Services,"3,02,762"
+29,Telecom Services,Services,"85,499"
+30,Telecommunications Equipment,Services,96
+18,"Hotels, Restaurants & Tourism",Services,"11,065"
+11,Food & Drugs Retailing,,0
+12,"Food, Beverages & Tobacco",,"95,037"
+3,Capital Goods,,"70,842"
+5,Coal,,"6,525"
+6,Commercial Services & Supplies,,"5,889"
+9,Diversified2,,"5,219"
+10,Diversified Consumer Services,,"1,873"
+13,Forest Materials,,586
+14,General Industrials,,"11,576"
+15,Hardware Technology & Equipment,,45
+25,Real Estate Investment,,0
+27,Retailing,,"37,682"
+34,Sovereign,,0
+35,Others4,,"18,060"
