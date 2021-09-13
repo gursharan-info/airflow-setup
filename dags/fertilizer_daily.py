@@ -76,7 +76,7 @@ def read_fertilizer_data(**context):
                                 'No_Of_Sale_Transaction': 'Number_of_sale_Transactions_daily_district'},
                                 inplace=True)
 
-        historical_data = pd.read_csv(os.path.join(dir_path,'fertilizer_daily/data_historical.csv'))
+        historical_data = pd.read_csv(os.path.join(dir_path,'data_historical.csv'))
         historical_data.rename(columns={'merge_name': 'state_district_lower'},inplace=True)
         
         stacked_df = pd.concat([historical_data, dist_merged],sort=False).reset_index(drop=True)
