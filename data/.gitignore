@@ -24,3 +24,4 @@ google_mobility/daily/*
 google_mobility/monthly/*
 mnrega_demand/monthly/*
 mnrega_demand/raw_data/*
+fertilizer_sales/data_historical.csv
