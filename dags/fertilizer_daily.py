@@ -14,6 +14,7 @@ data_path = os.path.join(dir_path, 'daily')
 raw_data_path = os.path.join(dir_path, 'raw_data')
 gdrive_fertilizer_folder = '1EZeIWEq_Yshb-C-0E1HBXzBDh5luPsZf'
 gdrive_fertilizer_raw_folder = '1zgBIGhN4j0TDI0HdMqlxaTebb0iIgwPo'
+gdrive_fert_hist_folder = '1n0tMtKBWtT8MJYfpV2lAHf4MDk5sPO_Y'
 day_lag = 2
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
@@ -95,7 +96,7 @@ def read_fertilizer_data(**context):
         final_df = stacked_df.copy()
         stacked_df['date'] = stacked_df['date'].dt.strftime("%d-%m-%Y")
         stacked_df.drop(columns='merge_name').to_csv(os.path.join(dir_path,'data_historical.csv'), index=False)
-        gupload.upload(os.path.join(dir_path,'data_historical.csv'), "data_historical.csv",gdrive_fertilizer_folder)
+        gupload.upload(os.path.join(dir_path,'data_historical.csv'), "data_historical.csv",gdrive_fert_hist_folder)
         # display(stacked_df)
     
         final_df[['quantity_sold_roll_district', 
