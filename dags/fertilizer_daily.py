@@ -96,7 +96,7 @@ def read_fertilizer_data(**context):
         final_df = stacked_df.copy()
         stacked_df['date'] = stacked_df['date'].dt.strftime("%d-%m-%Y")
         stacked_df.drop(columns='merge_name').to_csv(os.path.join(dir_path,'data_historical.csv'), index=False)
-        gupload.upload(os.path.join(dir_path,'data_historical.csv'), "data_historical.csv",gdrive_fert_hist_folder)
+        gupload.upload(os.path.join(dir_path,'data_historical.csv'), f"data_historical_{curr_date.strftime('%d%m%Y')}.csv",gdrive_fert_hist_folder)
         # display(stacked_df)
     
         final_df[['quantity_sold_roll_district', 
