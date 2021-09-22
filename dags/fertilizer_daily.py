@@ -138,8 +138,8 @@ default_args = {
     'email': ['gursharan_singh@isb.edu'],
     'email_on_failure': True,
     "catchup": True,
-    "retries": 1,
-    "retry_delay": timedelta(minutes=10),
+    "retries": 3,
+    "retry_delay": timedelta(hours=3),
 }
 
 fertilizer_dag = DAG("fertilizerDailyScraping", default_args=default_args, schedule_interval="@daily")
@@ -148,5 +148,7 @@ read_fertilizer_data_task = PythonOperator(task_id='read_fertilizer_data',
                                        python_callable=read_fertilizer_data,
                                        dag=fertilizer_dag,
                                        provide_context = True,
+                                       depends_on_past=True,
+                                       wait_for_downstream=True
                                     )
 
