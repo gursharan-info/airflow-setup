@@ -39,7 +39,7 @@ def scrape_electricity_data(**context):
     # anchor_tags = [a.values()[0] for a in tree.xpath('//*[@id="wpdmmydls-cce6da02590d197e2b9dc1635b59849e"]/tbody/tr/td/a')]
     # For 2021-22. For later year you may need to find and change the xpath
     anchor_tags = [a.values()[0] for a in tree.xpath('//*[@id="wpdmmydls-462b5773dd1f1c85ab4365e6a09bde68"]/tbody/tr/td/a')]
-    update_list = anchor_tags[:7]
+    update_list = [url for url in anchor_tags if 'nldc_psp' in url][:7]
     # latest_url = [a for a in anchor_tags if scrape_dateString in a]
     print('list', update_list)
     for url in update_list:
