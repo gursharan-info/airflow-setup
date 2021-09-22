@@ -146,7 +146,7 @@ def scrape_electricity_data(**context):
                 break
             except AssertionError as error:
                 # Output expected AssertionErrors.
-                Logging.log_exception(error)
+                # Logging.log_exception(error)
                 print("AssertionError has been thrown. " + str(error))
                 print("cannot process: "+url+" for date: "+scrape_dateString+".  Table format is different.")
                 break
