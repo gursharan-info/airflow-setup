@@ -5,6 +5,7 @@ import googleapiclient
 from googleapiclient.discovery import build
 from google_auth_oauthlib.flow import InstalledAppFlow
 from google.auth.transport.requests import Request
+from googleapiclient.errors import ResumableUploadError
 
 from apiclient.discovery import build
 from oauth2client.service_account import ServiceAccountCredentials
@@ -53,7 +54,7 @@ def upload(source_file, remote_file_name, folder_id):
         print('File ID: %s' % file.get('id'))
         return True
     except ResumableUploadError as e:
-        print(e)
+        print(e, "Couldn't upload file for this date")
         return False
         
 
