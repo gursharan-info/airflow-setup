@@ -19,7 +19,7 @@ pdf_path = os.path.join(dir_path, 'raw_data')
 daily_data_path = os.path.join(dir_path, 'daily')
 gdrive_electricity_folder = '139M_aquK9oXptaDTjvHlxe0NTzMdu8m7'
 gdrive_electricity_pdf_folder = '1n-619wmzIh6b2fnWdyeCzT1SmP5xO8ud'
-day_lag = 3
+day_lag = 1
 
 # For 2020-21
 # main_url = "https://posoco.in/reports/daily-reports/daily-reports-2020-21/"
@@ -168,7 +168,7 @@ def scrape_electricity_data(**context):
 default_args = {
     'owner': 'airflow', 
     'depends_on_past': False,
-    'start_date': pendulum.datetime(year=2021, month=8, day=1, hour=20, minute=00 ).astimezone('Asia/Kolkata'),
+    'start_date': pendulum.datetime(year=2021, month=8, day=1, hour=18, minute=00 ).astimezone('Asia/Kolkata'),
     'provide_context': True,
     'email': ['gursharan_singh@isb.edu'],
     'email_on_failure': True,
