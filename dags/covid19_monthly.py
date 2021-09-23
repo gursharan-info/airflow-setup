@@ -11,7 +11,7 @@ from helpers import google_upload as gupload
 
 lgd_codes_file = 'https://raw.githubusercontent.com/gursharan-info/idp-scripts/master/sources/LGD_covid_monthly_01Aug21.csv'
 dir_path = '/usr/local/airflow/data/hfi/covid19'
-daily_data_path = os.path.join(dir_path, 'daily')
+monthly_data_path = os.path.join(dir_path, 'monthly')
 gdrive_covid_monthly_folder = '1TKRs11piOD9iSGNb8xh-7_rEhrds-L0z'
 
 def scrape_covid_monthly(**context):
@@ -104,7 +104,7 @@ def scrape_covid_monthly(**context):
     state_code_column = combined_df.pop('state_code')
     combined_df.insert(2, 'state_code', state_code_column)
 
-    filename = os.path.join(daily_data_path, 'covid_monthly_'+curr_date.strftime('%m%Y')+'.csv')
+    filename = os.path.join(monthly_data_path, 'covid_monthly_'+curr_date.strftime('%m%Y')+'.csv')
     combined_df.to_csv(filename,index=False)
     gupload.upload(filename, 'covid_monthly_'+curr_date.strftime('%m%Y')+'.csv',gdrive_covid_monthly_folder)
     print('Done')
