@@ -17,7 +17,8 @@ def read_mobility_data_monthly(**context):
     try:
         print(context['execution_date'], type(context['execution_date']))
         # The current date would be previous day from date of execution
-        prev_mnth_date = context['execution_date'].subtract(months=1)
+        # prev_mnth_date = context['execution_date'].subtract(months=1)
+        prev_mnth_date = context['execution_date']
         prev_month = prev_mnth_date.strftime('%Y-%m')
 
         raw_df = pd.read_csv('https://www.gstatic.com/covid19/mobility/Global_Mobility_Report.csv')
