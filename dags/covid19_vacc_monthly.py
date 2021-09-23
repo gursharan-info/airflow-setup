@@ -107,7 +107,7 @@ default_args = {
     "retry_delay": timedelta(minutes=10),
 }
 
-scrape_covid_vacc_monthly_dag = DAG("covid19VaccMonthlyScraping", default_args=default_args, schedule_interval="@monthly")
+scrape_covid_vacc_monthly_dag = DAG("covid19VaccMonthlyScraping", default_args=default_args, schedule_interval='0 20 2 * *')
 
 scrape_covid_vacc_monthly_task = PythonOperator(task_id = 'scrape_covid_vacc_monthly',
                                        python_callable = scrape_covid_vacc_monthly,

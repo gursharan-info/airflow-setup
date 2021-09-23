@@ -99,7 +99,7 @@ default_args = {
     "retry_delay": timedelta(minutes=10),
 }
 
-read_mobility_data_monthly_dag = DAG("googleMobilityMonthlyScraping", default_args=default_args, schedule_interval="@monthly")
+read_mobility_data_monthly_dag = DAG("googleMobilityMonthlyScraping", default_args=default_args, schedule_interval='0 20 2 * *')
 
 read_mobility_data_monthly_task = PythonOperator(task_id='read_mobility_data_monthly',
                                        python_callable = read_mobility_data_monthly,
