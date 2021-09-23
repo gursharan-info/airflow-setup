@@ -46,9 +46,10 @@ def scrape_covid_vacc_monthly(**context):
                   inplace=True)
     filtered_df['total_doses_admn'] = filtered_df.first_dose_admn + filtered_df.second_dose_admn
 
-    last_day_of_prev_month = pd.to_datetime(curr_date.replace(day=1) - timedelta(days=1))
-    start_day_of_prev_month = pd.to_datetime(curr_date.replace(day=1) - timedelta(days=last_day_of_prev_month.day))
-    prev_month = start_day_of_prev_month.strftime("%Y-%m")
+    # last_day_of_prev_month = pd.to_datetime(curr_date.replace(day=1) - timedelta(days=1))
+    # start_day_of_prev_month = pd.to_datetime(curr_date.replace(day=1) - timedelta(days=last_day_of_prev_month.day))
+    # prev_month = start_day_of_prev_month.strftime("%Y-%m")
+    prev_month = curr_date.strftime("%Y-%m")
 
     ### Make sure granularity is unque at district level
     dist_grouped = filtered_df.groupby(['state_name','district_name'])
@@ -90,9 +91,9 @@ def scrape_covid_vacc_monthly(**context):
                                  how='left', on='state_district_lower')
     mapped_df = mapped_df[['date','state_name','state_code','district_name','district_code']+mapped_df.columns.tolist()[3:-3]]
   
-    filename = os.path.join(monthly_data_path, 'covid_vacc_'+start_day_of_prev_month.strftime("%m-%Y")+'.csv')
+    filename = os.path.join(monthly_data_path, 'covid_vacc_'+curr_date.strftime("%m-%Y")+'.csv')
     mapped_df.to_csv(filename,index=False)
-    gupload.upload(filename, 'covid_vacc_'+start_day_of_prev_month.strftime("%m%Y")+'.csv',gdrive_covid_vacc_monthly_folder)
+    gupload.upload(filename, 'covid_vacc_'+curr_date.strftime("%m%Y")+'.csv',gdrive_covid_vacc_monthly_folder)
 
 
 default_args = {
