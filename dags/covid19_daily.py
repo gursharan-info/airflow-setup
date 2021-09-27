@@ -12,7 +12,7 @@ lgd_codes_file = 'https://raw.githubusercontent.com/gursharan-info/idp-scripts/m
 dir_path = '/usr/local/airflow/data/hfi/covid19'
 daily_data_path = os.path.join(dir_path, 'daily')
 gdrive_covid_daily_folder = '1Ey0Lv4sftSlPXC_Obc7LyGiWfg89etXj'
-day_lag = 2
+day_lag = 0
 
 def scrape_covid_daily(**context):
     print(context['execution_date'], type(context['execution_date']))
