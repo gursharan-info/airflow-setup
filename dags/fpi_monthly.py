@@ -44,7 +44,7 @@ def fpi_monthly(**context):
 
         for dt in date_list:
             full_url = f"{base_url}{dt}.html"
-            # print(full_url)
+            print(full_url)
             req = requests.get(full_url, headers)
             soup = BeautifulSoup(req.content, 'html.parser')
             
