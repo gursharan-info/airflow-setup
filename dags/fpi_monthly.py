@@ -25,9 +25,9 @@ def fpi_monthly(**context):
         # print(context['execution_date'], type(context['execution_date']))
         # The current date would be previous day from date of execution
         curr_date =  context['execution_date']
-        prev_mnth_date = curr_date.subtract(months=1)
+        # prev_mnth_date = curr_date.subtract(months=1)
+        prev_mnth_date = curr_date
         prev_month_mid = prev_mnth_date.strftime('%B15%Y')
-        prev_month_mid
         prev_month_end = (date(curr_date.year, curr_date.month, 1) - relativedelta(days=1)).strftime('%B%d%Y')
         date_list = [prev_month_mid, prev_month_end]
         # print(prev_month_mid, prev_month_end)
