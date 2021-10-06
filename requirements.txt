@@ -12,4 +12,5 @@ tabula-py==2.3.0
 lxml==4.6.1
 xlrd==1.2.0
 fiscalyear==0.3.2
+html5lib==1.1
 # camelot-py==0.8.2
