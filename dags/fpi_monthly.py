@@ -27,8 +27,9 @@ def fpi_monthly(**context):
         curr_date =  context['execution_date']
         # prev_mnth_date = curr_date.subtract(months=1)
         prev_mnth_date = curr_date
-        prev_month_mid = prev_mnth_date.strftime('%B15%Y')
-        prev_month_end = (date(curr_date.year, curr_date.month, 1) - relativedelta(days=1)).strftime('%B%d%Y')
+        prev_month_mid = dict(long = prev_mnth_date.strftime('%B15%Y'), short = prev_mnth_date.strftime('%b15%Y'))
+        prev_month_end = dict(long = (date(curr_date.year, curr_date.month, 1) - relativedelta(days=1)).strftime('%B%d%Y'),
+                              short = (date(curr_date.year, curr_date.month, 1) - relativedelta(days=1)).strftime('%b%d%Y') )
         date_list = [prev_month_mid, prev_month_end]
         # print(prev_month_mid, prev_month_end)
         
@@ -43,13 +44,24 @@ def fpi_monthly(**context):
         df_list = []
 
         for dt in date_list:
-            full_url = f"{base_url}{dt}.html"
-            print(full_url)
-            req = requests.get(full_url, headers)
-            soup = BeautifulSoup(req.content, 'html.parser')
             
-            div=soup.select_one("div#dvFortnightly")
-            table_list = pd.read_html(str(div))
+            try:
+                full_url = f"{base_url}{dt['long']}.html"
+                print(full_url)
+                req = requests.get(full_url, headers)
+                soup = BeautifulSoup(req.content, 'html.parser')
+            
+                div=soup.select_one("div#dvFortnightly")
+                table_list = pd.read_html(str(div))
+            except Exception as e:
+                full_url = f"{base_url}{dt['short']}.html"
+                print(e, full_url)
+                req = requests.get(full_url, headers)
+                soup = BeautifulSoup(req.content, 'html.parser')
+            
+                div=soup.select_one("div#dvFortnightly")
+                table_list = pd.read_html(str(div))
+
             if len(table_list) > 0:
                 table = table_list[0]
                 
