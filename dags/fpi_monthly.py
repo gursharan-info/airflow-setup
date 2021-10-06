@@ -65,9 +65,9 @@ def fpi_monthly(**context):
             if len(table_list) > 0:
                 table = table_list[0]
                 
-                raw_filename = os.path.join(raw_path, f"{datetime.strptime(dt, '%B%d%Y').strftime('%d-%m-%Y')}.csv")
+                raw_filename = os.path.join(raw_path, f"{datetime.strptime(dt['long'], '%B%d%Y').strftime('%d-%m-%Y')}.csv")
                 table.to_csv(raw_filename, index=False)
-                gupload.upload(raw_filename, f"raw_{datetime.strptime(dt, '%B%d%Y').strftime('%d-%m-%Y')}.csv", gdrive_fpi_raw_folder)
+                gupload.upload(raw_filename, f"raw_{datetime.strptime(dt['long'], '%B%d%Y').strftime('%d-%m-%Y')}.csv", gdrive_fpi_raw_folder)
 
             table = table.iloc[2:]
             table.columns = table.iloc[0]
@@ -94,7 +94,7 @@ def fpi_monthly(**context):
             #     merged_df = merged_df.dropna(subset=['Broad Sector for JSI'])
             #     display(merged_df)
             grouped_df = merged_df.groupby("Broad Sector for JSI", sort=True)['Total'].sum().reset_index()\
-                            .rename(columns={'Broad Sector for JSI':'date','Total': datetime.strptime(dt, '%B%d%Y').strftime("%d-%m-%Y")})
+                            .rename(columns={'Broad Sector for JSI':'date','Total': datetime.strptime(dt['long'], '%B%d%Y').strftime("%d-%m-%Y")})
             grouped_df = grouped_df.T.reset_index()
             grouped_df.columns = [col.replace('& ','').lower().replace(' ','_') for col in grouped_df.iloc[0].values]
             grouped_df = grouped_df[1:]
