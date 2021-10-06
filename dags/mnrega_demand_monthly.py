@@ -38,7 +38,7 @@ def get_states_data(url, raw_path, data_type, fiscal_year):
     return links
 
 
-def get_districts_data(state_links, raw_path, data_type, fiscal_year):
+def get_districts_data(state_links, raw_path, data_type, fiscal_year, curr_date):
     dist_files_list = []
 
     for state in state_links:
@@ -69,7 +69,7 @@ def get_districts_data(state_links, raw_path, data_type, fiscal_year):
         #             display(dists_df)
                     filename = os.path.join(dist_path, f"{state.contents[0].title()}_{data_type}_{fiscal_year}.csv")
                     dists_df.to_csv(filename, index=False)
-                    gupload.upload(filename, f"{state.contents[0].title()}_{data_type}_{fiscal_year}.csv", folder_type)
+                    gupload.upload(filename, f"{state.contents[0].title()}_{data_type}_{fiscal_year}_{curr_date.strftime}.csv", folder_type)
                     dist_files_list.append(filename)
                 del state_req, state_soup, state_table_html, districts_table_list
                 break
@@ -85,7 +85,8 @@ def mnrega_demand_monthly(**context):
         # print(context['execution_date'], type(context['execution_date']))
         # The current date would be previous day from date of execution
         curr_date =  context['execution_date']
-        prev_mnth_date = curr_date.subtract(months=1)
+        prev_mnth_date = curr_date
+        # prev_mnth_date = curr_date.subtract(months=1)
         
         fiscalyear.setup_fiscal_calendar(start_month=4)
         fiscal_year_start = fiscalyear.FiscalYear.current().start
@@ -116,8 +117,8 @@ def mnrega_demand_monthly(**context):
 
         hh_df = hh_dist_long_df.merge(hh_st_long_df, on=['date','state_name'], how='left')
 
-        person_state_links = get_states_data(persons_url, raw_path, 'persons')
-        person_dist_files = get_districts_data(person_state_links, raw_path, 'persons')
+        person_state_links = get_states_data(persons_url, raw_path, 'persons', fiscal_year)
+        person_dist_files = get_districts_data(person_state_links, raw_path, 'persons', fiscal_year)
 
         person_dist_df = pd.concat([pd.read_csv(f).iloc[:-1 , 1:] for f in person_dist_files]).reset_index(drop=True)
         person_dist_df.columns = ["State","District","01-04-2021","01-05-2021","01-06-2021","01-07-2021","01-08-2021","01-09-2021","01-10-2021","01-11-2021",
