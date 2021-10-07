@@ -15,7 +15,6 @@ data_path = os.path.join(dir_path, 'monthly')
 raw_path = os.path.join(dir_path, 'raw_data')
 gdrive_fpi_monthly_folder = '1IQof0mHBzQtiPucmm8sGGXfv2M7sJKZ7'
 gdrive_fpi_raw_folder = '1WcgpYAfv3eJovlOOonpoKvRj3_b9UCe4'
-day_lag = 1
 base_url = "https://www.fpi.nsdl.co.in/web/StaticReports/Fortnightly_Sector_wise_FII_Investment_Data/FIIInvestSector_"
 
 
@@ -26,12 +25,13 @@ def fpi_monthly(**context):
         # The current date would be previous day from date of execution
         curr_date =  context['execution_date']
         # prev_mnth_date = curr_date.subtract(months=1)
-        prev_mnth_date = curr_date
-        prev_month_mid = dict(long = prev_mnth_date.strftime('%B15%Y'), short = prev_mnth_date.strftime('%b15%Y'))
-        prev_month_end = dict(long = (date(curr_date.year, curr_date.month, 1) - relativedelta(days=1)).strftime('%B%d%Y'),
-                              short = (date(curr_date.year, curr_date.month, 1) - relativedelta(days=1)).strftime('%b%d%Y') )
+        print(curr_date)
+
+        prev_month_mid = dict(long = curr_date.strftime('%B15%Y'), short = curr_date.strftime('%b15%Y'))
+        prev_month_end = dict(long = (date(curr_date.year + int(curr_date.month/12), curr_date.month%12+1, 1)-timedelta(days=1)).strftime('%B%d%Y'),
+                            short = (date(curr_date.year + int(curr_date.month/12), curr_date.month%12+1, 1)-timedelta(days=1)).strftime('%b%d%Y') )
         date_list = [prev_month_mid, prev_month_end]
-        # print(prev_month_mid, prev_month_end)
+        print(date_list)
         
         headers = {
         'Access-Control-Allow-Origin': '*',
@@ -98,7 +98,7 @@ def fpi_monthly(**context):
             grouped_df = grouped_df.T.reset_index()
             grouped_df.columns = [col.replace('& ','').lower().replace(' ','_') for col in grouped_df.iloc[0].values]
             grouped_df = grouped_df[1:]
-            
+            # print(grouped_df)
             df_list.append(grouped_df)
         
         month_df = pd.concat(df_list).reset_index(drop=True)
@@ -107,10 +107,10 @@ def fpi_monthly(**context):
         group_df =  month_df.groupby(['date'], sort=False).sum().reset_index()
         group_df['date'] = group_df['date'].dt.strftime("01-%m-%Y")
 
-        filename = os.path.join(data_path, f"fpi_monthly_{prev_mnth_date.strftime('%m%Y')}.csv")
+        filename = os.path.join(data_path, f"fpi_monthly_{curr_date.strftime('%m%Y')}.csv")
         group_df.to_csv(filename, index=False)
 
-        gupload.upload(filename, f"fpi_monthly_{prev_mnth_date.strftime('%m%Y')}.csv", gdrive_fpi_monthly_folder)
+        gupload.upload(filename, f"fpi_monthly_{curr_date.strftime('%m%Y')}.csv", gdrive_fpi_monthly_folder)
 
 
     # except requests.exceptions.RequestException as e:
