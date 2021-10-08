@@ -20,8 +20,8 @@ def gst_coll_monthly(**context):
         print(context['execution_date'], type(context['execution_date']))
         # The current date would be previous day from date of execution
         # prev_mnth_date = context['execution_date'].subtract(months=1)
-        prev_mnth_date = context['execution_date']
-        prev_month = prev_mnth_date.strftime('%Y-%m')
+        prev_month = context['execution_date']
+        prev_month_str = prev_month.strftime('%Y-%m')
 
         main_url = "https://www.gst.gov.in/download/gststatistics"
 
@@ -35,9 +35,10 @@ def gst_coll_monthly(**context):
         curr_link = [j for j in xls_links if prev_month.strftime('-%Y-') in j][0]
 
         file_loc = os.path.join(raw_data_path, curr_link.split("/")[-1])
-        with open (file_loc,'wb') as f:
-            f.write(response.content)
-        f.close()
+        resp = requests.get(curr_link)
+        with open(file_loc, 'wb') as output:
+            output.write(resp.content)
+        output.close()
         gupload.upload(file_loc, curr_link.split("/")[-1],gdrive_gst_coll_raw_folder)
 
         raw_df = pd.read_excel(curr_link)
@@ -73,9 +74,9 @@ def gst_coll_monthly(**context):
 
             final_df['date'] = final_df['date'].dt.strftime("01-%m-%Y")
 
-            filename = os.path.join(dir_path, 'gst_collections_monthly_'+prev_mnth_date.strftime('%m%Y')+'.csv')
+            filename = os.path.join(dir_path, 'gst_collections_monthly_'+prev_month.strftime('%m%Y')+'.csv')
             final_df.to_csv(filename,index=False)
-            gupload.upload(filename, 'gst_collections_monthly_'+prev_mnth_date.strftime('%m%Y')+'.csv',gdrive_gst_coll_monthly_folder)
+            gupload.upload(filename, 'gst_collections_monthly_'+prev_month.strftime('%m%Y')+'.csv',gdrive_gst_coll_monthly_folder)
 
     # except requests.exceptions.RequestException as e:
     #     print(e)
@@ -87,7 +88,7 @@ def gst_coll_monthly(**context):
 default_args = {
     'owner': 'airflow', 
     'depends_on_past': False,
-    'start_date': pendulum.datetime(year=2020, month=3, day=6, hour=00, minute=00 ).astimezone('Asia/Kolkata'),
+    'start_date': pendulum.datetime(year=2021, month=3, day=6, hour=00, minute=00 ).astimezone('Asia/Kolkata'),
     'provide_context': True,
     'email': ['gursharan_singh@isb.edu'],
     'email_on_failure': True,
@@ -96,7 +97,7 @@ default_args = {
     "retry_delay": timedelta(minutes=10),
 }
 
-gst_coll_monthly_dag = DAG("gstCollMonthly", default_args=default_args, schedule_interval='0 20 2 * *')
+gst_coll_monthly_dag = DAG("gstCollMonthly", default_args=default_args, schedule_interval='0 20 10 * *')
 
 gst_coll_monthly_task = PythonOperator(task_id='gst_coll_monthly',
                                        python_callable = gst_coll_monthly,
