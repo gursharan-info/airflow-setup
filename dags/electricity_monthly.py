@@ -27,19 +27,19 @@ def process_electricity_monthly(**context):
 
     merged= pd.concat([pd.read_csv(f) for f in files]) 
     merged['date'] = pd.to_datetime(merged['date'], format="%d-%m-%Y")
-    merged = merged.sort_values(by=['date','state'])
-    print(merged.columns)
-    # merged.columns = ['date','state_name','state_code','max_demand_met_state','energy_met_state','max_demand_met_india','energy_met_india']
-    # merged['date'] = pd.to_datetime(merged['date'], format="%d-%m-%Y")
-    # merged['month'] = merged['date'].dt.to_period('M')
+    # print(merged.columns)
+    merged.columns = ['state_name','max_demand_met_state','energy_met_mu_state','date','max_demand_met_india','energy_met_india','state_code']
+    merged = merged[['date','state_name','state_code','max_demand_met_state','energy_met_mu_state','max_demand_met_india','energy_met_india']].sort_values(by=['date','state'])
+    merged['date'] = pd.to_datetime(merged['date'], format="%d-%m-%Y")
+    merged['month'] = merged['date'].dt.to_period('M')
     
-    # grouped =  merged.groupby(['month','state_name','state_code'], sort=False)[
-    #             'max_demand_met_state', 'energy_met_state', 'max_demand_met_india','energy_met_india',
-    #                               ].sum().reset_index()
-    # grouped = grouped[grouped['month'].dt.strftime('%Y-%m') == curr_date.strftime('%Y-%m')].reset_index(drop=True)
-    # grouped.insert(0, 'date', "01-"+grouped['month'].dt.strftime("%m-%Y"))
-    # grouped = grouped.drop(columns=['month'])
-
+    grouped =  merged.groupby(['month','state_name','state_code'], sort=False)[
+                'max_demand_met_state', 'energy_met_state', 'max_demand_met_india','energy_met_india',
+                                  ].sum().reset_index()
+    grouped = grouped[grouped['month'].dt.strftime('%Y-%m') == curr_date.strftime('%Y-%m')].reset_index(drop=True)
+    grouped.insert(0, 'date', "01-"+grouped['month'].dt.strftime("%m-%Y"))
+    grouped = grouped.drop(columns=['month'])
+    print(grouped.head(5))
     # filename = os.path.join(monthly_data_path, f"electricity_monthly_{curr_date.strftime('%m%Y')}.csv")
     # grouped.to_csv(filename, index=False)
 
