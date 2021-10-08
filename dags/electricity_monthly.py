@@ -34,7 +34,7 @@ def process_electricity_monthly(**context):
     merged['month'] = merged['date'].dt.to_period('M')
     
     grouped =  merged.groupby(['month','state_name','state_code'], sort=False)[
-                'max_demand_met_state', 'energy_met_state', 'max_demand_met_india','energy_met_india',
+                'max_demand_met_state', 'energy_met_mu_state', 'max_demand_met_india','energy_met_india',
                                   ].sum().reset_index()
     grouped = grouped[grouped['month'].dt.strftime('%Y-%m') == curr_date.strftime('%Y-%m')].reset_index(drop=True)
     grouped.insert(0, 'date', "01-"+grouped['month'].dt.strftime("%m-%Y"))
