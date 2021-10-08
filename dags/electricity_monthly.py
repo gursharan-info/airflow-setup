@@ -39,11 +39,11 @@ def process_electricity_monthly(**context):
     grouped = grouped[grouped['month'].dt.strftime('%Y-%m') == curr_date.strftime('%Y-%m')].reset_index(drop=True)
     grouped.insert(0, 'date', "01-"+grouped['month'].dt.strftime("%m-%Y"))
     grouped = grouped.drop(columns=['month'])
-    print(grouped.head(5))
-    # filename = os.path.join(monthly_data_path, f"electricity_monthly_{curr_date.strftime('%m%Y')}.csv")
-    # grouped.to_csv(filename, index=False)
+    # print(grouped.head(5))
+    filename = os.path.join(monthly_data_path, f"electricity_monthly_{curr_date.strftime('%m%Y')}.csv")
+    grouped.to_csv(filename, index=False)
 
-    # gupload.upload(filename, f"electricity_monthly_{curr_date.strftime('%m%Y')}.csv", gdrive_electricity_monthly_folder)
+    gupload.upload(filename, f"electricity_monthly_{curr_date.strftime('%m%Y')}.csv", gdrive_electricity_monthly_folder)
 
 
 default_args = {
