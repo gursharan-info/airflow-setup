@@ -28,7 +28,7 @@ def process_electricity_monthly(**context):
     merged= pd.concat([pd.read_csv(f) for f in files]) 
     merged['date'] = pd.to_datetime(merged['date'], format="%d-%m-%Y")
     merged = merged.sort_values(by=['date','state'])
-    print(merged.head(10))
+    print(merged.columns)
     # merged.columns = ['date','state_name','state_code','max_demand_met_state','energy_met_state','max_demand_met_india','energy_met_india']
     # merged['date'] = pd.to_datetime(merged['date'], format="%d-%m-%Y")
     # merged['month'] = merged['date'].dt.to_period('M')
