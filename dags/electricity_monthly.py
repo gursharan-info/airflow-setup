@@ -29,7 +29,7 @@ def process_electricity_monthly(**context):
     merged['date'] = pd.to_datetime(merged['date'], format="%d-%m-%Y")
     # print(merged.columns)
     merged.columns = ['state_name','max_demand_met_state','energy_met_mu_state','date','max_demand_met_india','energy_met_india','state_code']
-    merged = merged[['date','state_name','state_code','max_demand_met_state','energy_met_mu_state','max_demand_met_india','energy_met_india']].sort_values(by=['date','state'])
+    merged = merged[['date','state_name','state_code','max_demand_met_state','energy_met_mu_state','max_demand_met_india','energy_met_india']].sort_values(by=['date','state_name'])
     merged['date'] = pd.to_datetime(merged['date'], format="%d-%m-%Y")
     merged['month'] = merged['date'].dt.to_period('M')
     
