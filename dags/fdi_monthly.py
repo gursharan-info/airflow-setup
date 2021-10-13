@@ -98,7 +98,7 @@ def fdi_monthly(**context):
             extracted_df.to_csv(filename, index=False)
 
             gupload.upload(filename, f"fdi_monthly_{min_mnth}-{max_mnth}.csv", gdrive_fdi_monthly_folder)
-
+        session.close()
 
     # except requests.exceptions.RequestException as e:
     #     print(e)

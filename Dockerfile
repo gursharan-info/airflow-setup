@@ -80,7 +80,7 @@ RUN set -ex \
         /usr/share/doc-base
 
 RUN mkdir -p /usr/share/man/man1
-RUN apt-get update && apt-get install -y software-properties-common default-jre && apt-get clean
+RUN apt-get update && apt-get install -y software-properties-common default-jre && apt-get install ghostscript python3-tk && apt-get clean
 
 COPY script/entrypoint.sh /entrypoint.sh
 COPY config/airflow.cfg ${AIRFLOW_USER_HOME}/airflow.cfg
