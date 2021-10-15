@@ -45,7 +45,7 @@ def get_districts_data(state_links, raw_path, data_type, fiscal_year, curr_date)
         while True:
             try:
                 state_url = f"http://mnregaweb4.nic.in/netnrega/{state['href']}"
-                print(state_url)
+                # print(state_url)
                 state_req = requests.get(state_url)
                 time.sleep(1)
                 state_soup = BeautifulSoup(state_req.content, 'html.parser')
@@ -125,7 +125,7 @@ def mnrega_demand_monthly(**context):
                                 "01-12-2021","01-01-2022","01-02-2022","01-03-2022"]
         person_dist_df = person_dist_df.set_index(['State','District'])
         person_dist_long_df = person_dist_df.stack().reset_index()
-        person_dist_long_df.columns = ['state_name','district_name','date','demand_person_district']
+        person_dist_long_df.columns = ['state_name','district_name','date','demand_persons_district']
         person_dist_long_df['date'] = pd.to_datetime(person_dist_long_df['date'], format="%d-%m-%Y").dt.to_period('M')
 
         person_state_df = pd.read_csv(os.path.join(raw_path, f"states_persons_{fiscal_year}.csv")).iloc[:-1 , 1:]
@@ -133,20 +133,25 @@ def mnrega_demand_monthly(**context):
                                 "01-12-2021","01-01-2022","01-02-2022","01-03-2022"]
         person_state_df = person_state_df.set_index(['State'])
         person_st_long_df = person_state_df.stack().reset_index()
-        person_st_long_df.columns = ['state_name','date','demand_person_state']
+        person_st_long_df.columns = ['state_name','date','demand_persons_state']
         person_st_long_df['date'] = pd.to_datetime(person_st_long_df['date'], format="%d-%m-%Y").dt.to_period('M')  
 
         persons_df = person_dist_long_df.merge(person_st_long_df, on=['date','state_name'], how='left')
         merged_df = persons_df.merge(hh_df, on=['date','state_name','district_name'], how='left').drop_duplicates()
-        india_group_df = merged_df.groupby(['date'], as_index=False)[['demand_person_district','demand_hh_district']].sum().reset_index(drop=True)
-        india_group_df.columns = ['date','demand_person_india','demand_hh_india']
+        india_group_df = merged_df.groupby(['date'], as_index=False)[['demand_persons_district','demand_hh_district']].sum().reset_index(drop=True)
+        india_group_df.columns = ['date','demand_persons_india','demand_hh_india']
 
         final_df = merged_df.merge(india_group_df, on='date', how='left')
         final_df = final_df[final_df['date'] == prev_mnth_date.strftime('%Y-%m')].reset_index(drop=True)
         final_df['date'] = final_df['date'].dt.strftime("01-%m-%Y")
 
+        lgd_dist = pd.read_csv("https://raw.githubusercontent.com/gursharan-info/idp-scripts/master/sources/LGD_MNREGA_demand_10152021.csv")
+        mapped_df = final_df.merge(lgd_dist, on=['state_name','district_name'],how='left')
+        mapped_df = mapped_df[['date','state_name_lgd','state_code','district_name_lgd','district_code','demand_persons_district','demand_hh_district',
+                               'demand_persons_state','demand_hh_state','demand_persons_india','demand_hh_india']]
+
         filename = os.path.join(data_path, f"mnrega_demand_monthly_{prev_mnth_date.strftime('%m%Y')}.csv")
-        final_df.to_csv(filename, index=False)
+        mapped_df.to_csv(filename, index=False)
 
         gupload.upload(filename, f"mnrega_demand_monthly_{prev_mnth_date.strftime('%m%Y')}.csv", gdrive_mnrega_monthly_folder)
 
