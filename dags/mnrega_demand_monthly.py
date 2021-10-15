@@ -32,7 +32,7 @@ def get_states_data(url, raw_path, data_type, fiscal_year):
         states_df = states_df.iloc[4:].copy()
         fname = f"states_{data_type}_{fiscal_year}.csv"
         states_df.to_csv(os.path.join(raw_path, fname), index=False)
-        gupload.upload(os.path.join(raw_path, fname), fname, gdrive_mnrega_monthly_folder)
+        gupload.upload(os.path.join(raw_path, fname), fname, gdrive_mnrega_raw_folder)
     
     links = ind_table_html.findAll('a', href=True)
     return links
@@ -118,7 +118,7 @@ def mnrega_demand_monthly(**context):
         hh_df = hh_dist_long_df.merge(hh_st_long_df, on=['date','state_name'], how='left')
 
         person_state_links = get_states_data(persons_url, raw_path, 'persons', fiscal_year)
-        person_dist_files = get_districts_data(person_state_links, raw_path, 'persons', fiscal_year)
+        person_dist_files = get_districts_data(person_state_links, raw_path, 'persons', fiscal_year, curr_date)
 
         person_dist_df = pd.concat([pd.read_csv(f).iloc[:-1 , 1:] for f in person_dist_files]).reset_index(drop=True)
         person_dist_df.columns = ["State","District","01-04-2021","01-05-2021","01-06-2021","01-07-2021","01-08-2021","01-09-2021","01-10-2021","01-11-2021",
