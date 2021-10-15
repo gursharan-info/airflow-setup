@@ -86,9 +86,11 @@ def fdi_monthly(**context):
             extracted_df = extracted_df.drop(['Unnamed: 0'], axis=1)
             extracted_df = extracted_df.iloc[:-3]
             extracted_df = extracted_df.drop([0])
-            extracted_df.columns = (['date', 'fdi_equity_inflows'])
+            
+            extracted_df.columns = (['date', 'fdi_equity_india'])
             extracted_df['date'] = extracted_df['date'].str.split(".", expand=True)[1].str.strip()
             extracted_df['date'] = pd.to_datetime(extracted_df['date'], format="%B, %Y")
+            extracted_df['fdi_equity_india'] = extracted_df['fdi_equity_india'].str.replace(',', '').astype(int)
 
             min_mnth = extracted_df['date'].min().strftime("%m%Y")
             max_mnth = extracted_df['date'].max().strftime("%m%Y")
