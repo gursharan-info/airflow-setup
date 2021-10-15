@@ -26,7 +26,7 @@ day_lag = 1
 # For 2021-22. For later year you may need the url 
 main_url = "https://posoco.in/reports/daily-reports/daily-reports-2021-22/"
 states = ['Punjab', 'Haryana', 'Rajasthan', 'Delhi', 'UP', 'Uttarakhand', 'HP', 'J&K(UT) & Ladakh(UT)','J&K(UT)','Ladakh(UT)','J&K','Ladakh', 'Chandigarh', 'Chhattisgarh', 'Gujarat', 'MP', 'Maharashtra', 'Goa', 'DD', 'DNH',"Essar steel", 'AMNSIL', 'Andhra Pradesh', 'Telangana', 'Karnataka', 'Kerala', 'Tamil Nadu', 'Puducherry','Pondy','Bihar','DVC', 'Jharkhand', 'Odisha', 'West Bengal', 'Sikkim', 'Arunachal Pradesh', 'Assam', 'Manipur', 'Meghalaya', 'Mizoram', 'Nagaland', 'Tripura']
-elec_columns = ['state','max_demand_met_state','shortage','energy_met_mu_state','drawal_schedule_mu','od_ud_mu','max_od_mw','energy_storage']
+elec_columns = ['state','max_demand_met_state','shortage','energy_met_state','drawal_schedule_mu','od_ud_mu','max_od_mw','energy_storage']
 
 def scrape_electricity_data(**context):
     # today = datetime.fromtimestamp(context['execution_date'].timestamp())
@@ -123,7 +123,7 @@ def scrape_electricity_data(**context):
             posoco =posoco[~posoco['state'].isin(remove_list)]
 
             posoco['max_demand_met_india'] = posoco['max_demand_met_state'].groupby(posoco['date']).transform('sum')
-            posoco['energy_met_india'] = posoco['energy_met_mu_state'].groupby(posoco['date']).transform('sum')
+            posoco['energy_met_india'] = posoco['energy_met_state'].groupby(posoco['date']).transform('sum')
 
             stlgd = pd.DataFrame({
                 'state':['J&K(UT) & Ladakh(UT)','Bihar','Sikkim','Arunachal Pradesh',
