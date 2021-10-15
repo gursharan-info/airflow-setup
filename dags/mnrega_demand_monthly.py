@@ -97,7 +97,7 @@ def mnrega_demand_monthly(**context):
         persons_url = f"http://mnregaweb4.nic.in/netnrega/demand_emp_demand.aspx?lflag=eng&file1=dmd&fin={fiscal_year}&fin_year={fiscal_year}&source=national&rblhpb=Persons&Digest=wc5i3wD4B1WhRXz2egmK8Q"
 
         hh_state_links = get_states_data(hh_url, raw_path, 'households', fiscal_year)
-        hh_dist_files = get_districts_data(hh_state_links, raw_path, 'households', fiscal_year)
+        hh_dist_files = get_districts_data(hh_state_links, raw_path, 'households', fiscal_year, curr_date)
 
         hh_dist_df = pd.concat([pd.read_csv(f).iloc[:-1 , 1:] for f in hh_dist_files]).reset_index(drop=True)
         hh_dist_df.columns = ["State","District","01-04-2021","01-05-2021","01-06-2021","01-07-2021","01-08-2021","01-09-2021","01-10-2021","01-11-2021",
