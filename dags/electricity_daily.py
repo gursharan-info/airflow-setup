@@ -26,7 +26,7 @@ day_lag = 1
 # For 2021-22. For later year you may need the url 
 main_url = "https://posoco.in/reports/daily-reports/daily-reports-2021-22/"
 states = ['Punjab', 'Haryana', 'Rajasthan', 'Delhi', 'UP', 'Uttarakhand', 'HP', 'J&K(UT) & Ladakh(UT)','J&K(UT)','Ladakh(UT)','J&K','Ladakh', 'Chandigarh', 'Chhattisgarh', 'Gujarat', 'MP', 'Maharashtra', 'Goa', 'DD', 'DNH',"Essar steel", 'AMNSIL', 'Andhra Pradesh', 'Telangana', 'Karnataka', 'Kerala', 'Tamil Nadu', 'Puducherry','Pondy','Bihar','DVC', 'Jharkhand', 'Odisha', 'West Bengal', 'Sikkim', 'Arunachal Pradesh', 'Assam', 'Manipur', 'Meghalaya', 'Mizoram', 'Nagaland', 'Tripura']
-elec_columns = ['state','max_demand_met_state','shortage','energy_met_state','drawal_schedule_mu','od_ud_mu','max_od_mw','energy_storage']
+elec_columns = ['state_name','max_demand_met_state','shortage','energy_met_state','drawal_schedule_mu','od_ud_mu','max_od_mw','energy_storage']
 
 def scrape_electricity_data(**context):
     # today = datetime.fromtimestamp(context['execution_date'].timestamp())
@@ -126,7 +126,7 @@ def scrape_electricity_data(**context):
             posoco['energy_met_india'] = posoco['energy_met_state'].groupby(posoco['date']).transform('sum')
 
             stlgd = pd.DataFrame({
-                'state':['J&K(UT) & Ladakh(UT)','Bihar','Sikkim','Arunachal Pradesh',
+                'state_name':['J&K(UT) & Ladakh(UT)','Bihar','Sikkim','Arunachal Pradesh',
                         'Nagaland','Manipur','Mizoram',  'Tripura', 'Meghalaya',
                         'Assam', 'West Bengal','HP', 'Jharkhand', 'Odisha',
                         'Chhattisgarh','MP','Gujarat', 'Maharashtra','Andhra Pradesh',
@@ -134,7 +134,7 @@ def scrape_electricity_data(**context):
                         'Telangana', 'DD', 'DNH', 'Chandigarh','Uttarakhand',
                         'Haryana','Delhi','Rajasthan', 'UP'],
 
-                'State_code':[1,10,11,12,13,14,15,16,17,18,19,2,20,21,22,23,24,27,
+                'state_code':[1,10,11,12,13,14,15,16,17,18,19,2,20,21,22,23,24,27,
                             28,29,3,30,32,33,34,36,38,38,4,5,6,7,8,9]
             })
             #stlgd
