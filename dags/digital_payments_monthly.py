@@ -89,7 +89,7 @@ def digital_payments_monthly(**context):
     #     pass
     except Exception as e:
         print(e)
-        pass
+        
 
 default_args = {
     'owner': 'airflow', 
@@ -103,7 +103,7 @@ default_args = {
     "retry_delay": timedelta(minutes=10),
 }
 
-digital_payments_monthly_dag = DAG("digitalPaymentsMonthlyScraping", default_args=default_args, schedule_interval='0 20 2 * *')
+digital_payments_monthly_dag = DAG("digitalPaymentsMonthlyScraping", default_args=default_args, schedule_interval='0 20 6 * *')
 
 digital_payments_monthly_task = PythonOperator(task_id='digital_payments_monthly',
                                        python_callable = digital_payments_monthly,
