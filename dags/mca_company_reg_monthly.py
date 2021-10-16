@@ -1,5 +1,6 @@
 import pendulum, os, requests, json
 import pandas as pd
+from datetime import timedelta
 from urllib.parse import urlparse, parse_qs, urlencode
 
 from airflow import DAG
