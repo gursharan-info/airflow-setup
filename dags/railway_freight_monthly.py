@@ -96,10 +96,10 @@ default_args = {
     "retry_delay": timedelta(minutes=10),
 }
 
-iip_monthly_dag = DAG("industrialActivityScraping", default_args=default_args, schedule_interval='0 20 6 * *')
+railway_freight_monthly_dag = DAG("railwayFreightScraping", default_args=default_args, schedule_interval='0 20 6 * *')
 
-iip_monthly_task = PythonOperator(task_id='iip_monthly',
-                                       python_callable = iip_monthly,
-                                       dag = iip_monthly_dag,
+railway_freight_monthly_task = PythonOperator(task_id='railway_freight_monthly',
+                                       python_callable = railway_freight_monthly,
+                                       dag = railway_freight_monthly_dag,
                                        provide_context = True,
                                     )
