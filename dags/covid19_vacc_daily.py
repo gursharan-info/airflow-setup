@@ -41,7 +41,7 @@ def scrape_covid_vacc_daily(**context):
                               aggfunc='sum')
     pivoted.columns = [col[-1] for col in pivoted.columns]
     pivoted = pivoted.reset_index()
-    pivoted['date'] = pd.to_datetime(pivoted['date'], format="%d/%m/%Y")
+    pivoted['date'] = pd.to_datetime(pivoted['date'], format="%d/%m/%Y")    
     pivoted = pivoted[['date','state_name','district_name'] + pivoted.columns[3:].tolist()]
     pivoted.columns = ['date','state_name','district_name'] + [re.sub(' +', '_', re.sub(r'[^a-zA-Z ]', ' ', col.lower()).strip()) for col in pivoted.columns[3:].tolist()]
     pivoted = pivoted.sort_values(by=['date','state_name','district_name']).reset_index(drop=True)

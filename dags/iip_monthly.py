@@ -47,6 +47,7 @@ def iip_monthly(**context):
             with open(raw_file_loc, 'wb') as output:
                 output.write(resp.content)
             output.close()
+            gupload.upload(raw_file_loc,  curr_link.split('/')[-1], gdrive_iip_raw_folder)
 
             # Sectoral sheet data
             sector_raw_df = pd.read_excel(raw_file_loc, sheet_name="NIC 2d, sectoral monthly")
