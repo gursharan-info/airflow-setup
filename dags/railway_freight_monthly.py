@@ -7,7 +7,6 @@ from lxml import html
 import tabula
 
 from airflow import DAG
-from airflow.exceptions import AirflowFailException
 # from airflow.operators import PythonOperator
 from airflow.operators.python_operator import PythonOperator
 from helpers import google_upload as gupload
@@ -79,7 +78,7 @@ def railway_freight_monthly(**context):
 
         else:
             # print('No Data available for this month yet')
-            raise AirflowException("'No Data available for this month yet'")
+            raise ValueError('No Data available for this month yet')
     # except requests.exceptions.RequestException as e:
     #     print(e)
     #     pass
