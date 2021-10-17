@@ -6,7 +6,8 @@ from urllib.parse import urlparse, parse_qs, urlencode
 from lxml import html
 import tabula
 
-from airflow import DAG, AirflowException
+from airflow import DAG
+from airflow.exceptions import AirflowFailException
 # from airflow.operators import PythonOperator
 from airflow.operators.python_operator import PythonOperator
 from helpers import google_upload as gupload
