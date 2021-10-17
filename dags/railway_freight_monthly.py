@@ -1,5 +1,6 @@
 import pendulum, os, requests, re
 import pandas as pd
+import numpy as np
 from datetime import timedelta
 from urllib.parse import urlparse, parse_qs, urlencode
 from lxml import html
