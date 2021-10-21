@@ -116,7 +116,7 @@ default_args = {
     'owner': 'airflow', 
     'depends_on_past': False,
     # 'start_date': datetime(2021, 2, 1, 6, 0),
-    'start_date': pendulum.datetime(year=2021, month=9, day=14, hour=20, minute=00 ).astimezone('Asia/Kolkata'),
+    'start_date': pendulum.datetime(year=2021, month=9, day=14, hour=4, minute=00 ).astimezone('Asia/Kolkata'),
     'provide_context': True,
     # "owner": "airflow",
     'email': ['gursharan_singh@isb.edu'],

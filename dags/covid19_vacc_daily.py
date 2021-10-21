@@ -100,7 +100,7 @@ def scrape_covid_vacc_daily(**context):
 default_args = {
     'owner': 'airflow', 
     'depends_on_past': False,
-    'start_date': pendulum.datetime(year=2021, month=7, day=25, hour=20, minute=00 ).astimezone('Asia/Kolkata'),
+    'start_date': pendulum.datetime(year=2021, month=7, day=25, hour=4, minute=00 ).astimezone('Asia/Kolkata'),
     'provide_context': True,
     'email': ['gursharan_singh@isb.edu'],
     'email_on_failure': True,
