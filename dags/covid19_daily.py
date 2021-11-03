@@ -6,12 +6,15 @@ from datetime import datetime, timedelta
 from airflow import DAG
 # from airflow.operators import PythonOperator
 from airflow.operators.python_operator import PythonOperator
-from helpers import google_upload as gupload
+# from helpers import google_upload as gupload
+from helpers import sharepoint_upload as sharepoint
 
 lgd_codes_file = 'https://raw.githubusercontent.com/gursharan-info/idp-scripts/master/sources/LGD_covid_20Oct19.csv'
 dir_path = '/usr/local/airflow/data/hfi/covid19'
 daily_data_path = os.path.join(dir_path, 'daily')
-gdrive_covid_daily_folder = '1Ey0Lv4sftSlPXC_Obc7LyGiWfg89etXj'
+# gdrive_covid_daily_folder = '1Ey0Lv4sftSlPXC_Obc7LyGiWfg89etXj'
+SECTOR_NAME = 'Health'
+DATASET_NAME = 'covid19_daily'
 day_lag = 0
 
 def scrape_covid_daily(**context):
@@ -110,29 +113,19 @@ def scrape_covid_daily(**context):
     
     filename = os.path.join(daily_data_path, 'covid_'+yday+'.csv')
     final_merged_data.to_csv(filename,index=False)
-    gupload.upload(filename, 'covid_'+yday+'.csv',gdrive_covid_daily_folder)
+    sharepoint.upload(filename, 'covid_'+yday+'.csv', SECTOR_NAME, DATASET_NAME)
+    # gupload.upload(filename, 'covid_'+yday+'.csv',gdrive_covid_daily_folder)
 
 default_args = {
     'owner': 'airflow', 
     'depends_on_past': False,
-    # 'start_date': datetime(2021, 2, 1, 6, 0),
     'start_date': pendulum.datetime(year=2021, month=9, day=14, hour=4, minute=00 ).astimezone('Asia/Kolkata'),
     'provide_context': True,
-    # "owner": "airflow",
     'email': ['gursharan_singh@isb.edu'],
     'email_on_failure': True,
     "catchup": True,
-    # "depends_on_past": False,
-    # "start_date": datetime(2020, 12, 18),
-    # "email": ["airflow@airflow.com"],
-    # "email_on_failure": False,
-    # "email_on_retry": False,
     "retries": 3,
     "retry_delay": timedelta(hours=2),
-    # 'queue': 'bash_queue',
-    # 'pool': 'backfill',
-    # 'priority_weight': 10,
-    # 'end_date': datetime(2016, 1, 1),
 }
 
 scrape_covid_daily_dag = DAG("covid19CasesDailyScraping", default_args=default_args, schedule_interval="@daily")

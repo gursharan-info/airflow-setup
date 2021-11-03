@@ -15,3 +15,5 @@ fiscalyear==0.3.2
 html5lib==1.1
 # opencv-python==4.4.0.46
 camelot-py[cv]
+python-dotenv
+SharePlum
