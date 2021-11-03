@@ -14,7 +14,7 @@ dir_path = '/usr/local/airflow/data/hfi/covid19'
 daily_data_path = os.path.join(dir_path, 'daily')
 # gdrive_covid_daily_folder = '1Ey0Lv4sftSlPXC_Obc7LyGiWfg89etXj'
 SECTOR_NAME = 'Health'
-DATASET_NAME = 'covid19_daily'
+DATASET_NAME = 'covid_daily'
 day_lag = 0
 
 def scrape_covid_daily(**context):
