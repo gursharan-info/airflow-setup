@@ -6,12 +6,15 @@ from datetime import datetime, timedelta
 from airflow import DAG
 # from airflow.operators import PythonOperator
 from airflow.operators.python_operator import PythonOperator
-from helpers import google_upload as gupload
+# from helpers import google_upload as gupload
+from helpers import sharepoint_upload as sharepoint
 
 lgd_codes_file = 'https://raw.githubusercontent.com/gursharan-info/idp-scripts/master/sources/LGD_covid_vacc_28Jul21.csv'
 dir_path = '/usr/local/airflow/data/hfi/covid19_vacc'
 daily_data_path = os.path.join(dir_path, 'daily')
-gdrive_covid_vacc_folder = '1mi_xwBAlQy-qdNbcbv1PdFD1YAH0feu3'
+# gdrive_covid_vacc_folder = '1mi_xwBAlQy-qdNbcbv1PdFD1YAH0feu3'
+SECTOR_NAME = 'Health'
+DATASET_NAME = 'covid_vaccination_daily'
 day_lag = 0
 
 def scrape_covid_vacc_daily(**context):
@@ -95,7 +98,8 @@ def scrape_covid_vacc_daily(**context):
 
     filename = os.path.join(daily_data_path, 'covid_'+curr_date.strftime("%d-%m-%Y")+'.csv')
     mapped_df.to_csv(filename,index=False)
-    gupload.upload(filename, 'covid_'+curr_date.strftime("%d-%m-%Y")+'.csv',gdrive_covid_vacc_folder)
+    # gupload.upload(filename, 'covid_'+curr_date.strftime("%d-%m-%Y")+'.csv',gdrive_covid_vacc_folder)
+    sharepoint.upload(filename, 'covid_'+curr_date.strftime("%d-%m-%Y")+'.csv', SECTOR_NAME, DATASET_NAME)
 
 default_args = {
     'owner': 'airflow', 
