@@ -20,7 +20,7 @@ pdf_path = os.path.join(dir_path, 'raw_data')
 daily_data_path = os.path.join(dir_path, 'daily')
 # gdrive_electricity_folder = '139M_aquK9oXptaDTjvHlxe0NTzMdu8m7'
 # gdrive_electricity_pdf_folder = '1n-619wmzIh6b2fnWdyeCzT1SmP5xO8ud'
-SECTOR_NAME = 'Agriculture'
+SECTOR_NAME = 'Consumption'
 DATASET_NAME = 'electricity_daily'
 day_lag = 1
 
