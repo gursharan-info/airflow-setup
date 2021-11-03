@@ -8,7 +8,8 @@ from dotenv import load_dotenv
 
 def upload(source_file_path, remote_file_name, sector_name, dataset_name):
     
-    ENV_FILE = Path('.') / '.env'
+    # ENV_FILE = Path('.') / '.env'
+    ENV_FILE = os.path.join(os.path.dirname(os.path.realpath(__file__)), '.env')
     load_dotenv(dotenv_path = ENV_FILE)
 
     server_url = f"https://{os.getenv('SHAREPOINT_HOSTNAME')}/"
