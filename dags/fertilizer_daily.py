@@ -6,15 +6,19 @@ from datetime import datetime, date, timedelta
 from airflow import DAG
 # from airflow.operators import PythonOperator
 from airflow.operators.python_operator import PythonOperator
-from helpers import google_upload as gupload
+# from helpers import google_upload as gupload
+from helpers import sharepoint_upload as sharepoint
 
 lgd_codes_file = 'https://raw.githubusercontent.com/gursharan-info/idp-scripts/master/sources/LGD_v2_17Sep21_fertilizer.csv'
 dir_path = '/usr/local/airflow/data/hfi/fertilizer_sales'
 data_path = os.path.join(dir_path, 'daily')
 raw_data_path = os.path.join(dir_path, 'raw_data')
-gdrive_fertilizer_folder = '1EZeIWEq_Yshb-C-0E1HBXzBDh5luPsZf'
-gdrive_fertilizer_raw_folder = '1zgBIGhN4j0TDI0HdMqlxaTebb0iIgwPo'
-gdrive_fert_hist_folder = '1n0tMtKBWtT8MJYfpV2lAHf4MDk5sPO_Y'
+# gdrive_fertilizer_folder = '1EZeIWEq_Yshb-C-0E1HBXzBDh5luPsZf'
+# gdrive_fertilizer_raw_folder = '1zgBIGhN4j0TDI0HdMqlxaTebb0iIgwPo'
+# gdrive_fert_hist_folder = '1n0tMtKBWtT8MJYfpV2lAHf4MDk5sPO_Y'
+SECTOR_NAME = 'Agriculture'
+DATASET_NAME = 'fertilizer_daily'
+
 day_lag = 2
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
@@ -70,7 +74,8 @@ def read_fertilizer_data(**context):
         all_state_data = pd.concat(all_data).drop_duplicates()
         raw_filename = os.path.join(raw_data_path, curr_date.strftime("%Y-%m-%d")+".csv")
         all_state_data.to_csv(raw_filename, index=False)
-        gupload.upload(raw_filename, curr_date.strftime("%Y-%m-%d")+".csv",gdrive_fertilizer_raw_folder)
+        # gupload.upload(raw_filename, curr_date.strftime("%Y-%m-%d")+".csv",gdrive_fertilizer_raw_folder)
+        sharepoint.upload(raw_filename, curr_date.strftime("%Y-%m-%d")+".csv", SECTOR_NAME, f"{DATASET_NAME}/raw_data")
 
         all_state_data.columns = [re.sub('[^A-Za-z0-9]+', ' ',col).strip().replace(" ","_") for col in all_state_data.columns]
         all_state_data['Date'] = pd.to_datetime(all_state_data['Date'], format="%d-%m-%Y")
@@ -96,7 +101,8 @@ def read_fertilizer_data(**context):
         final_df = stacked_df.copy()
         stacked_df['date'] = stacked_df['date'].dt.strftime("%d-%m-%Y")
         stacked_df.drop(columns='merge_name').to_csv(os.path.join(dir_path,'data_historical.csv'), index=False)
-        gupload.upload(os.path.join(dir_path,'data_historical.csv'), f"data_historical_{curr_date.strftime('%d%m%Y')}.csv",gdrive_fert_hist_folder)
+        # gupload.upload(os.path.join(dir_path,'data_historical.csv'), f"data_historical_{curr_date.strftime('%d%m%Y')}.csv",gdrive_fert_hist_folder)
+        sharepoint.upload(os.path.join(dir_path,'data_historical.csv'), "data_historical.csv", SECTOR_NAME, f"{DATASET_NAME}/historical")
         # display(stacked_df)
     
         final_df[['quantity_sold_roll_district', 
@@ -124,7 +130,8 @@ def read_fertilizer_data(**context):
         
         # filename = os.path.join(data_path, currentDate.strftime("%d-%m-%Y")+'.csv')
         # final_df.to_csv(filename,index=False)
-        gupload.upload(filename, f"fertilizer_sales_daily_{curr_date.strftime('%d-%m-%Y')}.csv",gdrive_fertilizer_folder)
+        # gupload.upload(filename, f"fertilizer_sales_daily_{curr_date.strftime('%d-%m-%Y')}.csv",gdrive_fertilizer_folder)
+        sharepoint.upload(filename, f"fertilizer_sales_daily_{curr_date.strftime('%d-%m-%Y')}.csv", SECTOR_NAME, DATASET_NAME)
     
     except requests.exceptions.RequestException as e:
         print(e)
