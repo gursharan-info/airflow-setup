@@ -18,19 +18,19 @@ def upload(source_file_path, remote_file_name, sector_name, dataset_name):
     upload_folder = f"{indiaPulse_folder}/{sector_name}/{dataset_name}"
     print(upload_folder)
     
-    try:
-        authcookie = Office365(server_url, username = os.getenv('SHAREPOINT_USERNAME'),
-                               password=os.getenv('SHAREPOINT_PWD')).GetCookies()
+    # try:
+    #     authcookie = Office365(server_url, username = os.getenv('SHAREPOINT_USERNAME'),
+    #                            password=os.getenv('SHAREPOINT_PWD')).GetCookies()
         
-        site = Site(site_url, version=Version.v365, authcookie=authcookie)
-        folder = site.Folder(upload_folder)
-        with open(source_file_path, mode='rb') as file:
-            fileContent = file.read()
-        folder.upload_file(fileContent, remote_file_name)
+    #     site = Site(site_url, version=Version.v365, authcookie=authcookie)
+    #     folder = site.Folder(upload_folder)
+    #     with open(source_file_path, mode='rb') as file:
+    #         fileContent = file.read()
+    #     folder.upload_file(fileContent, remote_file_name)
         
-        return True
+    #     return True
 
-    except Exception as e:
-        print(e, "Couldn't upload file", source_file_path)
-        return False
+    # except Exception as e:
+    #     print(e, "Couldn't upload file", source_file_path)
+    #     return False
         
