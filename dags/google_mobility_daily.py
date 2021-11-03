@@ -13,7 +13,7 @@ daily_data_path = os.path.join(dir_path, 'daily')
 # gdrive_mobility_daily_folder = '18xxuAdiCaSTTBYNrRxd2IL6FCVxdV3Qm'
 SECTOR_NAME = 'Mobility'
 DATASET_NAME = 'google_mobility_daily'
-day_lag = 5
+day_lag = 3
 
 
 def read_mobility_data_daily(**context):
@@ -23,6 +23,7 @@ def read_mobility_data_daily(**context):
         # The current date would be previous day from date of execution
         curr_date = pd.to_datetime( datetime.fromtimestamp(context['execution_date'].timestamp())- timedelta(day_lag) )
         curr_date_str = curr_date.strftime("%Y-%m-%d")
+        print("Scraping for: ", curr_date_str)
 
         raw_df = pd.read_csv('https://www.gstatic.com/covid19/mobility/Global_Mobility_Report.csv')
         india_df = raw_df[raw_df['country_region_code'] == 'IN'].copy()
