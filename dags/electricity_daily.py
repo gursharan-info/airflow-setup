@@ -11,14 +11,17 @@ from lxml import html
 from airflow import DAG
 # from airflow.operators import PythonOperator
 from airflow.operators.python_operator import PythonOperator
-from helpers import google_upload as gupload
+# from helpers import google_upload as gupload
+from helpers import sharepoint_upload as sharepoint
 
 
 dir_path = os.path.join(os.path.join(os.path.join(os.getcwd(), 'data'), 'hfi'), 'electricity')
 pdf_path = os.path.join(dir_path, 'raw_data')
 daily_data_path = os.path.join(dir_path, 'daily')
-gdrive_electricity_folder = '139M_aquK9oXptaDTjvHlxe0NTzMdu8m7'
-gdrive_electricity_pdf_folder = '1n-619wmzIh6b2fnWdyeCzT1SmP5xO8ud'
+# gdrive_electricity_folder = '139M_aquK9oXptaDTjvHlxe0NTzMdu8m7'
+# gdrive_electricity_pdf_folder = '1n-619wmzIh6b2fnWdyeCzT1SmP5xO8ud'
+SECTOR_NAME = 'Agriculture'
+DATASET_NAME = 'electricity_daily'
 day_lag = 1
 
 # For 2020-21
@@ -63,7 +66,8 @@ def scrape_electricity_data(**context):
             with open (file_loc,'wb') as f:
                 f.write(response.content)
             f.close()
-            gupload.upload(file_loc, 'file'+file_date+'.pdf',gdrive_electricity_pdf_folder)
+            # gupload.upload(file_loc, 'file'+file_date+'.pdf',gdrive_electricity_pdf_folder)
+            sharepoint.upload(file_loc, 'file'+file_date+'.pdf', SECTOR_NAME, f"{DATASET_NAME}/raw_data")
 
             #FIND_TABLE
             pdf = open(file_loc,'rb')
@@ -145,7 +149,8 @@ def scrape_electricity_data(**context):
                                     'max_demand_met_india', 'energy_met_india']]
             posoco_file_loc = os.path.join(daily_data_path, file_date+'.csv')
             posoco.to_csv(posoco_file_loc,index=False)
-            gupload.upload(posoco_file_loc, file_date+'.csv',gdrive_electricity_folder)
+            # gupload.upload(posoco_file_loc, file_date+'.csv',gdrive_electricity_folder)
+            sharepoint.upload(posoco_file_loc, 'electricity_daily_'+file_date+'.csv', SECTOR_NAME, DATASET_NAME)
 
             # break
         except AssertionError as error:
