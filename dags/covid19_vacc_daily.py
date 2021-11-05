@@ -23,12 +23,11 @@ def scrape_covid_vacc_daily(**context):
     curr_date = datetime.fromtimestamp(context['execution_date'].timestamp()) - timedelta(day_lag)
     curr_date_str = curr_date.strftime("%Y-%m-%d")
     print(curr_date_str)
-    cowin_vacc_df = pd.read_csv("http://api.covid19india.org/csv/latest/cowin_vaccine_data_districtwise.csv", header=[0,1], low_memory=False)
+    cowin_df = pd.read_csv("http://api.covid19india.org/csv/latest/cowin_vaccine_data_districtwise.csv", header=[0,1], low_memory=False)
+    cowin_df = cowin_df.dropna(axis=1, how='all')
     
-    cowin_vacc_df = cowin_vacc_df.dropna(axis=1, how='all')
-    
-    cowin_vacc_df = cowin_vacc_df.drop(cowin_vacc_df.iloc[:, 0:2], axis = 1)
-    cowin_vacc_df = cowin_vacc_df.drop(cowin_vacc_df.iloc[:, 1:3], axis = 1)
+    cowin_vacc_df = cowin_df.drop(columns=['S No','State_Code','District_Key','Cowin Key'], axis = 1)
+    # cowin_vacc_df = cowin_vacc_df.drop(cowin_vacc_df.iloc[:, 1:3], axis = 1)
 
     cowin_vacc_df.rename(columns={'Unnamed: 2_level_1': '', 'Unnamed: 5_level_1': ''}, inplace=True)
     cowin_vacc_df = cowin_vacc_df.set_index(['State','District'])
@@ -72,45 +71,49 @@ def scrape_covid_vacc_daily(**context):
         dist_list.append(group_df)
 
     delta_df = pd.concat(dist_list).sort_values(by=['date','state_name','district_name']).reset_index(drop=True)
-    delta_df = delta_df[delta_df['date'] == curr_date_str]
+    delta_df = delta_df[delta_df['date'] == curr_date_str].reset_index(drop=True)
     print(delta_df)
 
-    state_group_df = delta_df.groupby(['date','state_name'], as_index=False).sum()
-    state_group_df.columns = ['date','state_name','first_dose_admn_state','second_dose_admn_state','total_doses_admn_state']
-    india_group_df = delta_df.groupby(['date'], as_index=False).sum()
-    india_group_df.columns = ['date','first_dose_admn_india','second_dose_admn_india','total_doses_admn_india']
+    if not delta_df.empty:
+        state_group_df = delta_df.groupby(['date','state_name'], as_index=False).sum()
+        state_group_df.columns = ['date','state_name','first_dose_admn_state','second_dose_admn_state','total_doses_admn_state']
+        india_group_df = delta_df.groupby(['date'], as_index=False).sum()
+        india_group_df.columns = ['date','first_dose_admn_india','second_dose_admn_india','total_doses_admn_india']
 
-    final_df = delta_df.merge(state_group_df, on=['date','state_name'], how='left')
-    final_df = final_df.merge(india_group_df, on=['date'], how='left')
+        final_df = delta_df.merge(state_group_df, on=['date','state_name'], how='left')
+        final_df = final_df.merge(india_group_df, on=['date'], how='left')
 
-    final_df['state_district_lower'] = final_df['state_name'].str.lower().str.strip() + "_" + \
-                    final_df['district_name'].str.lower().str.strip()
+        final_df['state_district_lower'] = final_df['state_name'].str.lower().str.strip() + "_" + \
+                        final_df['district_name'].str.lower().str.strip()
 
-    state_codes_df = pd.read_csv(lgd_codes_file)
-    state_codes_df['state_district_lower'] = state_codes_df['state_name_covid'].str.strip().str.lower() \
-                    + "_" + state_codes_df['district_name_covid'].str.lower().str.strip()
-    
-    mapped_df = pd.merge(final_df, state_codes_df[['state_code','district_code','state_district_lower']].drop_duplicates(),
-                                 how='left', on='state_district_lower')
-    mapped_df = mapped_df[['date','state_name','state_code','district_name','district_code']+mapped_df.columns.tolist()[3:-3]].reset_index(drop=True)
-    print(mapped_df)
-    mapped_df['date'] = mapped_df['date'].dt.strftime("%d-%m-%Y")
+        state_codes_df = pd.read_csv(lgd_codes_file)
+        state_codes_df['state_district_lower'] = state_codes_df['state_name_covid'].str.strip().str.lower() \
+                        + "_" + state_codes_df['district_name_covid'].str.lower().str.strip()
+        
+        mapped_df = pd.merge(final_df, state_codes_df[['state_code','district_code','state_district_lower']].drop_duplicates(),
+                                    how='left', on='state_district_lower')
+        mapped_df = mapped_df[['date','state_name','state_code','district_name','district_code']+mapped_df.columns.tolist()[3:-3]].reset_index(drop=True)
+        print(mapped_df)
+        mapped_df['date'] = mapped_df['date'].dt.strftime("%d-%m-%Y")
 
-    filename = os.path.join(daily_data_path, 'covid_'+curr_date.strftime("%d-%m-%Y")+'.csv')
-    mapped_df.to_csv(filename,index=False)
-    # gupload.upload(filename, 'covid_'+curr_date.strftime("%d-%m-%Y")+'.csv',gdrive_covid_vacc_folder)
-    sharepoint.upload(filename, 'covid_'+curr_date.strftime("%d-%m-%Y")+'.csv', SECTOR_NAME, DATASET_NAME)
+        filename = os.path.join(daily_data_path, 'covid_'+curr_date.strftime("%d-%m-%Y")+'.csv')
+        mapped_df.to_csv(filename,index=False)
+        # gupload.upload(filename, 'covid_'+curr_date.strftime("%d-%m-%Y")+'.csv',gdrive_covid_vacc_folder)
+        sharepoint.upload(filename, 'covid_'+curr_date.strftime("%d-%m-%Y")+'.csv', SECTOR_NAME, DATASET_NAME)
+    else:
+        print("No data available for this date yet: ",curr_date.strftime("%d-%m-%Y"))
 
 default_args = {
     'owner': 'airflow', 
     'depends_on_past': False,
+    # 'start_date': pendulum.datetime(year=2021, month=7, day=25, hour=4, minute=00 ).astimezone('Asia/Kolkata'),
     'start_date': pendulum.datetime(year=2021, month=7, day=25, hour=4, minute=00 ).astimezone('Asia/Kolkata'),
     'provide_context': True,
     'email': ['gursharan_singh@isb.edu'],
     'email_on_failure': True,
     "catchup": True,
-    "retries": 1,
-    "retry_delay": timedelta(minutes=10),
+    "retries": 3,
+    "retry_delay": timedelta(days=10),
 }
 
 scrape_covid_vacc_daily_dag = DAG("covid19VaccDailyScraping", default_args=default_args, schedule_interval="@daily")
