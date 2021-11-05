@@ -92,8 +92,8 @@ def scrape_covid_vacc_daily(**context):
     
     mapped_df = pd.merge(final_df, state_codes_df[['state_code','district_code','state_district_lower']].drop_duplicates(),
                                  how='left', on='state_district_lower')
-    mapped_df = mapped_df[['date','state_name','state_code','district_name','district_code']+mapped_df.columns.tolist()[3:-3]]
-    # print(mapped_df)
+    mapped_df = mapped_df[['date','state_name','state_code','district_name','district_code']+mapped_df.columns.tolist()[3:-3]].reset_index(drop=True)
+    print(mapped_df)
     mapped_df['date'] = mapped_df['date'].dt.strftime("%d-%m-%Y")
 
     filename = os.path.join(daily_data_path, 'covid_'+curr_date.strftime("%d-%m-%Y")+'.csv')
