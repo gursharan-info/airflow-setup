@@ -73,7 +73,7 @@ def scrape_covid_vacc_daily(**context):
 
     delta_df = pd.concat(dist_list).sort_values(by=['date','state_name','district_name']).reset_index(drop=True)
     delta_df = delta_df[delta_df['date'] == curr_date_str]
-    # print(delta_df)
+    print(delta_df)
 
     state_group_df = delta_df.groupby(['date','state_name'], as_index=False).sum()
     state_group_df.columns = ['date','state_name','first_dose_admn_state','second_dose_admn_state','total_doses_admn_state']
