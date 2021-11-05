@@ -74,7 +74,8 @@ def scrape_covid_vacc_daily(**context):
     delta_df = delta_df[delta_df['date'] == curr_date_str].reset_index(drop=True)
     print(delta_df)
 
-    if not delta_df.empty:
+    # if not delta_df.empty:
+    try:
         state_group_df = delta_df.groupby(['date','state_name'], as_index=False).sum()
         state_group_df.columns = ['date','state_name','first_dose_admn_state','second_dose_admn_state','total_doses_admn_state']
         india_group_df = delta_df.groupby(['date'], as_index=False).sum()
@@ -100,8 +101,11 @@ def scrape_covid_vacc_daily(**context):
         mapped_df.to_csv(filename,index=False)
         # gupload.upload(filename, 'covid_'+curr_date.strftime("%d-%m-%Y")+'.csv',gdrive_covid_vacc_folder)
         sharepoint.upload(filename, 'covid_'+curr_date.strftime("%d-%m-%Y")+'.csv', SECTOR_NAME, DATASET_NAME)
-    else:
-        print("No data available for this date yet: ",curr_date.strftime("%d-%m-%Y"))
+    except Exception as exception:
+            print("Exception has been thrown. " + str(exception))
+            print("No data available for date: "+curr_date.strftime("%d-%m-%Y"))
+    # else:
+    #     print("No data available for this date yet: ",curr_date.strftime("%d-%m-%Y"))
 
 default_args = {
     'owner': 'airflow', 
@@ -113,7 +117,7 @@ default_args = {
     'email_on_failure': True,
     "catchup": True,
     "retries": 3,
-    "retry_delay": timedelta(days=10),
+    "retry_delay": timedelta(days=1),
 }
 
 scrape_covid_vacc_daily_dag = DAG("covid19VaccDailyScraping", default_args=default_args, schedule_interval="@daily")
