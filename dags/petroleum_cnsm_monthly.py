@@ -81,6 +81,7 @@ def petr_cnsm_monthly(**context):
             else:
                 raise ValueError('No data avaiable on source for the month yet')
                 return False
+                context['task_instance']=State.FAILED
             
         else:
             print('No Data available for this month yet')
@@ -89,9 +90,13 @@ def petr_cnsm_monthly(**context):
     # except requests.exceptions.RequestException as e:
     #     print(e)
     #     pass
+    except ValueError:
+        print('No Data available for this month yet')
+        return False
     except Exception as e:
         print(e)
         return False
+        
 
 default_args = {
     'owner': 'airflow', 
