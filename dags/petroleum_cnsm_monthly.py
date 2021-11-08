@@ -74,12 +74,16 @@ def petr_cnsm_monthly(**context):
             filtered_df = filtered_df.dropna(subset=['hsd_consm_india','lpg_consm_india','ms_consm_india'])
             filtered_df = filtered_df[filtered_df['date'] == curr_date.strftime("01-%m-%Y")]        
 
-            filename = os.path.join(data_path, f"petroleum_cnsm_monthly_{curr_date.strftime('%m%Y')}.csv")
-            filtered_df.to_csv(filename, index=False)
-
-            gupload.upload(filename, f"petroleum_cnsm_monthly_{curr_date.strftime('%m%Y')}.csv", gdrive_petroleum_monthly_folder)
+            if not filtered_df.empty:
+                filename = os.path.join(data_path, f"petroleum_cnsm_monthly_{curr_date.strftime('%m%Y')}.csv")
+                filtered_df.to_csv(filename, index=False)
+                gupload.upload(filename, f"petroleum_cnsm_monthly_{curr_date.strftime('%m%Y')}.csv", gdrive_petroleum_monthly_folder)
+            else:
+                raise ValueError('No data avaiable on source for the month yet')    
+            
         else:
             print('No Data available for this month yet')
+            raise ValueError('No data avaiable on source for the month yet')
     # except requests.exceptions.RequestException as e:
     #     print(e)
     #     pass
@@ -99,7 +103,7 @@ default_args = {
     "retry_delay": timedelta(minutes=10),
 }
 
-petr_cnsm_monthly_dag = DAG("petroleumMonthlyScraping", default_args=default_args, schedule_interval='0 20 7 * *')
+petr_cnsm_monthly_dag = DAG("petroleumMonthlyScraping", default_args=default_args, schedule_interval='0 20 8 * *')
 
 petr_cnsm_monthly_task = PythonOperator(task_id='petr_cnsm_monthly',
                                        python_callable = petr_cnsm_monthly,
