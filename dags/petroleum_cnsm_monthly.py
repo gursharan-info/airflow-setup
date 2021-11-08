@@ -83,16 +83,14 @@ def petr_cnsm_monthly(**context):
                 context['task_instance']=State.UP_FOR_RETRY 
                 raise ValueError('No Data:  No data avaiable on source for the month yet')
                 return False
-                
-            
         else:
             print('No link:  No Data available for this month yet')
             context['task_instance']=State.UP_FOR_RETRY 
-            raise ValueError('No link:  No data avaiable on source for the month yet')
+            # raise ValueError('No link:  No data avaiable on source for the month yet')
             return False
-    except ValueError:
-        print('No link: No Data available for this month yet')
-        return False
+    # except ValueError:
+        # print('No link: No Data available for this month yet')
+        # return False
     except Exception as e:
         print(e)
         return False
