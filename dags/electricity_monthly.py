@@ -24,9 +24,10 @@ def process_electricity_monthly(**context):
     # scrape_dateString = curr_date.strftime("%d-%m-%y")
 
     files= [i for i in glob.glob(daily_data_path+'/*.{}'.format('csv'))]
+    mnth_files = [file for file in files if curr_date.strftime("%m-%Y") in file]
 
-    merged= pd.concat([pd.read_csv(f) for f in files]) 
-    merged['date'] = pd.to_datetime(merged['date'], format="%d-%m-%Y")
+    merged= pd.concat([pd.read_csv(f) for f in mnth_files]) 
+    merged['date'] = pd.to_datetime(merged['date'], format="%d-%m-%Y").reset_index(drop=True)
     print(merged.columns)
     merged.columns = ['state_name','max_demand_met_state','energy_met_state','date','max_demand_met_india','energy_met_india','state_code']
     merged = merged[['date','state_name','state_code','max_demand_met_state','energy_met_state','max_demand_met_india','energy_met_india']].sort_values(by=['date','state_name'])
