@@ -10,6 +10,7 @@ from tabula import read_pdf
 from airflow import DAG
 # from airflow.operators import PythonOperator
 from airflow.operators.python_operator import PythonOperator
+from airflow.utils.state import State
 from helpers import google_upload as gupload
 
 
@@ -79,17 +80,15 @@ def petr_cnsm_monthly(**context):
                 filtered_df.to_csv(filename, index=False)
                 gupload.upload(filename, f"petroleum_cnsm_monthly_{curr_date.strftime('%m%Y')}.csv", gdrive_petroleum_monthly_folder)
             else:
+                context['task_instance']=State.UP_FOR_RETRY 
                 raise ValueError('No Data:  No data avaiable on source for the month yet')
                 return False
-                context['task_instance']=State.FAILED
+                
             
         else:
             print('No link:  No Data available for this month yet')
             raise ValueError('No data avaiable on source for the month yet')
             return False
-    # except requests.exceptions.RequestException as e:
-    #     print(e)
-    #     pass
     except ValueError:
         print('No Data available for this month yet')
         return False
