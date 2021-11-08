@@ -99,7 +99,7 @@ default_args = {
     "retry_delay": timedelta(minutes=10),
 }
 
-petr_cnsm_monthly_dag = DAG("petroleumMonthlyScraping", default_args=default_args, schedule_interval='0 20 8 * *')
+petr_cnsm_monthly_dag = DAG("petroleumMonthlyScraping", default_args=default_args, schedule_interval='0 20 7 * *')
 
 petr_cnsm_monthly_task = PythonOperator(task_id='petr_cnsm_monthly',
                                        python_callable = petr_cnsm_monthly,
