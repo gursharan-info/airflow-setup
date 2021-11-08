@@ -12,14 +12,15 @@ from airflow import DAG
 from airflow.operators.python_operator import PythonOperator
 from airflow.utils.state import State
 from helpers import google_upload as gupload
-
+from helpers import sharepoint_upload as sharepoint
 
 dir_path = r'/usr/local/airflow/data/hfi/petroleum_cnsm'
 data_path = os.path.join(dir_path, 'monthly')
 raw_path = os.path.join(dir_path, 'raw_data')
 gdrive_petroleum_monthly_folder = '18ctChEyc8fP9LHtYncFa6Rm_Xg4hw4no'
 gdrive_petroleum_raw_folder = '1cchPXv3FMzN0D4iLXTaW0-UTBdatGigc'
-
+SECTOR_NAME = 'Consumption'
+DATASET_NAME = 'petrol_consumption_monthly'
 
 def petr_cnsm_monthly(**context):
     # Load the main page
@@ -55,6 +56,7 @@ def petr_cnsm_monthly(**context):
                 output.write(resp.content)
             output.close()
             gupload.upload(raw_file_loc, f"petroleum_cnsm_raw_{curr_date.strftime('%m%Y')}.csv", gdrive_petroleum_raw_folder)
+            sharepoint.upload(raw_file_loc, f"petroleum_cnsm_raw_{curr_date.strftime('%m%Y')}.csv", SECTOR_NAME, f"{DATASET_NAME}/raw_data")
 
             # Data Processing
             start_idx = df.index[df[df.columns[0]].str.lower().str.contains('products', na=False,case=False)].tolist()[-1]
@@ -79,6 +81,7 @@ def petr_cnsm_monthly(**context):
                 filename = os.path.join(data_path, f"petroleum_cnsm_monthly_{curr_date.strftime('%m%Y')}.csv")
                 filtered_df.to_csv(filename, index=False)
                 gupload.upload(filename, f"petroleum_cnsm_monthly_{curr_date.strftime('%m%Y')}.csv", gdrive_petroleum_monthly_folder)
+                sharepoint.upload(filename, f"petroleum_cnsm_monthly_{curr_date.strftime('%m%Y')}.csv", SECTOR_NAME, DATASET_NAME)
             else:
                 context['task_instance']=State.UP_FOR_RETRY 
                 raise ValueError('No Data:  No data avaiable on source for the month yet')
@@ -108,7 +111,7 @@ default_args = {
     "retry_delay": timedelta(days=2),
 }
 
-petr_cnsm_monthly_dag = DAG("petroleumMonthlyScraping", default_args=default_args, schedule_interval='0 20 8 * *')
+petr_cnsm_monthly_dag = DAG("petroleumMonthlyScraping", default_args=default_args, schedule_interval='0 20 13 * *')
 
 petr_cnsm_monthly_task = PythonOperator(task_id='petr_cnsm_monthly',
                                        python_callable = petr_cnsm_monthly,
