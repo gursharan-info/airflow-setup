@@ -79,12 +79,12 @@ def petr_cnsm_monthly(**context):
                 filtered_df.to_csv(filename, index=False)
                 gupload.upload(filename, f"petroleum_cnsm_monthly_{curr_date.strftime('%m%Y')}.csv", gdrive_petroleum_monthly_folder)
             else:
-                raise ValueError('No data avaiable on source for the month yet')
+                raise ValueError('No Data:  No data avaiable on source for the month yet')
                 return False
                 context['task_instance']=State.FAILED
             
         else:
-            print('No Data available for this month yet')
+            print('No link:  No Data available for this month yet')
             raise ValueError('No data avaiable on source for the month yet')
             return False
     # except requests.exceptions.RequestException as e:
@@ -106,8 +106,8 @@ default_args = {
     'email': ['gursharan_singh@isb.edu'],
     'email_on_failure': True,
     "catchup": True,
-    "retries": 1,
-    "retry_delay": timedelta(minutes=10),
+    "retries": 3,
+    "retry_delay": timedelta(days=2),
 }
 
 petr_cnsm_monthly_dag = DAG("petroleumMonthlyScraping", default_args=default_args, schedule_interval='0 20 8 * *')
