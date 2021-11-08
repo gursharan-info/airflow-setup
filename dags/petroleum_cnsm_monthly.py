@@ -79,17 +79,19 @@ def petr_cnsm_monthly(**context):
                 filtered_df.to_csv(filename, index=False)
                 gupload.upload(filename, f"petroleum_cnsm_monthly_{curr_date.strftime('%m%Y')}.csv", gdrive_petroleum_monthly_folder)
             else:
-                raise ValueError('No data avaiable on source for the month yet')    
+                raise ValueError('No data avaiable on source for the month yet')
+                return False
             
         else:
             print('No Data available for this month yet')
             raise ValueError('No data avaiable on source for the month yet')
+            return False
     # except requests.exceptions.RequestException as e:
     #     print(e)
     #     pass
     except Exception as e:
         print(e)
-        pass
+        return False
 
 default_args = {
     'owner': 'airflow', 
