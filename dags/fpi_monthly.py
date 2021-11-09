@@ -132,7 +132,7 @@ default_args = {
     "retry_delay": timedelta(minutes=10),
 }
 
-fpi_monthly_dag = DAG("fpiMonthlyScraping", default_args=default_args, schedule_interval='0 20 3 * *')
+fpi_monthly_dag = DAG("fpiMonthlyScraping", default_args=default_args, schedule_interval='0 20 8 * *')
 
 fpi_monthly_task = PythonOperator(task_id='fpi_monthly',
                                        python_callable = fpi_monthly,
