@@ -70,7 +70,8 @@ def railway_freight_monthly(**context):
             reshaped_df['steel_india'] = reshaped_df[['rmsp','steel','iron_ore']].sum(axis=1)
             reshaped_df = reshaped_df.drop(['rmsp','steel','iron_ore'], axis=1)
             reshaped_df = reshaped_df.rename(columns={'total_coal':'coal_india', 'total_cement':'cement_india', 'foodgrains':'foodgrain_india', 
-                                                    'fertilizers':'fertilizer_india', 'container_service':'container_india'})
+                                          'fertilizers':'fertilizer_india', 'container_service':'container_india',
+                                         'steel_india':'iron_steel_india'})
                     
             filename = os.path.join(data_path, f"railway_freight_{curr_date.strftime('%m%Y')}.csv")
             reshaped_df.to_csv(filename, index=False)
@@ -94,11 +95,11 @@ default_args = {
     'email': ['gursharan_singh@isb.edu'],
     'email_on_failure': True,
     "catchup": True,
-    "retries": 1,
-    "retry_delay": timedelta(minutes=10),
+    "retries": 3,
+    "retry_delay": timedelta(days=1),
 }
 
-railway_freight_monthly_dag = DAG("railwayFreightScraping", default_args=default_args, schedule_interval='0 20 6 * *')
+railway_freight_monthly_dag = DAG("railwayFreightScraping", default_args=default_args, schedule_interval='0 20 8 * *')
 
 railway_freight_monthly_task = PythonOperator(task_id='railway_freight_monthly',
                                        python_callable = railway_freight_monthly,
