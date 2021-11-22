@@ -84,7 +84,7 @@ def railway_freight_monthly(**context):
             filename = os.path.join(data_path, f"railway_freight_{curr_date.strftime('%m%Y')}.csv")
             reshaped_df.to_csv(filename, index=False)
             # gupload.upload(filename, f"railway_freight_{curr_date.strftime('%m%Y')}.csv", gdrive_rail_freight_monthly_folder)
-            sharepoint.upload_file(raw_path, f"railway_freight_{curr_date.strftime('%m%Y')}.csv", SECTOR_NAME, DATASET_NAME)
+            sharepoint.upload_file(filename, f"railway_freight_{curr_date.strftime('%m%Y')}.csv", SECTOR_NAME, DATASET_NAME)
 
         else:
             # print('No Data available for this month yet')
