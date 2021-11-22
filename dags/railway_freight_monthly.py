@@ -45,11 +45,11 @@ def railway_freight_monthly(**context):
             elif a_href.startswith("http"):
                 link = a_href
             all_links.append(dict(month=mnth_text, link=link))
-
+                
         session.close()
 
         curr_link = [link['link'] for link in all_links if all([curr_date.strftime('%b') in link['month'], curr_date.strftime('%Y') in link['link'] ])]
-
+        print(curr_date)
         if curr_link:
             r = requests.get(curr_link[0], stream = True)
             with open(os.path.join(raw_path, curr_link[0].split('/')[-1]),"wb") as pdf:
