@@ -9,15 +9,17 @@ import tabula
 from airflow import DAG
 # from airflow.operators import PythonOperator
 from airflow.operators.python_operator import PythonOperator
-from helpers import google_upload as gupload
+# from helpers import google_upload as gupload
+from helpers import sharepoint_upload as sharepoint
 
 
 dir_path = r'/usr/local/airflow/data/hfi/railway_freight'
 data_path = os.path.join(dir_path, 'monthly')
 raw_path = os.path.join(dir_path, 'raw_data')
-gdrive_rail_freight_monthly_folder = '1U8HcixB11fKhUKCeDmxBXj6qLMe8nRFQ'
-gdrive_rail_freight_raw_folder = '1AOJls5Oysm0rrXq2E_APxhI_Uf7a4ZCp'
-
+# gdrive_rail_freight_monthly_folder = '1U8HcixB11fKhUKCeDmxBXj6qLMe8nRFQ'
+# gdrive_rail_freight_raw_folder = '1AOJls5Oysm0rrXq2E_APxhI_Uf7a4ZCp'
+SECTOR_NAME = 'Logistics'
+DATASET_NAME = 'railway_freight'
 
 def railway_freight_monthly(**context):
     # Load the main page
@@ -32,16 +34,21 @@ def railway_freight_monthly(**context):
         tree = html.fromstring(response.content)
         # tree
         all_links = [] 
-        for a in tree.xpath('//*[@id="table3"]/tbody/tr/td//a/@href'):
-            if a.startswith("/"):
-                all_links.append("https://indianrailways.gov.in"+a)
-            elif a.startswith("./"):
-                all_links.append("https://indianrailways.gov.in"+a[1:])
-            elif a.startswith("http"):
-                all_links.append(a)
+        for a in tree.xpath('//*[@id="table3"]/tbody/tr/td//a'):
+            mnth_text = ''.join(a.itertext())
+            a_href = a.xpath('@href')[0]
+        #     print(a_href)
+            if a_href.startswith("/"):
+                link = "https://indianrailways.gov.in"+a_href
+            elif a_href.startswith("./"):
+                link = "https://indianrailways.gov.in"+a_href[1:]
+            elif a_href.startswith("http"):
+                link = a_href
+            all_links.append(dict(month=mnth_text, link=link))
+
         session.close()
 
-        curr_link = [link for link in all_links if all([curr_date.strftime('%b') in link, curr_date.strftime('%Y') in link])]     
+        curr_link = [link['link'] for link in all_links if all([curr_date.strftime('%b') in link['month'], curr_date.strftime('%Y') in link['link'] ])]
 
         if curr_link:
             r = requests.get(curr_link[0], stream = True)
@@ -50,7 +57,8 @@ def railway_freight_monthly(**context):
                     if chunk:
                         pdf.write(chunk)
                         
-            gupload.upload(os.path.join(raw_path, curr_link[0].split('/')[-1]), curr_link[0].split('/')[-1], gdrive_rail_freight_raw_folder)
+            # gupload.upload(os.path.join(raw_path, curr_link[0].split('/')[-1]), curr_link[0].split('/')[-1], gdrive_rail_freight_raw_folder)
+            sharepoint.upload(raw_path, '7A_'+curr_date.strftime("&b_%y")+'.pdf', SECTOR_NAME, f"{DATASET_NAME}/raw_data")
             
             df = tabula.read_pdf(os.path.join(raw_path, curr_link[0].split('/')[-1]),pages=2, lattice=True)[0]
             processed_df = df.replace(r'\r', ' ', regex=True)
@@ -75,7 +83,8 @@ def railway_freight_monthly(**context):
                     
             filename = os.path.join(data_path, f"railway_freight_{curr_date.strftime('%m%Y')}.csv")
             reshaped_df.to_csv(filename, index=False)
-            gupload.upload(filename, f"railway_freight_{curr_date.strftime('%m%Y')}.csv", gdrive_rail_freight_monthly_folder)
+            # gupload.upload(filename, f"railway_freight_{curr_date.strftime('%m%Y')}.csv", gdrive_rail_freight_monthly_folder)
+            sharepoint.upload(raw_path, f"railway_freight_{curr_date.strftime('%m%Y')}.csv", SECTOR_NAME, DATASET_NAME)
 
         else:
             # print('No Data available for this month yet')
