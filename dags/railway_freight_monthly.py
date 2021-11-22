@@ -94,7 +94,7 @@ def railway_freight_monthly(**context):
     #     pass
     except Exception as e:
         print(e)
-        pass
+        
 
 default_args = {
     'owner': 'airflow', 
