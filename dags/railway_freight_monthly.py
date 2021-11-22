@@ -58,7 +58,7 @@ def railway_freight_monthly(**context):
                         pdf.write(chunk)
                         
             # gupload.upload(os.path.join(raw_path, curr_link[0].split('/')[-1]), curr_link[0].split('/')[-1], gdrive_rail_freight_raw_folder)
-            sharepoint.upload_file(raw_path, '7A_'+curr_date.strftime("&b_%y")+'.pdf', SECTOR_NAME, f"{DATASET_NAME}/raw_data")
+            # sharepoint.upload_file(raw_path, '7A_'+curr_date.strftime("&b_%y")+'.pdf', SECTOR_NAME, f"{DATASET_NAME}/raw_data")
             
             df = tabula.read_pdf(os.path.join(raw_path, curr_link[0].split('/')[-1]),pages=2, lattice=True)[0]
             processed_df = df.replace(r'\r', ' ', regex=True)
