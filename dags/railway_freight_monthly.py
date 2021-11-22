@@ -10,7 +10,7 @@ from airflow import DAG
 # from airflow.operators import PythonOperator
 from airflow.operators.python_operator import PythonOperator
 # from helpers import google_upload as gupload
-from helpers import sharepoint_upload as sharepoint
+from helpers import sharepoint_o365 as sharepoint
 
 
 dir_path = r'/usr/local/airflow/data/hfi/railway_freight'
@@ -58,7 +58,7 @@ def railway_freight_monthly(**context):
                         pdf.write(chunk)
                         
             # gupload.upload(os.path.join(raw_path, curr_link[0].split('/')[-1]), curr_link[0].split('/')[-1], gdrive_rail_freight_raw_folder)
-            sharepoint.upload(raw_path, '7A_'+curr_date.strftime("&b_%y")+'.pdf', SECTOR_NAME, f"{DATASET_NAME}/raw_data")
+            sharepoint.upload_file(raw_path, '7A_'+curr_date.strftime("&b_%y")+'.pdf', SECTOR_NAME, f"{DATASET_NAME}/raw_data")
             
             df = tabula.read_pdf(os.path.join(raw_path, curr_link[0].split('/')[-1]),pages=2, lattice=True)[0]
             processed_df = df.replace(r'\r', ' ', regex=True)
@@ -84,7 +84,7 @@ def railway_freight_monthly(**context):
             filename = os.path.join(data_path, f"railway_freight_{curr_date.strftime('%m%Y')}.csv")
             reshaped_df.to_csv(filename, index=False)
             # gupload.upload(filename, f"railway_freight_{curr_date.strftime('%m%Y')}.csv", gdrive_rail_freight_monthly_folder)
-            sharepoint.upload(raw_path, f"railway_freight_{curr_date.strftime('%m%Y')}.csv", SECTOR_NAME, DATASET_NAME)
+            sharepoint.upload_file(raw_path, f"railway_freight_{curr_date.strftime('%m%Y')}.csv", SECTOR_NAME, DATASET_NAME)
 
         else:
             # print('No Data available for this month yet')
