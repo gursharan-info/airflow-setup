@@ -110,6 +110,7 @@ fi
 case "$1" in
   webserver)
     airflow db init
+    airflow users create -r Admin -u ${_AIRFLOW_WWW_USER_USERNAME} -e ${_AIRFLOW_WWW_USER_EMAIL} -f ${_AIRFLOW_WWW_USER_FIRSTNAME} -l ${_AIRFLOW_WWW_USER_LASTNAME} -p ${_AIRFLOW_WWW_USER_PASSWORD}
     if [ "$AIRFLOW__CORE__EXECUTOR" = "LocalExecutor" ] || [ "$AIRFLOW__CORE__EXECUTOR" = "SequentialExecutor" ]; then
       # With the "Local" and "Sequential" executors it should all run in one container.
       airflow scheduler &
