@@ -31,6 +31,7 @@ services:
             - EXECUTOR=Local
             - POSTGRES_HOST
             - AIRFLOW__WEBSERVER__RBAC=true
+            - FERNET_KEY=Lfg05lKpAN3GNSV3w2bCxI7jLTAPvSgr7omaXsYKwvs=
         logging:
             options:
                 max-size: 10m
@@ -39,7 +40,7 @@ services:
             - ./dags:/usr/local/airflow/dags
             - ./data:/usr/local/airflow/data
             - ./requirements.txt:/requirements.txt
-            # - ./plugins:/usr/local/airflow/plugins
+            - ./plugins:/usr/local/airflow/plugins
         ports:
             - "8080:8080"
         command: webserver
