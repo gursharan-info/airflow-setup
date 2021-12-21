@@ -14,6 +14,7 @@ Session.vim
 
 # workspace files are user-specific
 *.sublime-workspace
+*.vscode
 
 # project files should be checked into the repository, unless a significant
 # proportion of contributors will probably not be using SublimeText
@@ -25,5 +26,7 @@ sftp-config.json
 # Python
 __pycache__
 
-dags/data/* 
+data/* 
+!data/IndiaPulse/fertilizer_sales/data_historical.csv
 backup_files/
+plugins/bipp/sharepoint/.env
