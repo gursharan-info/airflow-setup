@@ -21,6 +21,8 @@ services:
         build:
             context: .
             dockerfile: Dockerfile
+        extra_hosts:
+            - host.docker.internal:host-gateway
         restart: always
         # depends_on:
         #     - postgres
@@ -29,7 +31,7 @@ services:
         environment:    
             - LOAD_EX=n
             - EXECUTOR=Local
-            - POSTGRES_HOST
+            # - POSTGRES_HOST
             - AIRFLOW__WEBSERVER__RBAC=true
             - FERNET_KEY=Lfg05lKpAN3GNSV3w2bCxI7jLTAPvSgr7omaXsYKwvs=
         logging:
