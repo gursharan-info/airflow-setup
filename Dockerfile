@@ -78,10 +78,12 @@ RUN mkdir -p /usr/share/man/man1
 RUN apt-get update && apt-get install -yqq software-properties-common default-jre && apt-get install -yqq ghostscript python3-tk && apt-get clean
 
 COPY script/entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
 COPY config/airflow.cfg ${AIRFLOW_USER_HOME}/airflow.cfg
 COPY config/webserver_config.py ${AIRFLOW_USER_HOME}/webserver_config.py
 
 RUN chown -R airflow: ${AIRFLOW_USER_HOME}
+
 
 EXPOSE 8080 5555 8793
 
