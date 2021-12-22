@@ -104,7 +104,7 @@ with DAG(
         except requests.exceptions.RequestException as e:
             print(e)
 
-    scraping_task = PythonOperator(
+    fertilizer_daily_scraping_task = PythonOperator(
         task_id='scrape_fertilizer_daily',
         python_callable=scrape_fertilizer_daily,
         depends_on_past=True
@@ -191,11 +191,11 @@ with DAG(
             print(e)
 
 
-    processing_task = PythonOperator(
+    fertilizer_daily_processing_task = PythonOperator(
         task_id='process_fertilizer_daily',
         python_callable=process_fertilizer_daily,
         depends_on_past=True
     )
     
-    scraping_task >> processing_task
+    fertilizer_daily_scraping_task >> fertilizer_daily_processing_task
 
