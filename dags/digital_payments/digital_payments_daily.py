@@ -82,7 +82,7 @@ with DAG(
             # read the raw data file already scraped in first task
             local_excel_path = os.path.join(raw_data_path, f"raw_digital_payments_{curr_date.strftime('%m-%Y')}.xlsx")
 
-            excel_file_obj = pd.ExcelFile(local_excel_path)
+            excel_file_obj = pd.ExcelFile(local_excel_path, engine="openpyxl")
             sheet_names = [name for name in excel_file_obj.sheet_names if curr_date.strftime('%Y') in name]
 
             month_df_list = []
@@ -91,7 +91,7 @@ with DAG(
                 sheet_date = datetime.strptime(sheet_name, "%B %Y")
             #     print(sheet_date)
                 
-                raw_df = pd.read_excel(local_excel_path, sheet_name = sheet_name, skiprows=4, header=[0,1], parse_dates=False)
+                raw_df = pd.read_excel(local_excel_path, sheet_name = sheet_name, skiprows=4, header=[0,1], parse_dates=False, engine="openpyxl")
                 raw_df.columns = [new_col.strip() for new_col in [col[0] if 'Unnamed' in col[1] else f"{col[0]} {col[1]}" for col in raw_df.columns.tolist() ] ]
 
                 if sheet_date.date() >= datetime(year=2021, month=10, day=1).date():
