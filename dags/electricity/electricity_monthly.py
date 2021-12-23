@@ -25,7 +25,7 @@ with DAG(
     description='Electricity Supply Daily',
     schedule_interval = '0 20 3 * *',
     # start_date = days_ago(6),
-    start_date = datetime(year=2021, month=11, day=18, hour=12, minute=0),
+    start_date = datetime(year=2021, month=11, day=2, hour=12, minute=0),
     catchup = True,
     tags=['electricity'],
 ) as dag:
