@@ -21,7 +21,7 @@ with DAG(
     description='Fertilizer Sales Monthly',
     schedule_interval = "0 20 4 * *",
     # start_date = days_ago(6),
-    start_date = datetime(year=2021, month=12, day=8, hour=12, minute=0),
+    start_date = datetime(year=2021, month=11, day=8, hour=12, minute=0),
     catchup = True,
     tags=['fertilizer_sales'],
 ) as dag:
