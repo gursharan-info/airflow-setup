@@ -104,7 +104,7 @@ with DAG(
         except requests.exceptions.RequestException as e:
             print(e)
 
-    fertilizer_daily_scraping_task = PythonOperator(
+    scrape_fertilizer_daily_task = PythonOperator(
         task_id='scrape_fertilizer_daily',
         python_callable=scrape_fertilizer_daily,
         depends_on_past=True
@@ -180,10 +180,10 @@ with DAG(
             daily_final_df['date'] = daily_final_df['date'].dt.strftime("%d-%m-%Y")
             daily_final_df = daily_final_df[['date','state_name','state_code','district_name','district_code','quantity_sold_roll_district','number_of_sale_transactions_roll_district',
                                         'quantity_sold_roll_state','number_of_sale_transactions_roll_state','quantity_sold_roll_india', 'number_of_sale_transactions_roll_india']]
-            filename = os.path.join(data_path, f"fertilizer_sales_daily_{curr_date.strftime('%d-%m-%Y')}.csv")
+            filename = os.path.join(data_path, f"fertilizer_sales_{curr_date.strftime('%d-%m-%Y')}.csv")
             daily_final_df.to_csv(filename,index=False)
             
-            upload_file(filename, DATASET_NAME, f"fertilizer_sales_daily_{curr_date.strftime('%d-%m-%Y')}.csv", SECTOR_NAME, "india_pulse")
+            upload_file(filename, DATASET_NAME, f"fertilizer_sales_{curr_date.strftime('%d-%m-%Y')}.csv", SECTOR_NAME, "india_pulse")
 
             return f"Processed final data for: {curr_date.strftime('%d-%m-%Y')}"
 
@@ -191,11 +191,11 @@ with DAG(
             print(e)
 
 
-    fertilizer_daily_processing_task = PythonOperator(
+    process_fertilizer_daily_task = PythonOperator(
         task_id='process_fertilizer_daily',
         python_callable=process_fertilizer_daily,
         depends_on_past=True
     )
     
-    fertilizer_daily_scraping_task >> fertilizer_daily_processing_task
+    scrape_fertilizer_daily_task >> process_fertilizer_daily_task
 

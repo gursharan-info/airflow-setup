@@ -75,8 +75,10 @@ with DAG(
             df_grouped_final.insert(0, 'date', "01-"+df_grouped_final['month'].dt.strftime("%m-%Y"))
             df_grouped_final = df_grouped_final.drop(columns=['month']).reset_index(drop=True)
 
-            filename = os.path.join(data_path, f"fertilizer_sales_monthly_{curr_date.strftime('%m%Y')}.csv")
+            filename = os.path.join(data_path, f"fertilizer_sales_{curr_date.strftime('%m-%Y')}.csv")
             df_grouped_final.to_csv(filename,index=False)
+
+            upload_file(filename, DATASET_NAME, f"fertilizer_sales_{curr_date.strftime('%m-%Y')}.csv", SECTOR_NAME, "india_pulse")
 
             return f"Processed final data for: {curr_date.strftime('%m-%Y')}"
 
@@ -84,7 +86,7 @@ with DAG(
             print(e)
 
 
-    processing_task = PythonOperator(
+    process_fertilizer_monthly_task = PythonOperator(
         task_id = 'process_fertilizer_monthly',
         python_callable = process_fertilizer_monthly,
         depends_on_past = True
@@ -99,8 +101,8 @@ with DAG(
         print("Uploading data file for: ",curr_date.strftime('%m-%Y'))
 
         try:
-            filename = os.path.join(data_path, f"fertilizer_sales_monthly_{curr_date.strftime('%m%Y')}.csv")
-            upload_file(filename, f"fertilizer_sales_monthly_{curr_date.strftime('%m-%Y')}.csv", SECTOR_NAME, DATASET_NAME)
+            filename = os.path.join(data_path, f"fertilizer_sales_{curr_date.strftime('%m-%Y')}.csv")
+            upload_file(filename, f"fertilizer_sales_{curr_date.strftime('%m-%Y')}.csv", SECTOR_NAME, DATASET_NAME)
 
             return f"Uploaded final data for: {curr_date.strftime('%m-%Y')}"
 
@@ -108,11 +110,11 @@ with DAG(
             print(e)
 
 
-    upload_task = PythonOperator(
+    upload_fertilizer_monthly_task = PythonOperator(
         task_id = 'upload_fertilizer_monthly',
         python_callable = upload_fertilizer_monthly,
         depends_on_past = True
     )
     
-    processing_task >> upload_task
+    process_fertilizer_monthly_task >> upload_fertilizer_monthly_task
 
