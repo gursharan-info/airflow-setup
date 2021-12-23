@@ -1,20 +1,20 @@
-numpy==1.19.2
-pandas==1.1.3
-SQLAlchemy==1.3.15
+numpy
+pandas
+SQLAlchemy
 # flask-bcrypt
-BeautifulSoup4==4.9.3
-google-api-python-client==1.12.8
-google-auth==1.24.0
-google-auth-oauthlib==0.4.2
-oauth2client==4.1.3
+BeautifulSoup4
+# google-api-python-client==1.12.8
+# google-auth==1.24.0
+# google-auth-oauthlib==0.4.2
+# oauth2client==4.1.3
 PyPDF2==1.26.0
 tabula-py==2.3.0
 lxml==4.6.1
-xlrd==2.0.1
+# xlrd==2.0.1
 openpyxl
-fiscalyear==0.3.2
-html5lib==1.1
+fiscalyear
+html5lib
 # opencv-python==4.4.0.46
-camelot-py[cv]
+# camelot-py[cv]
 python-dotenv
 Office365-REST-Python-Client
