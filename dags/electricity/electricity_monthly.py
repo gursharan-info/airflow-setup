@@ -30,7 +30,7 @@ with DAG(
     tags=['electricity'],
 ) as dag:
 
-    dir_path = os.path.join(os.path.join(os.path.join(os.getcwd(), 'data'), 'IndiaPulse'), 'electricity_monthly')
+    dir_path = os.path.join(os.path.join(os.path.join(os.getcwd(), 'data'), 'IndiaPulse'), 'electricity')
     daily_data_path = os.path.join(dir_path, 'daily')
     os.makedirs(daily_data_path, exist_ok = True)
 
@@ -57,10 +57,12 @@ with DAG(
         # The current date would be derived from the execution date using the lag parameter. 
         # Lag is the delay which the source website has to upload data for that particular date
         curr_date = context['execution_date']
-        print("Scraping for: ",curr_date)
+        print("Scraping for: ",curr_date)   
 
         try:
             files= [i for i in glob.glob(daily_data_path+'/*.{}'.format('csv'))]
+            print(daily_data_path)
+            print(files)
             mnth_files = [file for file in files if curr_date.strftime("%m-%Y") in file]
 
             merged= pd.concat([pd.read_csv(f) for f in mnth_files]) 
@@ -105,7 +107,7 @@ with DAG(
 
         try:
             filename = os.path.join(monthly_data_path, f"electricity_{curr_date.strftime('%m-%Y')}.csv")
-            upload_file(filename, f"{DATASET_NAME}/raw_data", f"electricity_{curr_date.strftime('%m-%Y')}.csv", SECTOR_NAME, "india_pulse")
+            upload_file(filename, DATASET_NAME, f"electricity_{curr_date.strftime('%m-%Y')}.csv", SECTOR_NAME, "india_pulse")
 
             return f"Uploaded final data for: {curr_date.strftime('%m-%Y')}"
 

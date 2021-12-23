@@ -31,7 +31,7 @@ with DAG(
     tags=['electricity'],
 ) as dag:
 
-    dir_path = os.path.join(os.path.join(os.path.join(os.getcwd(), 'data'), 'IndiaPulse'), 'electricity_daily')
+    dir_path = os.path.join(os.path.join(os.path.join(os.getcwd(), 'data'), 'IndiaPulse'), 'electricity')
     data_path = os.path.join(dir_path, 'daily')
     os.makedirs(data_path, exist_ok = True)
     raw_data_path = os.path.join(dir_path, 'raw_data')

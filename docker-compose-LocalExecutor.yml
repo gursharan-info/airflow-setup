@@ -31,7 +31,7 @@ services:
         environment:    
             - LOAD_EX=n
             - EXECUTOR=Local
-            # - POSTGRES_HOST
+            - POSTGRES_HOST
             - AIRFLOW__WEBSERVER__RBAC=true
             - FERNET_KEY=Lfg05lKpAN3GNSV3w2bCxI7jLTAPvSgr7omaXsYKwvs=
         logging:
@@ -41,6 +41,7 @@ services:
         volumes:
             - ./dags:/usr/local/airflow/dags
             - ./data:/usr/local/airflow/data
+            - ./logs:/usr/local/airflow/logs
             - ./requirements.txt:/requirements.txt
             - ./plugins:/usr/local/airflow/plugins
         ports:
