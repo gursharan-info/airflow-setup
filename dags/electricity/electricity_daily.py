@@ -198,7 +198,7 @@ with DAG(
             posoco.rename(columns={'state':'state_name'}, inplace=True)
             posoco = posoco[['date','state_name', 'state_code','max_demand_met_state', 'energy_met_state',  
                                     'max_demand_met_india', 'energy_met_india']]
-            posoco_file_loc = os.path.join(data_path, file_date+'.csv')
+            posoco_file_loc = os.path.join(data_path, 'electricity_'+file_date+'.csv')
             posoco.to_csv(posoco_file_loc,index=False)
             # gupload.upload(posoco_file_loc, file_date+'.csv',gdrive_electricity_folder)
             # sharepoint.upload(posoco_file_loc, 'electricity_daily_'+file_date+'.csv', SECTOR_NAME, DATASET_NAME)
