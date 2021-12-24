@@ -38,7 +38,7 @@ with DAG(
     lgd_codes_file = 'https://raw.githubusercontent.com/gursharan-info/idp-scripts/master/sources/LGD_v2_17Sep21_fertilizer.csv'
 
     SECTOR_NAME = 'Agriculture'
-    DATASET_NAME = 'fertilizer_daily'
+    DATASET_NAME = 'fertilizer_sales_daily'
     day_lag = 2
     urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 

@@ -33,7 +33,7 @@ with DAG(
     lgd_codes_file = 'https://raw.githubusercontent.com/gursharan-info/idp-scripts/master/sources/LGD_v2_17Sep21_fertilizer.csv'
 
     SECTOR_NAME = 'Agriculture'
-    DATASET_NAME = 'fertilizer_monthly'
+    DATASET_NAME = 'fertilizer_sales_monthly'
 
 
     def process_fertilizer_monthly(ds, **context):  
@@ -78,7 +78,7 @@ with DAG(
             filename = os.path.join(data_path, f"fertilizer_sales_{curr_date.strftime('%m-%Y')}.csv")
             df_grouped_final.to_csv(filename,index=False)
 
-            upload_file(filename, DATASET_NAME, f"fertilizer_sales_{curr_date.strftime('%m-%Y')}.csv", SECTOR_NAME, "india_pulse")
+            # upload_file(filename, DATASET_NAME, f"fertilizer_sales_{curr_date.strftime('%m-%Y')}.csv", SECTOR_NAME, "india_pulse")
 
             return f"Processed final data for: {curr_date.strftime('%m-%Y')}"
 
@@ -102,7 +102,7 @@ with DAG(
 
         try:
             filename = os.path.join(data_path, f"fertilizer_sales_{curr_date.strftime('%m-%Y')}.csv")
-            upload_file(filename, f"fertilizer_sales_{curr_date.strftime('%m-%Y')}.csv", SECTOR_NAME, DATASET_NAME)
+            upload_file(filename, DATASET_NAME, f"fertilizer_sales_{curr_date.strftime('%m-%Y')}.csv", SECTOR_NAME, "india_pulse")
 
             return f"Uploaded final data for: {curr_date.strftime('%m-%Y')}"
 
