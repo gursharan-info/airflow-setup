@@ -75,7 +75,7 @@ RUN set -ex \
         /usr/share/doc-base
 
 RUN mkdir -p /usr/share/man/man1
-RUN apt-get update && apt-get install -yqq software-properties-common default-jre && apt-get install -yqq ghostscript python3-tk && apt-get clean
+RUN apt-get update -yqq && apt-get -y install software-properties-common default-jre && apt-get -yqq install ghostscript python3-tk && apt-get -y clean
 
 COPY script/entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh

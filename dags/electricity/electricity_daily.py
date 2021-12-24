@@ -26,7 +26,7 @@ with DAG(
     description='Electricity Supply Daily',
     schedule_interval = '@daily',
     # start_date = days_ago(6),
-    start_date = datetime(year=2021, month=12, day=18, hour=12, minute=0),
+    start_date = datetime(year=2021, month=11, day=11, hour=12, minute=0),
     catchup = True,
     tags=['electricity'],
 ) as dag:
@@ -53,7 +53,8 @@ with DAG(
         # print(context['execution_date'])
         # The current date would be derived from the execution date using the lag parameter. 
         # Lag is the delay which the source website has to upload data for that particular date
-        curr_date = datetime.fromtimestamp(context['execution_date'].timestamp())- timedelta(day_lag)
+        curr_date = datetime.fromtimestamp(context['data_interval_start'].timestamp())- timedelta(day_lag)
+        print("Scraping on: ",context['data_interval_end'])   
         print("Scraping for: ",curr_date)
 
         try:
@@ -114,8 +115,8 @@ with DAG(
         '''
         # The current date would be derived from the execution date using the lag parameter. 
         # Lag is the delay which the source website has to upload data for that particular date
-        curr_date = datetime.fromtimestamp(context['execution_date'].timestamp())- timedelta(day_lag)
-        print("Scraping for: ",curr_date)
+        curr_date = datetime.fromtimestamp(context['data_interval_start'].timestamp())- timedelta(day_lag)
+        print("Processing for: ",curr_date)
 
         try:
             file_date = curr_date.strftime("%d-%m-%Y")

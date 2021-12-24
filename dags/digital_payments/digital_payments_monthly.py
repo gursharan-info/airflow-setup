@@ -45,8 +45,8 @@ with DAG(
         '''
         Process the scraped daily raw data. 
         '''
-        curr_date = context['execution_date']
-        print("Scraping for: ",curr_date)
+        curr_date = context['data_interval_start']
+        print("Processing for: ",curr_date)
 
         try:
             # read the raw data file already scraped in first task
@@ -135,7 +135,7 @@ with DAG(
         '''
         Upload the process monthly data file on sharepoint
         '''
-        curr_date = context['execution_date']
+        curr_date = context['data_interval_start']
         print("Uploading data file for: ",curr_date.strftime('%m-%Y'))
 
         try:

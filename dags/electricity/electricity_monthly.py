@@ -56,8 +56,10 @@ with DAG(
         # print(context['execution_date'])
         # The current date would be derived from the execution date using the lag parameter. 
         # Lag is the delay which the source website has to upload data for that particular date
-        curr_date = context['execution_date']
-        print("Scraping for: ",curr_date)   
+        # print(context)
+        curr_date = context['data_interval_start']
+        print("Scraping on: ",context['data_interval_end'])   
+        print("Scraping for: ",context['data_interval_start'])   
 
         try:
             files= [i for i in glob.glob(daily_data_path+'/*.{}'.format('csv'))]
@@ -102,7 +104,8 @@ with DAG(
         '''
         Upload the process monthly data file on sharepoint
         '''
-        curr_date = context['execution_date']
+        # print(context)
+        curr_date = context['data_interval_start']
         print("Uploading data file for: ",curr_date.strftime('%m-%Y'))
 
         try:

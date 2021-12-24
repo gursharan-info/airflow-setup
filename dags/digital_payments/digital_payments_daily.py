@@ -46,7 +46,8 @@ with DAG(
         Scrapes the daily raw data of digital payments
         '''
         # print(context['execution_date'])
-        curr_date = context['execution_date']
+        curr_date = datetime.fromtimestamp(context['data_interval_start'].timestamp())- timedelta(day_lag)
+        print("Scraping on: ",context['data_interval_end'])   
         print("Scraping for: ",curr_date)
 
         try:
@@ -75,8 +76,8 @@ with DAG(
         '''
         Process the scraped daily raw data. 
         '''
-        curr_date = context['execution_date']
-        print("Scraping for: ",curr_date)
+        curr_date = datetime.fromtimestamp(context['data_interval_start'].timestamp())- timedelta(day_lag)
+        print("Processing for: ",curr_date)
 
         try:
             # read the raw data file already scraped in first task

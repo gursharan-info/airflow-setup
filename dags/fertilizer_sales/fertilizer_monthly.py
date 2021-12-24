@@ -42,8 +42,8 @@ with DAG(
         '''
         # The current date would be derived from the execution date using the lag parameter. 
         # Lag is the delay which the source website has to upload data for that particular date
-        curr_date = context['execution_date']
-        print("Scraping for: ",curr_date)
+        curr_date = context['data_interval_start']
+        print("Processing for: ",curr_date)
 
         try:
             hist_df = pd.read_csv(os.path.join(dir_path,'data_historical.csv'))
@@ -97,7 +97,7 @@ with DAG(
         '''
         Upload the process monthly data file on sharepoint
         '''
-        curr_date = context['execution_date']
+        curr_date = context['data_interval_start']
         print("Uploading data file for: ",curr_date.strftime('%m-%Y'))
 
         try:
