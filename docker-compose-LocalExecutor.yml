@@ -23,7 +23,7 @@ services:
             dockerfile: Dockerfile
         extra_hosts:
             - host.docker.internal:host-gateway
-        restart: always
+        restart: on-failure
         # depends_on:
         #     - postgres
         env_file:
