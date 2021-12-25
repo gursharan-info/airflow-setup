@@ -43,7 +43,6 @@ with DAG(
     urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 
-
     def scrape_fertilizer_daily(ds, **context):  
         '''
         Scrapes the daily raw data of fertilizer sales
