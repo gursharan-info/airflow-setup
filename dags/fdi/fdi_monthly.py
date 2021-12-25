@@ -18,7 +18,7 @@ default_args = {
     'email_on_failure': True,
     'email_on_retry': False,
     'retries': 3,
-    'retry_delay': timedelta(months=1),
+    'retry_delay': timedelta(days=15),
 }
 with DAG(
     'fdi_monthly',
@@ -26,7 +26,7 @@ with DAG(
     description='FDI Monthly',
     schedule_interval = '0 20 15 * *',
     # start_date = days_ago(6),
-    start_date = datetime(year=2021, month=11, day=2, hour=12, minute=0),
+    start_date = datetime(year=2021, month=7, day=2, hour=12, minute=0),
     catchup = True,
     tags=['fdi'],
 ) as dag:
@@ -57,7 +57,7 @@ with DAG(
         Scrape the monthly FDI data
         '''
         # print(context['execution_date'])
-        curr_date = context['data_interval_start']
+        curr_date = datetime.fromtimestamp(context['data_interval_start'].timestamp())
         print("Scraping on: ",context['data_interval_end'])   
         print("Scraping for: ",context['data_interval_start'])   
 
