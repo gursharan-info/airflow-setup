@@ -40,7 +40,7 @@ default_args = {
 with DAG(
     'facebook_mobility_monthly',
     default_args=default_args,
-    description='Google Mobility Monthly',
+    description='Facebook Mobility Monthly',
     schedule_interval = '0 20 4 * *',
     start_date = datetime(year=2021, month=11, day=2, hour=12, minute=0),
     catchup = True,
@@ -62,12 +62,13 @@ with DAG(
         '''
         Process the scraped monthly raw data. 
         '''
-        curr_date = datetime.fromtimestamp(context['data_interval_end'].timestamp())
+        curr_date = datetime.fromtimestamp(context['data_interval_start'].timestamp())
+        source_file_date = datetime.fromtimestamp(context['data_interval_end'].timestamp())
         print("Processing for: ",curr_date)
 
         try:
             # read the raw data file already scraped in first task
-            ind_df = pd.read_csv( os.path.join(raw_data_path, f"movement-range-IN_{curr_date.strftime('%m-%Y')}.csv"))
+            ind_df = pd.read_csv( os.path.join(raw_data_path, f"movement-range-IN_{source_file_date.strftime('%m-%Y')}.csv"))
             ind_df.columns = ['date','district_id','district_name_data','bng_tile_visited_district','rat_sngl_tile_usr_district']
             ind_df['date'] = pd.to_datetime(ind_df['date'], format="%Y-%m-%d")
             ind_df['dist_lower'] = ind_df['district_name_data'].str.strip().str.lower()
@@ -133,7 +134,10 @@ with DAG(
         try:
 
             filename = os.path.join(monthly_data_path, f"facebook_mobility_{curr_date.strftime('%m-%Y')}.csv")
-            upload_file(filename, DATASET_NAME, f"facebook_mobility_{curr_date.strftime('%d-%m-%Y')}.csv", SECTOR_NAME, "india_pulse")
+            if os.path.exists(filename):
+                upload_file(filename, DATASET_NAME, f"facebook_mobility_{curr_date.strftime('%m-%Y')}.csv", SECTOR_NAME, "india_pulse")
+            else:
+                raise ValueError("No file available:", filename)
 
             return f"Uploaded final data for: {curr_date.strftime('%m-%Y')}"
 
