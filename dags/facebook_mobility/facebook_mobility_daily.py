@@ -92,7 +92,7 @@ with DAG(
             if(os.path.isfile(raw_file)):
                 os.remove(raw_file)                                          
             
-            upload_large_file(raw_file_IN, f"{DATASET_NAME}/raw_data", f"movement-range-IN_{curr_date.strftime('%m-%Y')}.csv", SECTOR_NAME, "india_pulse")
+            # upload_large_file(raw_file_IN, f"{DATASET_NAME}/raw_data", f"movement-range-IN_{curr_date.strftime('%m-%Y')}.csv", SECTOR_NAME, "india_pulse")
 
             return f"Downloaded data file till: {curr_date.strftime('%d-%m-%Y')}"
 
@@ -179,6 +179,9 @@ with DAG(
         print("Uploading data file for: ",curr_date.strftime('%m-%Y'))
 
         try:
+            raw_file_IN = os.path.join(raw_data_path, f"movement-range-IN_{curr_date.strftime('%m-%Y')}.csv")
+            upload_large_file(raw_file_IN, f"{DATASET_NAME}/raw_data", f"movement-range-IN_{curr_date.strftime('%m-%Y')}.csv", SECTOR_NAME, "india_pulse")
+
             filename = os.path.join(daily_data_path, f"facebook_mobility_{curr_date.strftime('%d-%m-%Y')}.csv")
             upload_file(filename, DATASET_NAME, f"facebook_mobility_{curr_date.strftime('%d-%m-%Y')}.csv", SECTOR_NAME, "india_pulse")
 
