@@ -27,7 +27,7 @@ with DAG(
     # start_date = days_ago(6),
     start_date = datetime(year=2021, month=11, day=2, hour=12, minute=0),
     catchup = True,
-    tags=['electricity'],
+    tags=['consumption'],
 ) as dag:
 
     dir_path = os.path.join(os.path.join(os.path.join(os.getcwd(), 'data'), 'IndiaPulse'), 'electricity')

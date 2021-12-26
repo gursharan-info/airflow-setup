@@ -44,7 +44,7 @@ with DAG(
     schedule_interval = '@daily',
     start_date = datetime(year=2021, month=12, day=10, hour=12, minute=0),
     catchup = True,
-    tags=['facebook_mobility'],
+    tags=['mobility'],
 ) as dag:
 
     dir_path = os.path.join(os.path.join(os.path.join(os.getcwd(), 'data'), 'IndiaPulse'), 'facebook_mobility')

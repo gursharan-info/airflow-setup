@@ -24,7 +24,7 @@ with DAG(
     schedule_interval = '0 20 4 * *',
     start_date = datetime(year=2021, month=11, day=2, hour=12, minute=0),
     catchup = True,
-    tags=['google_mobility'],
+    tags=['mobility'],
 ) as dag:
 
     dir_path = os.path.join(os.path.join(os.path.join(os.getcwd(), 'data'), 'IndiaPulse'), 'google_mobility')

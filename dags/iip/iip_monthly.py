@@ -28,7 +28,7 @@ with DAG(
     # start_date = days_ago(6),
     start_date = datetime(year=2021, month=7, day=2, hour=12, minute=0),
     catchup = True,
-    tags=['iip'],
+    tags=['industry_and_trade'],
 ) as dag:
 
     dir_path = os.path.join(os.path.join(os.path.join(os.getcwd(), 'data'), 'IndiaPulse'), 'iip')

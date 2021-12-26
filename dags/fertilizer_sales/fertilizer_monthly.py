@@ -23,7 +23,7 @@ with DAG(
     # start_date = days_ago(6),
     start_date = datetime(year=2021, month=11, day=5, hour=12, minute=0),
     catchup = True,
-    tags=['fertilizer_sales'],
+    tags=['agriculture'],
 ) as dag:
 
     dir_path = os.path.join(os.path.join(os.path.join(os.getcwd(), 'data'), 'IndiaPulse'), 'fertilizer_sales')
