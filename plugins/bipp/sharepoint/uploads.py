@@ -62,20 +62,25 @@ def upload_file(
         return False
 
 
-def upload_large_file(source_file_path, remote_file_name, dataset_name):
-
+def upload_large_file(source_file_path,
+    target_folder_path,
+    remote_file_name,
+    dataset_name,
+    cluster_type
+):
     # ENV_FILE = Path('.') / '.env'
     ENV_FILE = os.path.join(os.path.dirname(os.path.realpath(__file__)), ".env")
     load_dotenv(dotenv_path=ENV_FILE)
 
     server_url = f"https://{os.getenv('SHAREPOINT_HOSTNAME')}/"
     site_url = server_url + "personal/idp_isb_edu/"
-    # main_IndiaPulse_folder = (
-    #     f"{os.getenv('MAIN_FOLDER')}/{os.getenv('INDIAPULSE_FOLDER')}"
-    # )
-    main_idp_folder = f"{os.getenv('MAIN_FOLDER')}/{os.getenv('IDP_FOLDER')}"
-    upload_folder = f"{main_idp_folder}/{dataset_name}"
-    print(upload_folder)
+    if cluster_type == "india_pulse":
+        data_folder = f"{os.getenv('MAIN_FOLDER')}/{os.getenv('INDIAPULSE_FOLDER')}"
+    if cluster_type == "idp":
+
+        data_folder = f"{os.getenv('MAIN_FOLDER')}/{os.getenv('IDP_FOLDER')}"
+
+    upload_folder = f"{data_folder}/{dataset_name}/{target_folder_path}"
 
     size_chunk = 1000000
     file_size = os.path.getsize(source_file_path)
