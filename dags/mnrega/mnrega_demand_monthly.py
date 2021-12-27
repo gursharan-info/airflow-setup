@@ -15,9 +15,10 @@ from bipp.sharepoint.uploads import upload_file
 
 
 def get_states_data(url, raw_path, data_type, fiscal_year):
-    req = requests.get(url)
+    session = requests.Session()
+    req = session.get(url)
     ind_soup = BeautifulSoup(req.content, 'html.parser')
-    
+    session.close()
     ind_table_html = ind_soup.find('table', id='t1')
     states_table_list = pd.read_html(str(ind_table_html))
     
@@ -43,9 +44,11 @@ def get_districts_data(state_links, raw_path, data_type, fiscal_year, curr_date,
             try:
                 state_url = f"http://mnregaweb4.nic.in/netnrega/{state['href']}"
                 # print(state_url)
-                state_req = requests.get(state_url)
+                session = requests.Session()
+                state_req = session.get(state_url)
                 time.sleep(1)
                 state_soup = BeautifulSoup(state_req.content, 'html.parser')
+                session.close()
 
                 state_table_html = state_soup.find('table', id='t1')
         #         print(state_table_html)
