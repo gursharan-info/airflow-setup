@@ -178,11 +178,11 @@ with DAG(
 
             filename = os.path.join(monthly_data_path, f"company_registrations_{curr_date.strftime('%m-%Y')}.csv")
             upload_file(filename, DATASET_NAME, f"company_registrations_{curr_date.strftime('%m-%Y')}.csv", SECTOR_NAME, "india_pulse")
-
-            return f"Uploaded final data for: {curr_date.strftime('%m-%Y')}"
-
+    
         except requests.exceptions.RequestException as e:
             raise ValueError(e)
+        
+        return f"Uploaded final data for: {curr_date.strftime('%m-%Y')}"
 
 
     upload_company_registrations_monthly_task = PythonOperator(
