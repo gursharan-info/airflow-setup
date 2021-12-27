@@ -65,6 +65,7 @@ with DAG(
             data_dict = json.loads(resp.content)
             
             payroll_links = []
+            curr_link = None
 
             for record in data_dict['content']:
                 if 'payroll' in record['title'].lower():
@@ -74,7 +75,8 @@ with DAG(
                     print(link_dict)
                     payroll_links.append(link_dict)
             
-            curr_link = [link['url'] for link in payroll_links if all([ curr_date.strftime("%b") in link['title'], curr_date.strftime("%Y") in link['title'] ])][0]
+            curr_links = [link['url'] for link in payroll_links if all([ curr_date.strftime("%b") in link['title'], curr_date.strftime("%Y") in link['title'] ])]
+            print(curr_links)
             
             if curr_link:
                 pdf_file_name = os.path.join(raw_data_path, f"Payroll_reporting_Employment_Perspective_{curr_date.strftime('%m-%Y')}.pdf")
