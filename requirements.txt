@@ -10,7 +10,7 @@ beautifulsoup4
 PyPDF2==1.26.0
 tabula-py==2.3.0
 lxml==4.6.1
-# xlrd==2.0.1
+xlrd
 openpyxl
 fiscalyear
 html5lib
