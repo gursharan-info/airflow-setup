@@ -2,7 +2,7 @@ numpy
 pandas
 SQLAlchemy
 # flask-bcrypt
-BeautifulSoup4
+beautifulsoup4
 # google-api-python-client==1.12.8
 # google-auth==1.24.0
 # google-auth-oauthlib==0.4.2
