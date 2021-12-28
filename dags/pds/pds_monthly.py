@@ -39,8 +39,8 @@ with DAG(
     os.makedirs(monthly_data_path, exist_ok = True)
     raw_data_path = os.path.join(dir_path, 'raw_data')
     os.makedirs(raw_data_path, exist_ok = True)
-    state_codes = "https://raw.githubusercontent.com/gursharan-info/idp-scripts/master/sources/pds_state_name_codes.json"
-    lgd_codes_file = "https://raw.githubusercontent.com/gursharan-info/idp-scripts/master/sources/LGD_pds_monthly_05102021.csv"
+    state_codes = "https://raw.githubusercontent.com/gursharan-info/lgd-mappings/master/csv/pds_state_name_codes.json"
+    lgd_codes_file = "https://raw.githubusercontent.com/gursharan-info/lgd-mappings/master/csv/LGD_pds_monthly_05102021.csv"
 
     SECTOR_NAME = 'Agriculture'
     DATASET_NAME = 'pds_monthly'
@@ -82,7 +82,7 @@ with DAG(
                 soup = BeautifulSoup(html_content, 'html.parser')
 
                 try:
-                    table_str = str(soup.select('table[id="example"]')[0])
+                    table_str = str(soup.select('table[id="example"]')[0])  
                     # print(table_str)
                     df = pd.read_html(table_str)[0]
                     df.columns = range(df.shape[1])

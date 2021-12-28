@@ -73,7 +73,7 @@ with DAG(
             ind_df['date'] = pd.to_datetime(ind_df['date'], format="%Y-%m-%d")
             ind_df['dist_lower'] = ind_df['district_name_data'].str.strip().str.lower()
 
-            lgd_codes = pd.read_csv('https://raw.githubusercontent.com/gursharan-info/idp-scripts/master/sources/LGD_facebook_mobility_23-09-2021.csv')
+            lgd_codes = pd.read_csv('https://raw.githubusercontent.com/gursharan-info/lgd-mappings/master/csv/LGD_facebook_mobility_23-09-2021.csv')
             lgd_codes = lgd_codes[['dist_lower','state_name','state_code','district_name','district_code']]
 
             merged_df = ind_df.merge(lgd_codes, on='dist_lower', how='left')

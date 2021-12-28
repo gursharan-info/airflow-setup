@@ -30,7 +30,7 @@ with DAG(
     data_path = os.path.join(dir_path, 'monthly')
     os.makedirs(data_path, exist_ok = True)
 
-    lgd_codes_file = 'https://raw.githubusercontent.com/gursharan-info/idp-scripts/master/sources/LGD_v2_17Sep21_fertilizer.csv'
+    lgd_codes_file = 'https://raw.githubusercontent.com/gursharan-info/lgd-mappings/master/csv/LGD_v2_17Sep21_fertilizer.csv'
 
     SECTOR_NAME = 'Agriculture'
     DATASET_NAME = 'fertilizer_sales_monthly'

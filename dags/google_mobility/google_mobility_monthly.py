@@ -62,7 +62,7 @@ with DAG(
                                 'transit_stations','workplaces','residential_places']
 
             # LGD Codes
-            man_corr_lgd_codes = pd.read_csv('https://raw.githubusercontent.com/gursharan-info/idp-scripts/master/sources/LGD_google_mobility_02-09-2021.csv')
+            man_corr_lgd_codes = pd.read_csv('https://raw.githubusercontent.com/gursharan-info/lgd-mappings/master/csv/LGD_google_mobility_02-09-2021.csv')
             man_corr_lgd_codes['state_name'] = man_corr_lgd_codes['state_name'].str.title().str.replace(r'\bAnd\b','and')
             man_corr_lgd_codes['district_name'] = man_corr_lgd_codes['district_name'].str.title().str.replace(r'\bAnd\b','and')
 

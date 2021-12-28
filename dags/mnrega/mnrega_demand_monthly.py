@@ -110,7 +110,7 @@ with DAG(
     os.makedirs(monthly_data_path, exist_ok = True)
     raw_data_path = os.path.join(dir_path, 'raw_data')
     os.makedirs(raw_data_path, exist_ok = True)
-    lgd_codes_file = "https://raw.githubusercontent.com/gursharan-info/idp-scripts/master/sources/LGD_MNREGA_demand_10152021.csv"
+    lgd_codes_file = "https://raw.githubusercontent.com/gursharan-info/lgd-mappings/master/csv/LGD_MNREGA_demand_10152021.csv"
 
     SECTOR_NAME = 'Employment'
     DATASET_NAME = 'nrega_monthly'

@@ -131,7 +131,7 @@ with DAG(
                 llp_grouped = ( llp_grouped.merge(llp_grp_manu, on=['month_name','state'], how='left') ).merge(llp_grp_constr, on=['month_name','state'], how='left')
                 
                 #LGD Codes
-                state_codes = pd.read_csv('https://raw.githubusercontent.com/gursharan-info/idp-scripts/master/sources/LGD_MCA_reg_10162021.csv')
+                state_codes = pd.read_csv('https://raw.githubusercontent.com/gursharan-info/lgd-mappings/master/csv/LGD_MCA_reg_10162021.csv')
 
                 total_grouped = pd.concat([ic_grouped, llp_grouped]).reset_index(drop=True)
                 total_grouped = pd.merge(state_codes, total_grouped, left_on="STATE",right_on='state', how="right").drop(columns=['STATE','state'])
