@@ -7,8 +7,7 @@ from airflow.operators.python import PythonOperator
 import pandas as pd
 import numpy as np
 import requests, os, re, requests, time
-import fiscalyear
-from bs4 import BeautifulSoup
+from lxml import html, etree
 from requests.utils import requote_uri
 
 from bipp.sharepoint.uploads import upload_file
@@ -74,35 +73,36 @@ with DAG(
         #     print(month_num, year_num)
 
             for state in state_name_codes:
-                print(month_num, year_num, state)
+                # print(month_num, year_num, state, idx)
                 # https://annavitran.nic.in/unautomatedStDetailMonthDFSOWiseRpt?m=1&y=2020&s=12&sn=ARUNACHAL%20PRADESH
                 url = requote_uri(f"https://annavitran.nic.in/unautomatedStDetailMonthDFSOWiseRpt?m={month_num}&y={year_num}&s={str(state['id']).zfill(2)}&sn={state['name']}")
-                # print(url)
-                html_content = session.get(url, headers=headers, verify=False).content
-                soup = BeautifulSoup(html_content, 'html.parser')
-
+                print(url)
+                response = session.get(url, headers=headers, verify=False)
+                tree = html.fromstring(response.content)
+                
                 try:
-                    table_str = str(soup.select('table[id="example"]')[0])  
-                    # print(table_str)
-                    df = pd.read_html(table_str)[0]
-                    df.columns = range(df.shape[1])
-                    df = df.replace("-", 0)
-                    df.drop(0, axis=1, inplace = True)
-        #                 display(df)
-                    df.columns = col_names
-                    df = df.head(-1)
-                    df.insert(0, 'state_name', state['name'])
-                    df.insert(0, 'state_code', state['id'])
-                    df.insert(0, 'month_year',  date(year_num,month_num,1).strftime("%b-%Y"))
+                    table_tree = tree.xpath("//table[@id='example']")
+                    if len(table_tree) > 0:
+                        table = table_tree[0]
+                        table_str = etree.tostring(table,method='html')
+                        df = pd.read_html(table_str)[0]
+                        df.columns = range(df.shape[1])
+                        df = df.replace("-", 0)
+                        df.drop(0, axis=1, inplace = True)
+                        df.columns = col_names
+                        df = df.head(-1)
+                        df.insert(0, 'state_name', state['name'])
+                        df.insert(0, 'state_code', state['id'])
+                        df.insert(0, 'month_year',  date(year_num,month_num,1).strftime("%b-%Y"))
 
-                    num_cols = col_names[1:]
-                    df[num_cols] = pd.to_numeric(df[num_cols].stack()).unstack()
-                    df['total_rice_distributed'] = df['total_rice_distributed_unautomated'] + df['total_rice_distributed_automated'] 
-                    df['total_wheat_distributed'] = df['total_wheat_distributed_unautomated'] + df['total_wheat_distributed_automated'] 
-        #                 display(df)
-        #                 print(df.dtypes)
-                    total_data.append(df)
-                except IndexError as e:
+                        num_cols = col_names[1:]
+                        df[num_cols] = pd.to_numeric(df[num_cols].stack()).unstack()
+                        df['total_rice_distributed'] = df['total_rice_distributed_unautomated'] + df['total_rice_distributed_automated'] 
+                        df['total_wheat_distributed'] = df['total_wheat_distributed_unautomated'] + df['total_wheat_distributed_automated'] 
+                        total_data.append(df)
+                    else:
+                        raise ValueError("No Table present in the response")
+                except Exception as e:
                     raise ValueError(e)
             session.close()
 
@@ -132,7 +132,6 @@ with DAG(
             grouped_df = merged_df.groupby(['month_year','state_name','state_code','district_name','district_code'])[['total_rice_allocated','total_wheat_allocated',
                                                                     'total_rice_distributed','total_wheat_distributed']].agg('sum').reset_index()
             grouped_df.columns = grouped_df.columns.tolist()[:5] + [col+"_district" for col in grouped_df.columns.tolist()[5:]]
-
             state_df = merged_df.groupby(['month_year','state_name','state_code'])[['total_rice_allocated','total_wheat_allocated',
                                                                             'total_rice_distributed','total_wheat_distributed']].agg('sum').reset_index()
             state_df.columns = state_df.columns.tolist()[:3] + [col+"_state" for col in state_df.columns.tolist()[3:]]
@@ -150,7 +149,6 @@ with DAG(
 
             filename = os.path.join(monthly_data_path, f"pds_{curr_date.strftime('%m-%Y')}.csv")
             final_df.to_csv(filename, index=False)
-          
 
             return f"Scraped raw data for: {curr_date.strftime('%m-%Y')}"
 
