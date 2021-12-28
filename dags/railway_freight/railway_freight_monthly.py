@@ -29,7 +29,7 @@ with DAG(
     schedule_interval = '0 20 10 * *',
     start_date = datetime(year=2021, month=10, day=2, hour=12, minute=0),
     catchup = True,
-    tags=['consumption'],
+    tags=['logistics'],
 ) as dag:
 
     dir_path = os.path.join(os.path.join(os.path.join(os.getcwd(), 'data'), 'IndiaPulse'), 'railway_freight')
