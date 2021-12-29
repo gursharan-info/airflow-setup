@@ -26,7 +26,7 @@ with DAG(
     default_args=default_args,
     description='Formal Employment Monthly',
     schedule_interval = '0 20 4 * *',
-    start_date = datetime(year=2021, month=9, day=2, hour=12, minute=0),
+    start_date = datetime(year=2021, month=9, day=8, hour=5, minute=0),
     catchup = True,
     tags=['employment'],
 ) as dag:
