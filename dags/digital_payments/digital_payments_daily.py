@@ -26,7 +26,7 @@ with DAG(
     # start_date = days_ago(6),
     start_date = datetime(year=2021, month=12, day=7, hour=12, minute=0),
     catchup = True,
-    tags=['consumption'],
+    tags=['money_and_markets'],
 ) as dag:
 
     dir_path = os.path.join(os.path.join(os.path.join(os.getcwd(), 'data'), 'IndiaPulse'), 'digital_payments')
@@ -36,7 +36,7 @@ with DAG(
     os.makedirs(raw_data_path, exist_ok = True)
     source_file_url = 'https://rbidocs.rbi.org.in/rdocs/content/docs/PSDDP04062020.xlsx'
 
-    SECTOR_NAME = 'Consumption'
+    SECTOR_NAME = 'Money and Markets'
     DATASET_NAME = 'digital_payments_daily'
     day_lag = 2
 
