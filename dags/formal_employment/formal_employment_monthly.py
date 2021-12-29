@@ -21,7 +21,7 @@ default_args = {
     'retry_delay': timedelta(days=10),
 }
 with DAG(
-    'payroll_reporting_monthly',
+    'formal_employment_monthly',
     default_args=default_args,
     description='Formal Employment Monthly',
     schedule_interval = '0 20 4 * *',
