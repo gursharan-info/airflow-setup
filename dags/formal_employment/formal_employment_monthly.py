@@ -5,6 +5,7 @@ from airflow.operators.python import PythonOperator
 # from airflow.utils.dates import days_ago
 
 import pandas as pd
+import numpy as np
 import requests, os
 import json, camelot
 from bipp.sharepoint.uploads import upload_file
