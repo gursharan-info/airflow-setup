@@ -91,7 +91,7 @@ with DAG(
     scrape_formal_employment_monthly_task = PythonOperator(
         task_id = 'scrape_formal_employment_monthly',
         python_callable = scrape_formal_employment_monthly,
-        depends_on_past = False
+        depends_on_past = True
     )
 
 
@@ -180,7 +180,7 @@ with DAG(
     process_formal_employment_monthly_task = PythonOperator(
         task_id = 'process_formal_employment_monthly',
         python_callable = process_formal_employment_monthly,
-        depends_on_past=False
+        depends_on_past=True
     )
     
 
@@ -209,7 +209,7 @@ with DAG(
     upload_formal_employment_monthly_task = PythonOperator(
         task_id = 'upload_formal_employment_monthly',
         python_callable = upload_formal_employment_monthly,
-        depends_on_past = False
+        depends_on_past = True
     )
 
     scrape_formal_employment_monthly_task >> process_formal_employment_monthly_task >> upload_formal_employment_monthly_task
