@@ -24,8 +24,9 @@ Session.vim
 sftp-config.json
 
 # Python
-__pycache__
-
+__pycache__/
+ *.pyc
+ 
 data/* 
 # !data/IndiaPulse/fertilizer_sales/data_historical.csv
 backup_files/
