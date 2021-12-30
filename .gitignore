@@ -27,7 +27,7 @@ sftp-config.json
 __pycache__
 
 data/* 
-!data/IndiaPulse/fertilizer_sales/data_historical.csv
+# !data/IndiaPulse/fertilizer_sales/data_historical.csv
 backup_files/
 plugins/bipp/sharepoint/.env
 logs/*
