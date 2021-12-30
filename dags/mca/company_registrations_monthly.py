@@ -18,7 +18,7 @@ default_args = {
     'email_on_failure': True,
     'email_on_retry': False,
     'retries': 3,
-    'retry_delay': timedelta(days=1),
+    'retry_delay': timedelta(days=10),
 }
 with DAG(
     'company_registrations_monthly',
