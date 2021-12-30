@@ -1,0 +1,2 @@
+# AUTH_ROLE_PUBLIC = 'Admin'
+# AUTH_TYPE='AUTH_DB'
