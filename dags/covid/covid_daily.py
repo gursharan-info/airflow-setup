@@ -37,8 +37,8 @@ with DAG(
     dir_path = os.path.join(os.path.join(os.path.join(os.getcwd(), 'data'), 'IndiaPulse'), 'covid')
     daily_data_path = os.path.join(dir_path, 'daily')
     os.makedirs(daily_data_path, exist_ok = True)
-    raw_data_path = os.path.join(dir_path, 'raw_data')
-    os.makedirs(raw_data_path, exist_ok = True)
+    # raw_data_path = os.path.join(dir_path, 'raw_data')
+    # os.makedirs(raw_data_path, exist_ok = True)
     lgd_codes_file = 'https://raw.githubusercontent.com/gursharan-info/lgd-mappings/master/csv/LGD_covid_20Oct19.csv'
 
     SECTOR_NAME = 'Health'
@@ -56,7 +56,6 @@ with DAG(
         print("Scraping for: ",curr_date)
 
         try:
-            curr_date = datetime.fromtimestamp(context['execution_date'].timestamp()) - timedelta(day_lag)
 
             district_wise_daily = pd.read_csv('https://data.incovid19.org/csv/latest/districts.csv')
             district_wise_daily['Date'] = pd.to_datetime(district_wise_daily['Date'], format='%Y-%m-%d').dt.strftime('%d-%m-%Y')
@@ -170,7 +169,7 @@ with DAG(
         '''
         # print(context)
         curr_date = datetime.fromtimestamp(context['data_interval_start'].timestamp())- timedelta(day_lag)  
-        print("Uploading data file for: ",curr_date.strftime('%m-%Y'))
+        print("Uploading data file for: ",curr_date.strftime('%d=%m-%Y'))
 
         try:
 
@@ -180,7 +179,7 @@ with DAG(
             return f"Uploaded final data for: {curr_date.strftime('%d-%m-%Y')}"
 
         except requests.exceptions.RequestException as e:
-            print(e)
+            raise ValueError(e)
 
 
     upload_covid_daily_task = PythonOperator(
