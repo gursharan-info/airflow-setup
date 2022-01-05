@@ -175,7 +175,7 @@ with DAG(
             yday=str(datetime.strftime(curr_date - timedelta(1), '%d-%m-%Y'))
 
             filename = os.path.join(daily_data_path, f"covid_{yday}.csv")
-            upload_file(filename, DATASET_NAME, f"covid_{curr_date.strftime('%d-%m-%Y')}.csv", SECTOR_NAME, "india_pulse")
+            upload_file(filename, DATASET_NAME, f"covid_{yday}.csv", SECTOR_NAME, "india_pulse")
         
         except Exception as e:
             raise ValueError(e)
