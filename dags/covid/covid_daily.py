@@ -29,7 +29,7 @@ with DAG(
     default_args=default_args,
     description='Covid 19 Daily',
     schedule_interval = '@daily',
-    start_date = datetime(year=2021, month=12, day=10, hour=12, minute=0),
+    start_date = datetime(year=2021, month=11, day=1, hour=12, minute=0),
     catchup = True,
     tags=['health'],
 ) as dag:
