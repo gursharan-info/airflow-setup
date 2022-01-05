@@ -43,7 +43,7 @@ with DAG(
 
     SECTOR_NAME = 'Health'
     DATASET_NAME = 'covid_daily'
-    day_lag = 1
+    day_lag = 0
 
 
     def scrape_covid_daily(ds, **context):  
