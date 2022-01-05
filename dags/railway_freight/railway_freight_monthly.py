@@ -52,11 +52,11 @@ with DAG(
         print("Scraping on: ",context['data_interval_end'])   
         print("Scraping for: ",curr_date)
         
-        main_url = "https://www.ppac.gov.in/content/147_1_ConsumptionPetroleum.aspx"
+        main_url = "https://indianrailways.gov.in/railwayboard/view_section.jsp?lang=0&id=0,1,304,366,554,818,821"
 
         try:
             session = requests.Session()
-            response = session.get("https://indianrailways.gov.in/railwayboard/view_section.jsp?lang=0&id=0,1,304,366,554,818,821")
+            response = session.get(main_url)
             tree = html.fromstring(response.content)
             session.close()
 
