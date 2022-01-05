@@ -101,7 +101,9 @@ with DAG(
                         df['total_wheat_distributed'] = df['total_wheat_distributed_unautomated'] + df['total_wheat_distributed_automated'] 
                         total_data.append(df)
                     else:
-                        raise ValueError("No Table present in the response")
+                        # raise ValueError("No Table present in the response")
+                        print("No Table present in the response for: ", state['name'])
+                        continue
                 except Exception as e:
                     raise ValueError(e)
             session.close()
