@@ -175,12 +175,12 @@ with DAG(
 
             filename = os.path.join(daily_data_path, f"covid_{curr_date.strftime('%d-%m-%Y')}.csv")
             upload_file(filename, DATASET_NAME, f"covid_{curr_date.strftime('%d-%m-%Y')}.csv", SECTOR_NAME, "india_pulse")
-
-            return f"Uploaded final data for: {curr_date.strftime('%d-%m-%Y')}"
-
+        
         except Exception as e:
             raise ValueError(e)
 
+        return f"Uploaded final data for: {curr_date.strftime('%d-%m-%Y')}"
+        
 
     upload_covid_daily_task = PythonOperator(
         task_id = 'upload_covid_daily',
