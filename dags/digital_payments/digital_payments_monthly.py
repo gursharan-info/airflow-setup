@@ -120,8 +120,8 @@ with DAG(
 
             return f"Processed final data for: {curr_date.strftime('%m-%Y')}"
 
-        except requests.exceptions.RequestException as e:
-            print(e)
+        except Exception as e:
+            raise ValueError(e)
 
 
     process_digital_payments_monthly_task = PythonOperator(
@@ -144,8 +144,8 @@ with DAG(
 
             return f"Uploaded final data for: {curr_date.strftime('%m-%Y')}"
 
-        except requests.exceptions.RequestException as e:
-            print(e)
+        except Exception as e:
+            raise ValueError(e)
 
 
     upload_digital_payments_monthly_task = PythonOperator(

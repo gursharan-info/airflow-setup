@@ -136,7 +136,7 @@ with DAG(
 
             return f"Processed final data for: {curr_date.strftime('%d-%m-%Y')}"
 
-        except requests.exceptions.RequestException as e:
+        except Exception as e:
             print(e)
 
 
@@ -162,7 +162,7 @@ with DAG(
 
             return f"Uploaded final data for: {curr_date.strftime('%m-%Y')}"
 
-        except requests.exceptions.RequestException as e:
+        except Exception as e:
             print(e)
 
 

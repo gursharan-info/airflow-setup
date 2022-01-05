@@ -104,8 +104,8 @@ with DAG(
 
             return f"Processed final data for: {curr_date.strftime('%m-%Y')}"
 
-        except requests.exceptions.RequestException as e:
-            print(e)
+        except Exception as e:
+            raise ValueError(e)
 
 
     process_google_mobility_monthly_task = PythonOperator(
@@ -130,8 +130,8 @@ with DAG(
 
             return f"Uploaded final data for: {curr_date.strftime('%m-%Y')}"
 
-        except requests.exceptions.RequestException as e:
-            print(e)
+        except Exception as e:
+            raise ValueError(e)
 
 
     upload_google_mobility_monthly_task = PythonOperator(

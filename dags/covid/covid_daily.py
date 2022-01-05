@@ -169,7 +169,7 @@ with DAG(
         '''
         # print(context)
         curr_date = datetime.fromtimestamp(context['data_interval_start'].timestamp())- timedelta(day_lag)  
-        print("Uploading data file for: ",curr_date.strftime('%d=%m-%Y'))
+        print("Uploading data file for: ",curr_date.strftime('%d-%m-%Y'))
 
         try:
 
@@ -178,7 +178,7 @@ with DAG(
 
             return f"Uploaded final data for: {curr_date.strftime('%d-%m-%Y')}"
 
-        except requests.exceptions.RequestException as e:
+        except Exception as e:
             raise ValueError(e)
 
 

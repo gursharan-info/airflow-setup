@@ -61,8 +61,8 @@ with DAG(
 
             return f"Downloaded data for: {curr_date.strftime('%m-%Y')}"
 
-        except requests.exceptions.RequestException as e:
-            print(e)
+        except Exception as e:
+            raise ValueError(e)
 
     scrape_digital_payments_daily_task = PythonOperator(
         task_id = 'scrape_digital_payments_daily',
@@ -151,8 +151,8 @@ with DAG(
 
             return f"Processed final data for: {curr_date.strftime('%d-%m-%Y')}"
 
-        except requests.exceptions.RequestException as e:
-            print(e)
+        except Exception as e:
+            raise ValueError(e)
 
 
     process_digital_payments_daily_task = PythonOperator(

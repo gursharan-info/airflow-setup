@@ -98,8 +98,8 @@ with DAG(
 
             return f"Scraped data for: {curr_date.strftime('%d-%m-%Y')}"
 
-        except requests.exceptions.RequestException as e:
-            print(e)
+        except Exception as e:
+            raise ValueError(e)
 
     scrape_electricity_daily_task = PythonOperator(
         task_id='scrape_electricity_daily',
@@ -207,8 +207,8 @@ with DAG(
 
             return f"Processed final data for: {curr_date.strftime('%d-%m-%Y')}"
 
-        except requests.exceptions.RequestException as e:
-            print(e)
+        except Exception as e:
+            raise ValueError(e)
 
 
     process_electricity_daily_task = PythonOperator(
