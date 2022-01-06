@@ -43,7 +43,7 @@ with DAG(
 
     SECTOR_NAME = 'Health'
     DATASET_NAME = 'covid_daily'
-    day_lag = 0
+    day_lag = 1
 
 
     def scrape_covid_daily(ds, **context):  
@@ -51,103 +51,81 @@ with DAG(
         Scrapes the daily raw data of digital payments
         '''
         # print(context['execution_date'])
-        curr_date = datetime.fromtimestamp(context['data_interval_start'].timestamp())- timedelta(day_lag)
+        curr_date = datetime.fromtimestamp(context['data_interval_start'].timestamp()) - timedelta(day_lag)
         print("Scraping on: ",context['data_interval_end'])   
         print("Scraping for: ",curr_date)
 
         try:
 
             district_wise_daily = pd.read_csv('https://data.incovid19.org/csv/latest/districts.csv')
-            district_wise_daily['Date'] = pd.to_datetime(district_wise_daily['Date'], format='%Y-%m-%d').dt.strftime('%d-%m-%Y')
+            district_wise_daily['Date'] = pd.to_datetime(district_wise_daily['Date'], format='%Y-%m-%d')
             district_wise_daily['District'] = district_wise_daily['District'].str.replace('Unknown','', case=False)
+            district_wise_daily.columns = [col.lower() for col in district_wise_daily.columns.tolist()]
             
-            yday=str(datetime.strftime(curr_date - timedelta(1), '%d-%m-%Y'))
-            db_yday=str(datetime.strftime(curr_date - timedelta(2), '%d-%m-%Y'))
-            yday_filtered = district_wise_daily[district_wise_daily['Date'].isin([yday])].iloc[:,0:6].reset_index(drop=True)
-            db_yday_filtered = district_wise_daily[district_wise_daily['Date'].isin([db_yday])].iloc[:,1:6].reset_index(drop=True)
-
-            delta_df = pd.DataFrame(yday_filtered[['Date','State','District']])
-            df1 = yday_filtered[['Confirmed','Recovered','Deceased']]
-            df2 = db_yday_filtered[['Confirmed','Recovered','Deceased']]
-            delta_df[['Confirmed','Recovered','Deceased']] = ( df1 - df2).combine_first(df1).reindex_like(df1).fillna(0).astype(int).clip(lower=0)
-            delta_df.reset_index(drop=True, inplace=True)
-            delta_df['state_name_lower'] = delta_df['State'].str.lower().str.strip()
-            delta_df['district_lower'] = delta_df['District'].str.lower().str.strip()
-            delta_df['state_district_lower'] = delta_df['state_name_lower'] + "_" + delta_df['district_lower']
-
-            state_group_df = delta_df.groupby(['Date','State'], as_index=False).sum()
-            state_group_df.rename(columns={'State': 'state_name', 'Confirmed': 'confirmed_state', 'Recovered': 'recovered_state', 'Deceased': 'deceased_state'}, inplace=True)
-            state_group_df['state_name_lower'] = state_group_df['state_name'].str.lower()
-
+            
             state_codes_df = pd.read_csv(lgd_codes_file)
-            state_codes_df[['district_name','state_name']] = state_codes_df[['district_name','state_name']].apply(lambda x: x.str.strip())
-            state_codes_df['state_name_lower'] = state_codes_df['state_name'].str.lower()
-            state_codes_df['district_lower'] = state_codes_df['district_name'].str.lower()
-            state_codes_df['state_district_lower'] = state_codes_df['state_name_lower'] + "_" + state_codes_df['district_lower']
+            state_codes_df['state_name'] = state_codes_df['state_name'].str.strip().str.title().str.replace(r'\bAnd\b', 'and')
+            state_codes_df['state_lower'] = state_codes_df['state_name'].str.strip().str.lower()
+            state_codes_df['district_lower'] = state_codes_df['district_name'].str.strip().str.lower()
+            state_codes_df['state_district_lower'] = state_codes_df['state_lower'] + "_" + state_codes_df['district_lower']
+
+
+            district_df = pd.read_csv('https://data.incovid19.org/csv/latest/districts.csv')[['Date','State','District','Confirmed','Recovered','Deceased']].copy().sort_values(by='Date').reset_index(drop=True)
+            district_df['Date'] = pd.to_datetime(district_df['Date'], format='%Y-%m-%d')
+            district_df['District'] = district_df['District'].str.replace('Unknown','', case=False)
+            district_df.columns = [col.lower() for col in district_df.columns.tolist()]
+            district_df.columns = ['date','state_name','district_name'] + [f"total_{col}_district" for col in district_df.columns.tolist()[3:] ]
+
+            
+            district_df['confirmed_district'] = district_df.groupby(['state_name','district_name'])[['total_confirmed_district']].diff(1).fillna(0)
+            district_df['recovered_district'] = district_df.groupby(['state_name','district_name'])[['total_recovered_district']].diff(1).fillna(0)
+            district_df['deceased_district'] = district_df.groupby(['state_name','district_name'])[['total_deceased_district']].diff(1).fillna(0)
+            district_df['state_district_lower'] = district_df['state_name'].str.strip().str.lower() + "_" + district_df['district_name'].str.strip().str.lower()
+            
+
+            district_merged_df = pd.merge(district_df, state_codes_df[['state_district_lower','state_code','district_code']].drop_duplicates(), on='state_district_lower', how='left')
+            district_merged_df = district_merged_df.drop(columns='state_district_lower').dropna(subset=['district_code']).reset_index(drop=True)
+            district_merged_df['district_code'] = district_merged_df['district_code'].astype(int)
+            district_merged_df['state_code'] = district_merged_df['state_code'].astype(int)
+
+
+            state_df = pd.read_csv('https://data.incovid19.org/csv/latest/states.csv')[['Date','State','Confirmed','Recovered','Deceased']].copy().sort_values(by='Date').reset_index(drop=True)
+            state_df = state_df[ ~(state_df['State'].str.contains('india', case=False, na=False) )]
+            state_df['Date'] = pd.to_datetime(state_df['Date'], format='%Y-%m-%d')
+            state_df.columns = ['date', 'state_name', 'total_confirmed_state', 'total_recovered_state', 'total_deceased_state']
+            state_df['confirmed_state'] = state_df.groupby(['state_name'])[['total_confirmed_state']].diff(1).fillna(0)
+            state_df['recovered_state'] = state_df.groupby(['state_name'])[['total_recovered_state']].diff(1).fillna(0)
+            state_df['deceased_state'] = state_df.groupby(['state_name'])[['total_deceased_state']].diff(1).fillna(0)
+
+            state_df['state_lower'] = state_df['state_name'].str.lower()
+            state_df = pd.merge(state_df, state_codes_df[['state_lower','state_code']].drop_duplicates(), on='state_lower', how='left')
+            state_df = state_df.drop(columns='state_lower').dropna(subset=['state_code']).reset_index(drop=True)
+            state_df['state_code'] = state_df['state_code'].astype(int)
+
 
             india_df =pd.read_csv('https://data.incovid19.org/csv/latest/case_time_series.csv')[['Date_YMD','Daily Confirmed','Daily Recovered','Daily Deceased']]
-            india_df.rename(columns={'Date_YMD': 'Date', 'Daily Confirmed': 'confirmed_india', 'Daily Recovered': 'recovered_india', 'Daily Deceased': 'deceased_india'}, inplace=True)
-            india_df['Date'] = pd.to_datetime(india_df['Date'], format='%Y-%m-%d')
-            india_df = india_df[ india_df['Date'] <= (curr_date - timedelta(1)) ]
-            india_df['Date'] = india_df['Date'].dt.strftime('%d-%m-%Y')
-
-            district_group_df = pd.merge(delta_df, 
-                                    state_codes_df[['state_code','state_name_lower']].drop_duplicates(),
-                                    how='left', on='state_name_lower')
-            district_group_df = pd.merge(district_group_df, state_codes_df[['district_code','district_lower']],
-                                    how='left', on='district_lower')
-            district_group_df = district_group_df.drop_duplicates(subset='state_district_lower', keep="first")
-
-            district_group_df.rename(columns={'Confirmed': 'confirmed_district', 'Recovered': 'recovered_district', 'Deceased': 'deceased_district'}, inplace=True)
-
-            district_group_df = district_group_df[~district_group_df['District'].isin([
-                'Foreign Evacuees','Other State','Capital Complex','Others','Upper Dibang Valley',
-                'Gaurela Pendra Marwahi', 'State Pool','Hnahthial','Khawzawl','Saitual','BSF Camp',
-                'Chengalpattu','Kallakurichi','Evacuees','Ranipet','Tenkasi',
-                'Italians','Tirupathur','Airport Quarantine','Railway Quarantine'
-            ])]
-
-            district_data_df = district_group_df.merge(yday_filtered.drop_duplicates(subset=['State','District']), how='left',on=['Date','State','District'])
-            district_data_df.rename(columns={'Confirmed': 'total_confirmed_district', 'Recovered': 'total_recovered_district', 
-                                            'Deceased': 'total_deceased_district', 'State':'state_name', 'District':'district_name'},
-                                    inplace=True)
-            district_data_df = district_data_df[['Date','state_name','state_code','district_name','district_code',
-                'confirmed_district','recovered_district','deceased_district',
-                'total_confirmed_district','total_recovered_district','total_deceased_district','state_name_lower']]
-
-
-            final_merged_data = pd.merge(district_data_df[['Date','district_name','district_code','confirmed_district','recovered_district',
-                                                    'deceased_district','total_confirmed_district','total_recovered_district',
-                                                    'total_deceased_district','state_code','state_name_lower']], 
-                                    state_group_df[['state_name','confirmed_state','recovered_state','deceased_state',
-                                                    'state_name_lower']],
-                                    how='left',on=['state_name_lower'])
-
-            state_total_df = yday_filtered.groupby(['State'],as_index=False).sum()
-            state_total_df.rename(columns={'State': 'state_name', 'Confirmed': 'total_confirmed_state', 'Recovered': 'total_recovered_state',
-             'Deceased': 'total_deceased_state'}, inplace=True)
+            india_df.columns= ['date','confirmed_india', 'recovered_india', 'deceased_india']
+            india_df['date'] = pd.to_datetime(india_df['date'], format='%Y-%m-%d')
+            india_df['total_confirmed_india'] = india_df['confirmed_india'].cumsum()
+            india_df['total_recovered_india'] = india_df['recovered_india'].cumsum()
+            india_df['total_deceased_india'] = india_df['deceased_india'].cumsum()
             
-            final_merged_data = pd.merge(final_merged_data, state_total_df, how='left',on=['state_name'])
-            final_merged_data = pd.merge(final_merged_data, india_df.tail(1), how='left',on=['Date'])
-            
-            india_total_df = yday_filtered.groupby(['Date'],as_index=False).sum()
-            india_total_df.rename(columns={'Confirmed': 'total_confirmed_india', 'Recovered': 'total_recovered_india', 'Deceased': 'total_deceased_india'}, inplace=True)
+            merged_df = district_merged_df.merge(
+                    state_df.drop(columns='state_name'), on=['date','state_code'], how='left'
+            ).merge(india_df, on='date', how='left')
+            merged_df = merged_df.fillna("")
+            merged_df = merged_df[['date','state_name','state_code','district_name','district_code','confirmed_district','recovered_district','deceased_district',
+                                'total_confirmed_district','total_recovered_district','total_deceased_district','confirmed_state','recovered_state','deceased_state',
+                                'total_confirmed_state','total_recovered_state','total_deceased_state','confirmed_india','recovered_india','deceased_india',
+                                'total_confirmed_india','total_recovered_india','total_deceased_india'
+                        ]]
 
-            final_merged_data = pd.merge(final_merged_data, india_total_df, how='left',on=['Date'])
-            final_merged_data = final_merged_data[['Date','state_name','state_code','district_name','district_code',
-                'confirmed_district','recovered_district','deceased_district',
-                'total_confirmed_district','total_recovered_district','total_deceased_district',
-                'confirmed_state','recovered_state','deceased_state',
-                'total_confirmed_state','total_recovered_state','total_deceased_state',
-                'confirmed_india','recovered_india','deceased_india',
-                'total_confirmed_india','total_recovered_india','total_deceased_india'
-                ]]
-            final_merged_data = final_merged_data.fillna("") 
-            final_merged_data = final_merged_data.rename(columns={'Date':'date'})
-            final_merged_data['district_name'] = final_merged_data['district_name'].str.replace('Unknown','', case=False)
+            merged_df = merged_df[ merged_df['date'] == curr_date.strftime("%Y-%m-%d") ].copy()
+            merged_df['date'] = merged_df['date'].dt.strftime("%d-%m-%Y")
+
             
-            filename = os.path.join(daily_data_path, 'covid_'+yday+'.csv')
-            final_merged_data.to_csv(filename,index=False)                                 
+            filename = os.path.join(daily_data_path, f"covid_{curr_date.strftime('%Y-%m-%d')}.csv")
+            merged_df.to_csv(filename,index=False)                                 
 
             return f"Downloaded data file till: {curr_date.strftime('%d-%m-%Y')}"
 
@@ -168,14 +146,12 @@ with DAG(
         Upload the process monthly data file on sharepoint
         '''
         # print(context)
-        curr_date = datetime.fromtimestamp(context['data_interval_start'].timestamp())- timedelta(day_lag)  
+        curr_date = datetime.fromtimestamp(context['data_interval_start'].timestamp()) - timedelta(day_lag)  
         print("Uploading data file for: ",curr_date.strftime('%d-%m-%Y'))
 
         try:
-            yday=str(datetime.strftime(curr_date - timedelta(1), '%d-%m-%Y'))
-
-            filename = os.path.join(daily_data_path, f"covid_{yday}.csv")
-            upload_file(filename, DATASET_NAME, f"covid_{yday}.csv", SECTOR_NAME, "india_pulse")
+            filename = os.path.join(daily_data_path, f"covid_{curr_date.strftime('%Y-%m-%d')}.csv")
+            upload_file(filename, DATASET_NAME, f"covid_{curr_date.strftime('%Y-%m-%d')}.csv", SECTOR_NAME, "india_pulse")
         
         except Exception as e:
             raise ValueError(e)
