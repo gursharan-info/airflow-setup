@@ -124,7 +124,7 @@ with DAG(
             merged_df['date'] = merged_df['date'].dt.strftime("%d-%m-%Y")
 
             
-            filename = os.path.join(daily_data_path, f"covid_{curr_date.strftime('%Y-%m-%d')}.csv")
+            filename = os.path.join(daily_data_path, f"covid_{curr_date.strftime('%d-%m-%Y')}.csv")
             merged_df.to_csv(filename,index=False)                                 
 
             return f"Downloaded data file till: {curr_date.strftime('%d-%m-%Y')}"
@@ -150,8 +150,8 @@ with DAG(
         print("Uploading data file for: ",curr_date.strftime('%d-%m-%Y'))
 
         try:
-            filename = os.path.join(daily_data_path, f"covid_{curr_date.strftime('%Y-%m-%d')}.csv")
-            upload_file(filename, DATASET_NAME, f"covid_{curr_date.strftime('%Y-%m-%d')}.csv", SECTOR_NAME, "india_pulse")
+            filename = os.path.join(daily_data_path, f"covid_{curr_date.strftime('%d-%m-%Y')}.csv")
+            upload_file(filename, DATASET_NAME, f"covid_{curr_date.strftime('%d-%m-%Y')}.csv", SECTOR_NAME, "india_pulse")
         
         except Exception as e:
             raise ValueError(e)
