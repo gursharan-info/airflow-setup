@@ -18,18 +18,18 @@ default_args = {
     'retry_delay': timedelta(days=1),
 }
 with DAG(
-    'covid_vacc_daily',
+    'covid_vacc_monthly',
     default_args=default_args,
-    description='Covid Vaccination Daily',
-    schedule_interval = '@daily',
+    description='Covid Vaccination Monthly',
+    schedule_interval = '0 20 4 * *',
     start_date = datetime(year=2021, month=11, day=1, hour=12, minute=0),
     catchup = True,
     tags=['health'],
 ) as dag:
 
     dir_path = os.path.join(os.path.join(os.path.join(os.getcwd(), 'data'), 'IndiaPulse'), 'covid_vacc')
-    daily_data_path = os.path.join(dir_path, 'daily')
-    os.makedirs(daily_data_path, exist_ok = True)
+    monthly_data_path = os.path.join(dir_path, 'monthly')
+    os.makedirs(monthly_data_path, exist_ok = True)
     raw_data_path = os.path.join(os.getcwd(), 'raw_data')
     os.makedirs(raw_data_path, exist_ok = True)
 
@@ -38,13 +38,13 @@ with DAG(
     state_codes_url = "https://raw.githubusercontent.com/gursharan-info/lgd-mappings/master/csv/state_two_digit.csv"
 
     SECTOR_NAME = 'Health'
-    DATASET_NAME = 'covid_vaccination_daily'
+    DATASET_NAME = 'covid_vaccination_monthly'
     day_lag = 1
 
 
-    def scrape_covid_vacc_daily(ds, **context):  
+    def scrape_covid_vacc_monthly(ds, **context):  
         '''
-        Scrapes the daily raw data of Covid Vaccination
+        Scrapes the monthly raw data of Covid Vaccination
         '''
         # print(context['execution_date'])
         curr_date = datetime.fromtimestamp(context['data_interval_start'].timestamp()) - timedelta(day_lag)
@@ -78,14 +78,18 @@ with DAG(
             state_df_grp = state_wide_df[~(state_wide_df['state'] == 'TT')][['date','state','vaccinated1','vaccinated2']].copy().reset_index(drop=True)
             state_df_grp['total_doses_admn'] = state_df_grp['vaccinated1'] + state_df_grp['vaccinated2']
             state_df_grp.columns = ['date','state','first_dose_admn_state','second_dose_admn_state','total_doses_admn_state']
-            state_df_grp = state_df_grp[ state_df_grp['date'] == curr_date.strftime("%Y-%m-%d") ].copy().reset_index(drop=True)
-            state_df_grp['date'] = pd.to_datetime(state_df_grp['date'], format="%Y-%m-%d")
+            state_df_grp['date'] = pd.to_datetime(state_df_grp['date'], format="%Y-%m-%d").dt.to_period('M')
+            state_df_grp = state_df_grp[ state_df_grp['date'] == curr_date.strftime("%Y-%m") ].copy().reset_index(drop=True)
+            state_df_grp = state_df_grp.groupby(['date','state']).sum().reset_index()
             
+
             ind_df = state_wide_df[state_wide_df['state'] == 'TT'][['date','vaccinated1','vaccinated2']].copy().reset_index(drop=True)
             ind_df['total_doses_admn'] = ind_df['vaccinated1'] + ind_df['vaccinated2']
             ind_df.columns = ['date','first_dose_admn_india','second_dose_admn_india','total_doses_admn_india']
-            ind_df = ind_df[ind_df['date'] == curr_date.strftime("%Y-%m-%d")].copy().reset_index(drop=True)
-            ind_df['date'] = pd.to_datetime(ind_df['date'], format="%Y-%m-%d")
+            ind_df['date'] = pd.to_datetime(ind_df['date'], format="%Y-%m-%d").dt.to_period('M')
+            ind_df = ind_df[ind_df['date'] == curr_date.strftime("%Y-%m")].copy().reset_index(drop=True)
+            ind_df = ind_df.groupby(['date']).sum().reset_index()
+
 
             lgd_df = pd.read_csv(lgd_codes_file)
             lgd_df['state_dist_lower'] = lgd_df['state_name'].str.strip().str.lower() + "_" + lgd_df['district_name'].str.strip().str.lower()
@@ -124,60 +128,62 @@ with DAG(
             dist_df_grp = dist_wide_df[~(dist_wide_df['state'] == 'TT')][['date','state','district','vaccinated1','vaccinated2']].copy().reset_index(drop=True)
             dist_df_grp['total_doses_admn'] = dist_df_grp['vaccinated1'] + dist_df_grp['vaccinated2']
             dist_df_grp.columns = ['date','state','district','first_dose_admn_district','second_dose_admn_district','total_doses_admn_district']
-            dist_df_grp = dist_df_grp[dist_df_grp['date'] == curr_date.strftime("%Y-%m-%d")].copy().reset_index(drop=True)
-            dist_df_grp['date'] = pd.to_datetime(dist_df_grp['date'], format="%Y-%m-%d")
+            dist_df_grp['date'] = pd.to_datetime(dist_df_grp['date'], format="%Y-%m-%d").dt.to_period('M')
+            dist_df_grp = dist_df_grp[dist_df_grp['date'] == curr_date.strftime("%Y-%m")].copy().reset_index(drop=True)
+            dist_df_grp = dist_df_grp.groupby(['date','state','district']).sum().reset_index()
 
             merged_df = pd.merge(
                 pd.merge(dist_df_grp, state_df_grp, on=['date','state'], how='left'),
-            ind_df, on=['date'], how='left')
-            merged_df = pd.merge(merged_df, state_codes_df, on=['state'], how='left')
+            ind_df, on='date', how='left')
+            merged_df = pd.merge(merged_df, state_codes_df, on='state', how='left')
+            # merged_df = merged_df[ ['date','state_name','state_code','district_name'] ]
             merged_df['state_dist_lower'] = merged_df['state_name'].str.strip().str.lower() + "_" + merged_df['district'].str.strip().str.lower()
-            merged_df = merged_df.merge( lgd_df[['district_name','district_code','state_dist_lower']], on='state_dist_lower', how='left')
+            merged_df = merged_df.merge(lgd[['district_name','district_code','state_dist_lower']], on='state_dist_lower', how='left')
             merged_df = merged_df.dropna(subset=['district_code']).reset_index(drop=True)
             merged_df = merged_df[ ['date','state_name','state_code','district_name','district_code'] + [col for col in merged_df.columns.tolist() if 'dose' in col] ]
             merged_df['district_code'] = merged_df['district_code'].astype(int)
-            merged_df['date'] = merged_df['date'].dt.strftime("%d-%m-%Y")
+            merged_df['date'] = merged_df['date'].dt.strftime("01-%m-%Y")
 
-            filename = os.path.join(daily_data_path, f"covid_vacc_{curr_date.strftime('%d-%m-%Y')}.csv")
+            filename = os.path.join(monthly_data_path, f"covid_vacc_{curr_date.strftime('%m-%Y')}.csv")
             merged_df.to_csv(filename,index=False)                                 
 
-            return f"Downloaded data file till: {curr_date.strftime('%d-%m-%Y')}"
+            return f"Downloaded data file for: {curr_date.strftime('%m-%Y')}"
 
         except Exception as e:
             raise ValueError(e)
 
-    scrape_covid_vacc_daily_task = PythonOperator(
-        task_id = 'scrape_covid_vacc_daily',
-        python_callable = scrape_covid_vacc_daily,
+    scrape_covid_vacc_monthly_task = PythonOperator(
+        task_id = 'scrape_covid_vacc_monthly',
+        python_callable = scrape_covid_vacc_monthly,
         # depends_on_past = True
     )
 
 
 
     # Upload data file 
-    def upload_covid_vacc_daily(ds, **context):  
+    def upload_covid_vacc_monthly(ds, **context):  
         '''
         Upload the process monthly data file on sharepoint
         '''
         # print(context)
         curr_date = datetime.fromtimestamp(context['data_interval_start'].timestamp()) - timedelta(day_lag)  
-        print("Uploading data file for: ",curr_date.strftime('%d-%m-%Y'))
+        print("Uploading data file for: ",curr_date.strftime('%m-%Y'))
 
         try:
-            filename = os.path.join(daily_data_path, f"covid_vacc_{curr_date.strftime('%d-%m-%Y')}.csv")
-            upload_file(filename, DATASET_NAME, f"covid_vacc_{curr_date.strftime('%d-%m-%Y')}.csv", SECTOR_NAME, "india_pulse")
+            filename = os.path.join(monthly_data_path, f"covid_vacc_{curr_date.strftime('%m-%Y')}.csv")
+            upload_file(filename, DATASET_NAME, f"covid_vacc_{curr_date.strftime('%m-%Y')}.csv", SECTOR_NAME, "india_pulse")
         
         except Exception as e:
             raise ValueError(e)
 
-        return f"Uploaded final data for: {curr_date.strftime('%d-%m-%Y')}"
+        return f"Uploaded final data for: {curr_date.strftime('%m-%Y')}"
         
 
-    upload_covid_vacc_daily_task = PythonOperator(
-        task_id = 'upload_covid_vacc_daily',
-        python_callable = upload_covid_vacc_daily,
+    upload_covid_vacc_monthly_task = PythonOperator(
+        task_id = 'upload_covid_vacc_monthly',
+        python_callable = upload_covid_vacc_monthly,
         # depends_on_past = True
     )
 
-    scrape_covid_vacc_daily_task >> upload_covid_vacc_daily_task
+    scrape_covid_vacc_monthly_task >> upload_covid_vacc_monthly_task
 
