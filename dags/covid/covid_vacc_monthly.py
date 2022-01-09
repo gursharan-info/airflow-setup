@@ -138,7 +138,7 @@ with DAG(
             merged_df = pd.merge(merged_df, state_codes_df, on='state', how='left')
             # merged_df = merged_df[ ['date','state_name','state_code','district_name'] ]
             merged_df['state_dist_lower'] = merged_df['state_name'].str.strip().str.lower() + "_" + merged_df['district'].str.strip().str.lower()
-            merged_df = merged_df.merge(lgd[['district_name','district_code','state_dist_lower']], on='state_dist_lower', how='left')
+            merged_df = merged_df.merge(lgd_df[['district_name','district_code','state_dist_lower']], on='state_dist_lower', how='left')
             merged_df = merged_df.dropna(subset=['district_code']).reset_index(drop=True)
             merged_df = merged_df[ ['date','state_name','state_code','district_name','district_code'] + [col for col in merged_df.columns.tolist() if 'dose' in col] ]
             merged_df['district_code'] = merged_df['district_code'].astype(int)
