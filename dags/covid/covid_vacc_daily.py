@@ -149,7 +149,7 @@ with DAG(
     scrape_covid_vacc_daily_task = PythonOperator(
         task_id = 'scrape_covid_vacc_daily',
         python_callable = scrape_covid_vacc_daily,
-        depends_on_past = True
+        # depends_on_past = True
     )
 
 
@@ -176,7 +176,7 @@ with DAG(
     upload_covid_vacc_daily_task = PythonOperator(
         task_id = 'upload_covid_vacc_daily',
         python_callable = upload_covid_vacc_daily,
-        depends_on_past = True
+        # depends_on_past = True
     )
 
     scrape_covid_vacc_daily_task >> upload_covid_vacc_daily_task
