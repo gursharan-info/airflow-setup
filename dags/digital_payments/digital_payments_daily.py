@@ -38,7 +38,7 @@ with DAG(
 
     SECTOR_NAME = 'Money and Markets'
     DATASET_NAME = 'digital_payments_daily'
-    day_lag = 2
+    day_lag = 1
 
 
     def scrape_digital_payments_daily(ds, **context):  
