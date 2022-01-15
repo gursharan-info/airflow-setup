@@ -59,7 +59,7 @@ with DAG(
             month_df_list = []
             for sheet_name in sheet_names:
                 # year_file_path = os.path.join(raw_path, f"raw_cleaned_{sheet_name.capitalize().replace(' ','')}.csv")
-                sheet_date = datetime.strptime(sheet_name, "%B %Y")
+                sheet_date = datetime.strptime(sheet_name.strip(), "%B %Y")
                 print(sheet_date)
                 
                 raw_df = pd.read_excel(local_excel_path, sheet_name = sheet_name, skiprows=4, header=[0,1], parse_dates=False)
