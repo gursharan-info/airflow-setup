@@ -67,7 +67,7 @@ with DAG(
     scrape_digital_payments_daily_task = PythonOperator(
         task_id = 'scrape_digital_payments_daily',
         python_callable = scrape_digital_payments_daily,
-        depends_on_past = True
+        depends_on_past = False
     )
 
 
@@ -159,7 +159,7 @@ with DAG(
     process_digital_payments_daily_task = PythonOperator(
         task_id = 'process_digital_payments_daily',
         python_callable = process_digital_payments_daily,
-        depends_on_past=True
+        depends_on_past=False
     )
     
     scrape_digital_payments_daily_task >> process_digital_payments_daily_task
