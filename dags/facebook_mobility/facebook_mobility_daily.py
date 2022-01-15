@@ -102,7 +102,7 @@ with DAG(
     scrape_facebook_mobility_daily_task = PythonOperator(
         task_id = 'scrape_facebook_mobility_daily',
         python_callable = scrape_facebook_mobility_daily,
-        depends_on_past = True
+        depends_on_past = False
     )
 
 
@@ -165,7 +165,7 @@ with DAG(
     process_facebook_mobility_daily_task = PythonOperator(
         task_id = 'process_facebook_mobility_daily',
         python_callable = process_facebook_mobility_daily,
-        depends_on_past=True
+        depends_on_past=False
     )
     
 
@@ -194,7 +194,7 @@ with DAG(
     upload_facebook_mobility_daily_task = PythonOperator(
         task_id = 'upload_facebook_mobility_daily',
         python_callable = upload_facebook_mobility_daily,
-        depends_on_past = True
+        depends_on_past = False
     )
 
     scrape_facebook_mobility_daily_task >> process_facebook_mobility_daily_task >> upload_facebook_mobility_daily_task
