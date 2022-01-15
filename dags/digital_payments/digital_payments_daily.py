@@ -84,7 +84,8 @@ with DAG(
             local_excel_path = os.path.join(raw_data_path, f"raw_digital_payments_{curr_date.strftime('%m-%Y')}.xlsx")
 
             excel_file_obj = pd.ExcelFile(local_excel_path, engine="openpyxl")
-            sheet_names = [name for name in excel_file_obj.sheet_names if curr_date.strftime('%Y') in name]
+            # sheet_names = [name for name in excel_file_obj.sheet_names if curr_date.strftime('%Y') in name]
+            sheet_names = [name for name in excel_file_obj.sheet_names][-3:]
 
             month_df_list = []
             for sheet_name in sheet_names:
@@ -121,7 +122,7 @@ with DAG(
                 month_df_list.append(new_df)
 
 
-            year_df = pd.concat(month_df_list)
+            year_df = pd.concat(month_df_list).reset_index(drop=True)
             year_df['date'] = pd.to_datetime(year_df['date'], format="%d-%m-%Y")
             year_df = year_df.sort_values(by='date')                    
 
