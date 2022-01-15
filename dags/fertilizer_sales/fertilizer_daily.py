@@ -102,7 +102,7 @@ with DAG(
             return f"Scraped data for: {curr_date.strftime('%d-%m-%Y')}"
 
         except Exception as e:
-            print(e)
+            raise ValueError(e)
 
     scrape_fertilizer_daily_task = PythonOperator(
         task_id='scrape_fertilizer_daily',
@@ -188,7 +188,7 @@ with DAG(
             return f"Processed final data for: {curr_date.strftime('%d-%m-%Y')}"
 
         except Exception as e:
-            print(e)
+            raise ValueError(e)
 
 
     process_fertilizer_daily_task = PythonOperator(

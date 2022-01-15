@@ -83,7 +83,7 @@ with DAG(
             return f"Processed final data for: {curr_date.strftime('%m-%Y')}"
 
         except Exception as e:
-            print(e)
+            raise ValueError(e)
 
 
     process_fertilizer_monthly_task = PythonOperator(
@@ -107,7 +107,7 @@ with DAG(
             return f"Uploaded final data for: {curr_date.strftime('%m-%Y')}"
 
         except Exception as e:
-            print(e)
+            raise ValueError(e)
 
 
     upload_fertilizer_monthly_task = PythonOperator(
