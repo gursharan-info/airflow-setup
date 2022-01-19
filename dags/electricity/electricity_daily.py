@@ -104,7 +104,7 @@ with DAG(
     scrape_electricity_daily_task = PythonOperator(
         task_id='scrape_electricity_daily',
         python_callable=scrape_electricity_daily,
-        depends_on_past=True
+        depends_on_past=False
     )
 
 
@@ -214,7 +214,7 @@ with DAG(
     process_electricity_daily_task = PythonOperator(
         task_id='process_electricity_daily',
         python_callable=process_electricity_daily,
-        depends_on_past=True
+        depends_on_past=False
     )
     
     scrape_electricity_daily_task >> process_electricity_daily_task

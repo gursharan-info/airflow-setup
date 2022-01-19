@@ -17,7 +17,7 @@ default_args = {
     'email': ['gursharan_singh@isb.edu'],
     'email_on_failure': True,
     'email_on_retry': False,
-    'retries': 3,
+    'retries': 5,
     'retry_delay': timedelta(days=15),
 }
 with DAG(
@@ -49,7 +49,7 @@ with DAG(
         print("Scraping on: ",context['data_interval_end'])   
         print("Scraping for: ",context['data_interval_start'])   
 
-        main_url = main_url = "https://www.mospi.gov.in/web/mospi/download-tables-data/-/reports/view/templateFour/23802?q=TBDCAT"
+        main_url = "https://www.mospi.gov.in/web/mospi/download-tables-data/-/reports/view/templateFour/23802?q=TBDCAT"
         session = requests.Session()
         response = session.get(main_url)
         tree = html.fromstring(response.content)
