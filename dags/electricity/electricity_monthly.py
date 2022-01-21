@@ -12,7 +12,6 @@ from bipp.sharepoint.uploads import upload_file
 
 default_args = {
     'owner': 'airflow',
-    'depends_on_past': False,
     'email': ['gursharan_singh@isb.edu'],
     'email_on_failure': True,
     'email_on_retry': False,
@@ -22,7 +21,7 @@ default_args = {
 with DAG(
     'electricity_monthly',
     default_args=default_args,
-    description='Electricity Supply Daily',
+    description='Electricity Supply Monthly',
     schedule_interval = '0 20 3 * *',
     # start_date = days_ago(6),
     start_date = datetime(year=2021, month=11, day=2, hour=12, minute=0),

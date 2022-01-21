@@ -13,7 +13,6 @@ from bipp.sharepoint.uploads import upload_file
 
 default_args = {
     'owner': 'airflow',
-    'depends_on_past': False,
     'email': ['gursharan_singh@isb.edu'],
     'email_on_failure': True,
     'email_on_retry': False,
@@ -93,10 +92,10 @@ with DAG(
                 f.close()
 
                 upload_file(file_loc, f"{DATASET_NAME}/raw_data", 'file'+file_date+'.pdf', SECTOR_NAME, "india_pulse")
+                return f"Scraped data for: {curr_date.strftime('%d-%m-%Y')}"
             else:
                 print('No data available')
-
-            return f"Scraped data for: {curr_date.strftime('%d-%m-%Y')}"
+                raise ValueError("No data available")
 
         except Exception as e:
             raise ValueError(e)
@@ -111,7 +110,7 @@ with DAG(
 
     def process_electricity_daily(ds, **context):  
         '''
-        Process the scraped daily raw data. Uses the processed historical data file to derive 7 day rolling mean of the values
+        Process the scraped daily raw data
         '''
         # The current date would be derived from the execution date using the lag parameter. 
         # Lag is the delay which the source website has to upload data for that particular date
