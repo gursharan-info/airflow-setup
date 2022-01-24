@@ -38,7 +38,7 @@ with DAG(
 
     SECTOR_NAME = 'Money and Markets'
     DATASET_NAME = 'digital_payments_daily'
-    day_lag = 1
+    day_lag = 2
 
 
     def scrape_digital_payments_daily(ds, **context):  
@@ -146,12 +146,13 @@ with DAG(
             daily_df = final_df[final_df['date'] == curr_date.strftime('%Y-%m-%d')].copy()
             daily_df['date'] = daily_df['date'].dt.strftime("%d-%m-%Y")
 
-            filename = os.path.join(data_path, f"digital_payments_{curr_date.strftime('%d-%m-%Y')}.csv")
-            daily_df.to_csv(filename, index=False)
-            upload_file(filename, DATASET_NAME, f"digital_payments_{curr_date.strftime('%d-%m-%Y')}.csv", SECTOR_NAME, "india_pulse")
-
-            return f"Processed final data for: {curr_date.strftime('%d-%m-%Y')}"
-
+            if not daily_df.empty:
+                filename = os.path.join(data_path, f"digital_payments_{curr_date.strftime('%d-%m-%Y')}.csv")
+                daily_df.to_csv(filename, index=False)
+                upload_file(filename, DATASET_NAME, f"digital_payments_{curr_date.strftime('%d-%m-%Y')}.csv", SECTOR_NAME, "india_pulse")
+                return f"Processed final data for: {curr_date.strftime('%d-%m-%Y')}"
+            else:
+                raise ValueError(f"No data available for:  {curr_date.strftime('%d-%m-%Y')}")
         except Exception as e:
             raise ValueError(e)
 
