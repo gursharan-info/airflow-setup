@@ -21,7 +21,7 @@ with DAG(
     'covid_vacc_monthly',
     default_args=default_args,
     description='Covid Vaccination Monthly',
-    schedule_interval = '0 20 4 * *',
+    schedule_interval = '0 20 2 * *',
     start_date = datetime(year=2021, month=11, day=1, hour=12, minute=0),
     catchup = True,
     tags=['health'],
