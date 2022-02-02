@@ -33,15 +33,13 @@ with DAG(
 
     SECTOR_NAME = 'Health'
     DATASET_NAME = 'covid_monthly'
-    day_lag = 1
-
 
     def scrape_covid_monthly(ds, **context):  
         '''
         Scrapes the monthly raw data of Covid 19 Cases
         '''
         # print(context['execution_date'])
-        curr_date = datetime.fromtimestamp(context['data_interval_start'].timestamp()) - timedelta(day_lag)
+        curr_date = datetime.fromtimestamp(context['data_interval_start'].timestamp())
         print("Scraping on: ",context['data_interval_end'])   
         print("Scraping for: ",curr_date.strftime('%m-%Y'))
 
@@ -130,7 +128,7 @@ with DAG(
         Upload the process monthly data file on sharepoint
         '''
         # print(context)
-        curr_date = datetime.fromtimestamp(context['data_interval_start'].timestamp()) - timedelta(day_lag)  
+        curr_date = datetime.fromtimestamp(context['data_interval_start'].timestamp()) 
         print("Uploading data file for: ",curr_date.strftime('%m-%Y'))
 
         try:
