@@ -1,7 +1,6 @@
 from datetime import timedelta, datetime
 from airflow import DAG
 from airflow.operators.python import PythonOperator
-
 import camelot.io as camelot
 import os 
 import dateparser

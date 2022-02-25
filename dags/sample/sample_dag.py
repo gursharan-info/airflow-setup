@@ -3,6 +3,7 @@ from airflow.operators.python import PythonOperator
 import camelot.io as camelot
 import os 
 import pandas as pd 
+from datetime import timedelta, datetime
 
 from bipp.sharepoint.uploads import upload_file  
 
@@ -47,28 +48,30 @@ with DAG(
             dict = {'name': nme, 'degree': deg, 'score': scr} 
 
             df = pd.DataFrame(dict)
+            df.to_csv(os.path.join(dir_path,'sample_monthly_0.csv'),index=False)
 
+            print("Dataset prepared")
             # saving the dataframe
-            return df
+            return True
 
         except Exception as e: 
             return ValueError(e)
 
     sample_processing_task=PythonOperator(
-        task_id='sample_processing',
+        task_id='sample_processing_task',
         python_callable=sample_processing,
         depends_on_past=True)
 
     def saving_data(ds,**context):
-        df.to_csv(os.path.join(dir_path,'sample_monthly.csv'),index=False)
 
+        print('saving dataset')
 
     saving_data_task=PythonOperator(
         task_id='saving_data_task',
         python_callable=saving_data,
         depends_on_past=True
     )
-
+    
 #setting task dependencies
 
-    sample_processing_task>>saving_data_task
+    sample_processing_task >> saving_data_task
